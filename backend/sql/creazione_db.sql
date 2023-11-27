@@ -45,14 +45,20 @@ CREATE TABLE IF NOT EXISTS Appuntamenti (
     PRIMARY KEY(Data, Ora, Tipo)                                                        );
 
 CREATE TABLE IF NOT EXISTS UtenzeCliente (
-    IDUtente        char(5)     PRIMARY KEY,
-    User            char(20)    NOT NULL,
-    Password        char(20)    NOT NULL,                                               );
+    IDUtente        char(5),
+    User            char(20),
+    Password        char(20)    NOT NULL                                                
+    PRIMARY KEY(IDUtente, User)                                                         );
 
 CREATE TABLE IF NOT EXISTS Ordini (
     IDOrdine        char(5)     PRIMARY KEY,
-    IDUtente        char(5)     REFERENCES UtenzeCliente(IDUtente)                      );
+    IDUtente        char(5)     REFERENCES UtenzeCliente(IDUtente),
+    IDLenti         char(7)     REFERENCES Lenti,
+    IDMontature     char(7)     REFERENCES Montature,
+    IDLAC           char(7)     REFERENCES LAC                                          );
 
 CREATE TABLE IF NOT EXISTS UtenzeAdmin (
-    User            char(20)    PRIMARY KEY,
-    Password        char(20)    NOT NULL                                                );
+    IDUtente        char(5),
+    User            char(20),
+    Password        char(20)    NOT NULL                                                
+    PRIMARY KEY(IDUtente, User)                                                         );
