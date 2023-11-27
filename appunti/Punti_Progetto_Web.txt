@@ -2,3 +2,4 @@
 - chiedere funzionamento delle rotte in locale e sul server
 - grafica la stessa dell'anno scorso, rimuoviamo i rettangoli, carosello standard senza bottoni, centrale a mo di vetrina
 - homepage in stile vetrina, con occhiali in carosello e sotto scelta di configurazione/best seller/etc etc
+- gestione personalizzazione e ordine del cliente: dati, carrello, checkout, pagamaneto
