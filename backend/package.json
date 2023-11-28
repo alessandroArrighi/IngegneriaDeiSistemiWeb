@@ -2,8 +2,11 @@
   "name": "backend",
   "version": "1.0.0",
   "description": "Progetto ISW Arrighi Medri",
-  "main": "index.ts",
+  "main": "app.ts",
   "scripts": {
+    "dev": "ts-node-dev src/app.ts",
+    "build": "tsc",
+    "start": "node dist/app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,5 +21,10 @@
   "homepage": "https://github.com/alessandroArrighi/IngegneriaDeiSistemiWeb#readme",
   "dependencies": {
     "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.3.2"
   }
 }
