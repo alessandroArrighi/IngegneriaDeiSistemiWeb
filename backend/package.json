@@ -1,0 +1,22 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Progetto ISW Arrighi Medri",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alessandroArrighi/IngegneriaDeiSistemiWeb.git"
+  },
+  "author": "Arrighi Medri",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alessandroArrighi/IngegneriaDeiSistemiWeb/issues"
+  },
+  "homepage": "https://github.com/alessandroArrighi/IngegneriaDeiSistemiWeb#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
