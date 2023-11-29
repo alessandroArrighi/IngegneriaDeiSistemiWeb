@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/alessandroArrighi/IngegneriaDeiSistemiWeb#readme",
   "dependencies": {
+    "@types/express": "^4.17.21",
     "express": "^4.18.2"
   },
   "devDependencies": {
