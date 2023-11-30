@@ -11,7 +11,8 @@ CREATE TABLE IF NOT EXISTS Montature (
     Ponte			char(10)	NOT NULL,
     Aste			char(10)	NOT NULL,
     Materiale		char(10)	NOT NULL,
-    Colore			char(10)	NOT NULL												);
+    Colore			char(10)	NOT NULL,												
+    Immagine        varchar(255) NOT NULL                                              );
 
 CREATE TABLE IF NOT EXISTS Lenti (
     Modello			char(20)	PRIMARY KEY,
@@ -19,8 +20,8 @@ CREATE TABLE IF NOT EXISTS Lenti (
     IDProdotto		char(7)		NOT NULL UNIQUE,
     Prezzo      	int(10)		NOT NULL,
     Versione		char(20)	NOT NULL,
-    Antiriflesso	bool,
-    Sfericità		char(15)		NOT NULL,
+    Antiriflesso	boolean,
+    Sfericità		char(15)	NOT NULL,
     Focale			char(10)	NOT NULL												);
 
 CREATE TABLE IF NOT EXISTS LAC (
@@ -47,18 +48,18 @@ CREATE TABLE IF NOT EXISTS Appuntamenti (
 CREATE TABLE IF NOT EXISTS UtenzeCliente (
     IDUtente        char(5),
     User            char(20),
-    Password        char(20)    NOT NULL                                                
+    Password        char(20)    NOT NULL,                                                
     PRIMARY KEY(IDUtente, User)                                                         );
 
 CREATE TABLE IF NOT EXISTS Ordini (
     IDOrdine        char(5)     PRIMARY KEY,
     IDUtente        char(5)     REFERENCES UtenzeCliente(IDUtente),
-    IDLenti         char(7)     REFERENCES Lenti,
-    IDMontature     char(7)     REFERENCES Montature,
-    IDLAC           char(7)     REFERENCES LAC                                          );
+    IDLenti         char(7)     REFERENCES Lenti(IDProdotto),
+    IDMontature     char(7)     REFERENCES Montature(IDProdotto),
+    IDLAC           char(7)     REFERENCES LAC(IDProdotto)                              );
 
 CREATE TABLE IF NOT EXISTS UtenzeAdmin (
     IDUtente        char(5),
     User            char(20),
-    Password        char(20)    NOT NULL                                                
+    Password        char(20)    NOT NULL,                                                
     PRIMARY KEY(IDUtente, User)                                                         );
