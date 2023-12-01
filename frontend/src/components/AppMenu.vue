@@ -1,26 +1,28 @@
 <template>
-        <div class="flex-container">
-            <div class="flex-item"></div>           <!-- flex item vuoto perchè devo vedere se funziona come in boostrap in cui avevamo lasciato una colonna vuota, anche alla chiusura del flex-container-->
-            <div class="flex-item">
-                <nav>
+    <div class="flex-container">
+            <nav>
+                <div class="flex-item">
                     <button type="button">
                         <span></span> 
-                    </button> 
+                    </button>
+                </div>
+                <div class="flex-item">
                     <a href="/">
                         <img src="" alt="logo">
                         <h1>NOMEAZIENDA</h1>
                     </a>
+                </div>
+                <div class="flex-item">
                     <ul>
-                        <li><Router-link to = "/">Pagina 1</Router-link></li>
-                        <li><Router-link to = "/">Pagina 2</Router-link></li>
-                        <li><Router-link to = "/">Pagina 3</Router-link></li>
-                        <li><Router-link to = "/">Pagina 4</Router-link></li>
+                        <li><RouterLink to = "/">Pagina 1</RouterLink></li>
+                        <li><RouterLink to = "/">Pagina 2</RouterLink></li>
+                        <li><RouterLink to = "/">Pagina 3</RouterLink></li>
+                        <li><RouterLink to = "/">Pagina 4</RouterLink></li>
                     </ul>
-                </nav>
-            </div>
-            <div class="flex-item"></div>
-        </div>
-  </template>
+                </div>
+            </nav>
+    </div>
+</template>
   
   <style scoped>
   

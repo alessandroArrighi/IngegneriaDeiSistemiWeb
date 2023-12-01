@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import { createRouter, createWebHistory, Router } from 'vue-router'
-import './style.css'
+import '.styles/style.css'
 import App from './App.vue'
 
 const router: Router = createRouter({
