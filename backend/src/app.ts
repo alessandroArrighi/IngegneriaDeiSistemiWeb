@@ -2,6 +2,7 @@ import express, { Express } from 'express'
 import framesRouter from "./routes/frames-router"
 import lensesRouter from "./routes/lenses-router"
 import lacRouter from "./routes/lac-router"
+import appointmentsRouter from "./routes/appointments-router"
 
 const app: Express = express()
 const port: Number = 3000
@@ -11,6 +12,7 @@ app.use(express.static("dist-forntend"))
 app.use(framesRouter)
 app.use(lensesRouter)
 app.use(lacRouter)
+app.use(appointmentsRouter)
 
 app.use(function(req, res, next) {
     res.setHeader("Content-Type", "text/plain")

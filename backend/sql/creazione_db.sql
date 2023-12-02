@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS LAC (
     Focale			char(10)	NOT NULL												);
 
 CREATE TABLE IF NOT EXISTS Negozi (
-    IDSede			char(5)		PRIMARY KEY,
+    IDNegozio		char(5)		PRIMARY KEY,
     Via				char(30)	NOT NULL,
     Città			char(15)	NOT NULL,
     CAP				char(7)		NOT NULL	                                            );
@@ -43,8 +43,8 @@ CREATE TABLE IF NOT EXISTS Appuntamenti (
     Data            char(8),
     Ora             char(8),
     Tipo            char(20),
-    IDSede          char(5)     REFERENCES Negozi(IDSede)
-    PRIMARY KEY(Data, Ora, Tipo, IDSede)                                                        );
+    IDNegozio       char(5)     REFERENCES Negozi(IDNegozio)
+    PRIMARY KEY(Data, Ora, Tipo, IDNegozio)                                                        );
 
 CREATE TABLE IF NOT EXISTS UtenzeCliente (
     IDUtente        char(5),
