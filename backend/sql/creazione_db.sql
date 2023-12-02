@@ -4,7 +4,7 @@ USE `Progetto`;
 CREATE TABLE IF NOT EXISTS Montature (
     Modello			char(20)	PRIMARY KEY,
     Brand			char(15)	NOT NULL,
-    IDProdotto		char(7)		UNIQUE,
+    IDProdotto		char(7)		NOT NULL UNIQUE,
     Prezzo	        int(10)		NOT NULL,
     Versione		char(20)	NOT NULL,
     Calibro			char(10)	NOT NULL,
@@ -43,7 +43,8 @@ CREATE TABLE IF NOT EXISTS Appuntamenti (
     Data            char(8),
     Ora             char(8),
     Tipo            char(20),
-    PRIMARY KEY(Data, Ora, Tipo)                                                        );
+    IDSede          char(5)     REFERENCES Negozi(IDSede)
+    PRIMARY KEY(Data, Ora, Tipo, IDSede)                                                        );
 
 CREATE TABLE IF NOT EXISTS UtenzeCliente (
     IDUtente        char(5),
