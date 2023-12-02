@@ -35,6 +35,8 @@ body {
 
 nav{
   display: inline-flex;
+  display: flex;
+  align-items: center;
 }
 
 h1 {
@@ -75,5 +77,86 @@ button {
   }
   button {
     background-color: #f9f9f9;
+  }
+}
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #333;
+  padding: 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000; 
+}
+
+
+.flex-item {
+  margin: 0 10px;
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin-right: 15px;
+}
+
+a {
+  display: inline-flex;
+  text-decoration: none;
+  color: white; 
+  align-items: center;
+}
+
+@media (min-width: 768px) {
+  .flex-container {
+      flex-direction: row; 
+      justify-content: space-between;
+      align-items: center;
+  }
+
+  nav {
+      flex-direction: row; 
+      align-items: left;
+      text-align: left; 
+  }
+
+  .toggle-button {
+    display: none;
+  }
+}
+
+@media (max-width: 767px) {
+  ul {
+      display: flex;
+      flex-direction: column;
+  }
+
+  nav {
+    align-self: start;
+  }
+
+  .flex-container {
+      justify-content: flex-start;
+      flex-direction: column;
+  }
+
+  .toggle-button {
+      display: inline-block;
+      cursor: pointer;
+      padding: 5px 10px;
+      background-color: #555;
+      color: white;
+      border: none;
+      border-radius: 5px;
   }
 }
