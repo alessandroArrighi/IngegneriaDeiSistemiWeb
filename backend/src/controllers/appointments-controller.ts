@@ -10,3 +10,13 @@ export async function allAppointments(req: Request, res: Response) {
         }
     )
 }
+
+export async function allStores(req: Request, res: Response) {
+    connection.execute(
+        `SELECT * FROM Negozi`,
+        [],
+        function(err, results, fields) {
+            res.json(results)
+        }
+    )
+}
