@@ -35,6 +35,8 @@ body {
 
 nav{
   display: inline-flex;
+  display: flex;
+  align-items: center;
 }
 
 h1 {
@@ -91,10 +93,6 @@ button {
   z-index: 1000; 
 }
 
-nav {
-  display: flex;
-  align-items: center;
-}
 
 .flex-item {
   margin: 0 10px;
@@ -103,6 +101,7 @@ nav {
 ul {
   list-style: none;
   display: flex;
+  justify-content: flex-end;
   margin: 0;
   padding: 0;
 }
@@ -119,7 +118,6 @@ a {
 }
 
 @media (min-width: 768px) {
-  
   .flex-container {
       flex-direction: row; 
       justify-content: space-between;
@@ -128,7 +126,7 @@ a {
 
   nav {
       flex-direction: row; 
-      align-items: center;
+      align-items: left;
       text-align: left; 
   }
 
@@ -139,11 +137,17 @@ a {
 
 @media (max-width: 767px) {
   ul {
-      display: none;
+      display: flex;
+      flex-direction: column;
+  }
+
+  nav {
+    align-self: start;
   }
 
   .flex-container {
-      justify-content: space-between;
+      justify-content: flex-start;
+      flex-direction: column;
   }
 
   .toggle-button {
