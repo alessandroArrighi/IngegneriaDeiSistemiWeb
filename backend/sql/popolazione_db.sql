@@ -54,7 +54,21 @@ VALUES ('AAA00', 'Alcon', '00A00', 42, 'giornaliere', 'bassa', 'monofocale'),
 ('AAA18', 'Alcon', '00A18', 24, 'giornaliere', 'bassa', 'monofocale'),
 ('AAA19', 'B&L', '00A19', 68, 'settimanali', 'media', 'bifocale');
 
-INSERT INTO Negozi (IDSede, Via, Città, CAP)
+INSERT INTO Negozi (IDNegozio, Via, Città, CAP)
 VALUES ('00001', 'XX Settembre, 23', 'Milano', '28178'),
 ('00002', 'Garibaldi, 49', 'Roma', '43291'),
 ('00003', 'Volta, 13', 'Palermo', '25521');
+
+INSERT INTO UtenzeCliente (IDUtente, User, Password)
+VALUES ('U0001', 'utente1', 'pass1'),
+('U0002', 'utente2', 'pass2'),
+('U0003', 'utente3', 'pass3'),
+('U0004', 'utente4', 'pass4'),
+('U0005', 'utente5', 'pass5');
+
+INSERT INTO Ordini (IDOrdine, IDUtente, IDMontature, IDLenti, IDLAC)
+VALUES ('OOO01', 'U0003', 'CCC09', 'BBB05', NULL),
+('OOO02', 'U0005', 'CCC02', 'BBB08', NULL),
+('OOO03', 'U0002', 'CCC08', 'BBB01', NULL),
+('OOO04', 'U0004', 'CCC11', 'BBB06', NULL),
+('OOO05', 'U0002', NULL, NULL, 'AAA13');

@@ -43,8 +43,8 @@ CREATE TABLE IF NOT EXISTS Appuntamenti (
     Data            char(8),
     Ora             char(8),
     Tipo            char(20),
-    IDNegozio       char(5)     REFERENCES Negozi(IDNegozio)
-    PRIMARY KEY(Data, Ora, Tipo, IDNegozio)                                                        );
+    IDNegozio       char(5)     REFERENCES Negozi(IDNegozio),
+    PRIMARY KEY(Data, Ora, Tipo, IDNegozio)                                             );
 
 CREATE TABLE IF NOT EXISTS UtenzeCliente (
     IDUtente        char(5),
