@@ -1,18 +1,21 @@
 <script lang="ts">
 import { defineComponent } from "vue"
-import AppMenu from "./components/AppMenu.vue"
+import Navbar from "./components/Navbar.vue"
+import Footer from "./components/Footer.vue"
 
 export default defineComponent({
   components: {
-    AppMenu
+    Navbar,
+    Footer
   }
 })
 </script>
 
 <template>
     <div>
-        <AppMenu />
+        <Navbar />
         <RouterView />
+        <Footer />
     </div>
 </template>
 
