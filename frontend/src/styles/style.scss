@@ -6,9 +6,9 @@
         display: inline-block;
     }
 
-    .carousel {
-        width: 80%;
-      }
+    .flex-item{
+      width: 100%;
+    }
 }
 
 @media (max-width: 1199px) {
@@ -24,20 +24,19 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-  }
+}
+
+.flex-container {
+  display: inline-flex;
+  width: 100%;
+}
   
-  .carousel {
-    display: flex;
-    overflow: hidden;
-    margin: 0 auto;
-  }
-  
-  .slide {
-    flex: 0 0 100%; /* Imposta la larghezza di ciascuna slide al 100% della larghezza del carosello */
-  }
-  
-  body > img {
-    width: 100%;
-    height: auto;
-    display: block;
-  }
+body > img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+p {
+  color:red;
+}
