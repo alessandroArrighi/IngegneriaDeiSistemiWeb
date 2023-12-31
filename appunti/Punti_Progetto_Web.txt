@@ -7,3 +7,12 @@
 punti auth:
 - modificare il secret con una variabile d'ambiente (variabile const JWT_SECRET = "foo")
 - modificare l'alert di errore, (nel caso di errore con una chiama axios) nelle pagine vue, non è convenzione utilizzare i pop-up
+
+utente:
+- pagina utente con tutte le specifiche: ordini, appuntamenti, profilo, logout
+- carrello
+
+admin:
+- pubblicare nuovi prodotti
+- cancellare/modificare i prodotti
+- visualizzare gli ordini effettuati dagli utenti
