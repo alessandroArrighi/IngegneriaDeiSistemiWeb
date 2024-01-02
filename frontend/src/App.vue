@@ -12,10 +12,12 @@ export default defineComponent({
 </script>
 
 <template>
+    <ul>
+      <li><RouterLink to = "/">Home</RouterLink></li>
+      <li><RouterLink to = "/singin">SingIn</RouterLink></li>
+    </ul>
     <div>
-        <Navbar />
-        <RouterView />
-        <Footer />
+      <RouterView />
     </div>
 </template>
 
