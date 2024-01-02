@@ -1,6 +1,11 @@
 import { Request, Response } from "express"
 import jwt from "jsonwebtoken"
 
+interface user {
+    id: string,
+    username: string
+}
+
 const JWT_SECRET = "foo"
 const COOKIE_NAME = "cookie-token"
 
@@ -20,7 +25,7 @@ export const decodeAccessToken = (req: Request, res: Response) => {
     if(!accessToken) return null
 
     try {
-        const user = jwt.verify(accessToken, JWT_SECRET)
+        const user = jwt.verify(accessToken, JWT_SECRET) as user
         return user
     } catch {
         return null
