@@ -2,7 +2,7 @@ import { Request, Response } from "express"
 import jwt from "jsonwebtoken"
 
 interface user {
-    id: string,
+    id: number,
     username: string
 }
 
@@ -10,7 +10,7 @@ const JWT_SECRET = "foo"
 const COOKIE_NAME = "cookie-token"
 
 export const createAccessToken = (req: Request, res: Response, user: any) => {
-    const accessToken = jwt.sign(user, JWT_SECRET, {expiresIn: "1 day"})
+    const accessToken = jwt.sign(user, JWT_SECRET, { expiresIn: "1 day" })
 
     res.cookie(COOKIE_NAME, accessToken, {
         maxAge: 86400000,

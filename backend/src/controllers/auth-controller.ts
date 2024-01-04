@@ -5,8 +5,7 @@ import bcrypt from "bcrypt"
 
 export async function registerUser(req: Request, res: Response) {
     const cookie = decodeAccessToken(req, res)
-
-    if(!cookie) {
+    if(cookie) {
         res.status(403).send("L'utente ha già effettuato il log-in")
         return
     }
@@ -16,22 +15,22 @@ export async function registerUser(req: Request, res: Response) {
     connection.execute(
         "SELECT * FROM UtenzeCliente WHERE User = ?",
         [username],
-        function(err, results, fields) {
+        async function(err, results, fields) {
             if(Array.isArray(results) && results.length > 0) {
                 res.status(400).send("Username già registrato")
                 return
             }
-            const passwordHash = bcrypt.hash(password, 10)
+            const passwordHash = await bcrypt.hash(password, 10)
 
             connection.execute(
                 "INSERT INTO UtenzeCliente (User, Password) VALUES(?, ?)",
                 [username, passwordHash],
                 function(err, results, fields) {
                     connection.execute(
-                        "SELECT IDUtente, User FROM UtenzeClienti WHERE User = ?",
+                        "SELECT IDUtente, User FROM UtenzeCliente WHERE User = ?",
                         [username],
                         function(err, results, fields) {
-                            const newUser = results as any
+                            const newUser = (results as any)[0]
                             createAccessToken(req, res, newUser)
                             res.json({message: "Registrazione effettuata con successo"})
                         }
@@ -40,4 +39,56 @@ export async function registerUser(req: Request, res: Response) {
             )
         }
     )
+}
+
+export async function loginUser(req: Request, res: Response) {
+    const cookie = decodeAccessToken(req, res)
+
+    if(cookie) {
+        res.status(403).send("Accesso già effettuato")
+        return
+    }
+
+    const { username, password } = req.body
+
+    connection.execute(
+        "SELECT * FROM UtenzeCliente WHERE User = ?",
+        [username],
+        async function(err, results, fields) {
+            if(!Array.isArray(results) || results.length == 0) {
+                res.status(400).send("credenziali errate")
+                return
+            }
+            const user = (results as any)[0]
+            const passwordOk = await bcrypt.compare(password, user.Password)
+
+            if(!passwordOk) {
+                res.status(400).send("credenziali errate")
+                return
+            }
+
+            delete user.Password
+
+            createAccessToken(req, res, user)
+            res.json({message: "Log-In effettuato con successo"})
+        }
+    )
+}
+
+export async function logoutUser(req: Request, res: Response) {
+    const cookie = decodeAccessToken(req, res)
+
+    if(!cookie) {
+        res.status(403).send("Log-Out già effettuato")
+        return
+    }
+
+    deleteAccessToken(req, res)
+    res.json({message: "Log-Out effettuato con successo"})
+}
+
+export async function getUser(req: Request, res: Response) {
+    const user = decodeAccessToken(req, res)
+
+    res.json(user)
 }

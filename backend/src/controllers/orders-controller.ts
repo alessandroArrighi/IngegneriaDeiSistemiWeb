@@ -10,3 +10,5 @@ export async function ordersFromID(req: Request, res: Response) {
         }
     )
 }
+
+// SELECT * FROM Ordini o JOIN Montature m ON o.IDMontature = m.Modello JOIN Lenti l ON o.IDLenti = l.Modello LEFT JOIN LAC lc ON o.IDLAC = lc.Modello WHERE o.IDOrdine = "OOO01"
