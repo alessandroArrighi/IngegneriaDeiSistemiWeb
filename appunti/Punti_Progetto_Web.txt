@@ -10,7 +10,7 @@ punti auth:
 
 utente:
 - pagina utente con tutte le specifiche: ordini, appuntamenti, profilo, logout
-- carrello
+- carrello (capire se è fattibile salvare i prodotti aggiunti a carrello anche dopo aver chiuso la pagina)
 
 admin:
 - pubblicare nuovi prodotti
