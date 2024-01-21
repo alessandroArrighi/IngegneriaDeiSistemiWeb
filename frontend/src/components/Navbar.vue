@@ -13,10 +13,10 @@
                 <div class="navbar-nav pb-1 me-5">
                     <ul>
                         <li><RouterLink class="nav-link active text-white px-3 py-2 mt-2 me-2 fs-5" aria-current="page" to = "/">Home</RouterLink></li>
-                        <li><RouterLink class="nav-link active text-white px-3 py-2 mt-2 me-2 fs-5" to = "/prodotti">Prodotti</RouterLink></li>
-                        <li><RouterLink class="nav-link active text-white px-3 py-2 mt-2 me-2 fs-5" to = "/pagina2">Pagina2</RouterLink></li>
-                        <li><RouterLink class="nav-link active text-white px-3 py-2 mt-2 me-2 fs-5" to = "/pagina3">Pagina3</RouterLink></li>
-                        <li><button id="scrollButton1" class="nav-link text-warning px-3 py-2 mt-2 me-2 fs-5" href="#section2">Bibliografia</button></li>
+                        <li><RouterLink class="nav-link active text-white px-3 py-2 mt-2 me-2 fs-5" to = "/montature">Montature</RouterLink></li>
+                        <li><RouterLink class="nav-link active text-white px-3 py-2 mt-2 me-2 fs-5" to = "/lenti">Lenti</RouterLink></li>
+                        <li><RouterLink class="nav-link active text-white px-3 py-2 mt-2 me-2 fs-5" to = "/lac">Lenti a Contatto</RouterLink></li>
+                        <li><RouterLink class="nav-link text-warning px-3 py-2 mt-2 me-2 fs-5" to = "/profilo">Area Personale</RouterLink></li> <!--deve rimandare all'area di log-in -->
                     </ul>
                 </div>
             </div>                       

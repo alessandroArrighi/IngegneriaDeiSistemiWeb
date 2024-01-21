@@ -6,13 +6,13 @@ import { Prodotto } from "../types"
 export default defineComponent({
   data() {
     return {
-      prodotto: null as Prodotto | null
+      montatura: null as Prodotto | null
     }
   },
   methods: {
     getArticolo() {
-      axios.get("/api/prodotto"+ this.$route.params.idProdotto)
-      .then(response => this.prodotto = response.data[0])
+      axios.get("/api/prodotto"+ this.$route.params.idProdotto)  //questa get non va bene perché noi dobbiamo filtrare sul json ottenuto dalla route "padre" montature, non possiamo rifare una chiamate (di cui il controller nemmeno )
+      .then(response => this.montatura = response.data[0])
     }
   },
   mounted() {
@@ -23,7 +23,7 @@ export default defineComponent({
 
 
 <template>
-    <template v-if="prodotto">
+    <template v-if="montatura">
     <h2>{{}}</h2>
     <article>
     <img :src="'/img/'" alt="" />

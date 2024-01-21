@@ -5,10 +5,10 @@ import 'bootstrap'
 import "bootstrap/dist/css/bootstrap.min.css"
 
 import Home from './pages/Home.vue'
-import Prodotti from './pages/Prodotti.vue'
+import Montature from './pages/Montature.vue'
 import Prodotto from './pages/Prodotto.vue'
-import Pagina2 from './pages/Pagina2.vue'
-import Pagina3 from './pages/Pagina3.vue'
+import Lenti from './pages/Lenti.vue'
+import LAC from './pages/LAC.vue'
 import NotFound from "./pages/NotFound.vue"
 
 
@@ -17,10 +17,12 @@ const router: Router = createRouter({
     history: createWebHistory(),
     routes: [
         {path:"/", component: Home},
-        {path:"/prodotti", component: Prodotti},
-        {path:"/prodotto", component: Prodotto},
-        {path:"/pagina2", component: Pagina2},
-        {path:"/pagina3", component: Pagina3},
+        {path:"/montature", component: Montature},
+        {path:"/montatura/:idProdotto", component: Prodotto},
+        {path:"/lenti", component: Lenti},
+        {path:"/lac", component: LAC},
+        //ricordarsi path per /lenti/:idProdotto
+        //ricordarsi path per /lac/:idProdotto
         {path: "/:pathMatch(.*)*", component: NotFound},
     ]
 })

@@ -1,6 +1,13 @@
 export interface Prodotto {
-    idProdotto: number
-    modello: string
-    imgProdotto: string
-    prezzo: number
+    Modello: string
+    Brand: string
+    IDProdotto: string
+    Prezzo: number
+    Versione: string
+    Calibro: string
+    Ponte: string
+    Aste: string
+    Materiale: string
+    Colore: string
+    Immagine: string
 }

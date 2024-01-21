@@ -33,19 +33,19 @@
     <Slide :key="slide">
       <div class="carousel__item">
         <img src="../../public/1.jpg" style="width:100%">
-        <RouterLink to = "/prodotti"><p>ciaoooooo</p></RouterLink>
+        <RouterLink to = "/montature"><p>ciaoooooo</p></RouterLink>
       </div>
     </Slide>
     <Slide :key="slides">
       <div class="carousel__item">
         <img src="../../public/2.jpg" style="width:100%">
-        <RouterLink to = "/prodotti"><p>ciaoooooo</p></RouterLink>
+        <RouterLink to = "/lac"><p>ciaoooooo</p></RouterLink>
       </div>
     </Slide>
     <Slide :key="slide">
       <div class="carousel__item">
         <img src="../../public/3.jpg" style="width:100%">
-        <RouterLink to = "/prodotti"><p>ciaoooooo</p></RouterLink>
+        <RouterLink to = "/lenti"><p>ciaoooooo</p></RouterLink>
       </div>
     </Slide>
 
