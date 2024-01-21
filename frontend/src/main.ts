@@ -5,17 +5,23 @@ import 'bootstrap'
 import "bootstrap/dist/css/bootstrap.min.css"
 
 import Home from './pages/Home.vue'
-import Pagina1 from './pages/Pagina1.vue'
+import Prodotti from './pages/Prodotti.vue'
+import Prodotto from './pages/Prodotto.vue'
 import Pagina2 from './pages/Pagina2.vue'
 import Pagina3 from './pages/Pagina3.vue'
+import NotFound from "./pages/NotFound.vue"
+
+
 
 const router: Router = createRouter({
     history: createWebHistory(),
     routes: [
         {path:"/", component: Home},
-        {path:"/pagina1", component: Pagina1},
+        {path:"/prodotti", component: Prodotti},
+        {path:"/prodotto", component: Prodotto},
         {path:"/pagina2", component: Pagina2},
-        {path:"/pagina3", component: Pagina3}
+        {path:"/pagina3", component: Pagina3},
+        {path: "/:pathMatch(.*)*", component: NotFound},
     ]
 })
 

@@ -1,32 +1,71 @@
 <template>
-  <div class="flex-container" id="CaroselloHome">
-    <div id="Carosello" class="carousel slide flex-item" data-bs-ride="carousel">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <img src="../../public/52962445107_86c63a5655_o.jpg" class="d-block w-100" alt="Moto">
-        </div>
-        <div class="carousel-item">
-          <img src="../../public/52963186994_6d7124c85b_o.jpg" class="d-block w-100" alt="Broom">
-        </div>
-        <div class="carousel-item">
-          <img src="../../public/52963498093_d2be9d4eff_o.jpg" class="d-block w-100" alt="GNIAAUU">
-        </div>
+  <Carousel class="primary-carousel" :wrap-around="true">
+    
+    <Slide :key="slide">
+      <div class="carousel__item">
+        <img src="../../public/1.jpg" style="width:100%">
+        <p>CIAOOOOOOOO</p>
       </div>
-      <button class="carousel-control-prev" type="button" data-bs-target="#Carosello" data-bs-slide="prev">
-        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Previous</span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#Carosello" data-bs-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-        <span class="visually-hidden">Next</span>
-      </button>
-    </div>
-    <div class="flex-item">
-      <p>Eoeoeoeoeoeoe</p>
-    </div>
-  </div>
+    </Slide>
+    <Slide :key="slides">
+      <div class="carousel__item">
+        <img src="../../public/2.jpg" style="width:100%">
+        <p>COMEEEEEEEE</p>
+      </div>
+    </Slide>
+    <Slide :key="slide">
+      <div class="carousel__item">
+        <img src="../../public/3.jpg" style="width:100%">
+        <p>VAAAAAAAAAAA</p>
+      </div>
+    </Slide>
+
+    <template #addons>
+      <Pagination />
+      <Navigation class="custom-navigation"/>
+    </template>
+
+  </Carousel>
+
+
+  <Carousel class="secondary-carousel" :itemsToShow="3" :wrap-around="true" :transition="500">
+
+    <Slide :key="slide">
+      <div class="carousel__item">
+        <img src="../../public/1.jpg" style="width:100%">
+        <RouterLink to = "/prodotti"><p>ciaoooooo</p></RouterLink>
+      </div>
+    </Slide>
+    <Slide :key="slides">
+      <div class="carousel__item">
+        <img src="../../public/2.jpg" style="width:100%">
+        <RouterLink to = "/prodotti"><p>ciaoooooo</p></RouterLink>
+      </div>
+    </Slide>
+    <Slide :key="slide">
+      <div class="carousel__item">
+        <img src="../../public/3.jpg" style="width:100%">
+        <RouterLink to = "/prodotti"><p>ciaoooooo</p></RouterLink>
+      </div>
+    </Slide>
+
+  </Carousel>
 </template>
 
-<style>
+<script>
+import {defineComponent} from 'vue'
+import { Carousel, Navigation, Slide, Pagination } from 'vue3-carousel'
 
-</style>
+
+import 'vue3-carousel/dist/carousel.css'
+
+export default defineComponent({
+  name: 'WrapAround',
+  components: {
+    Carousel,
+    Slide,
+    Navigation,
+    Pagination,
+  },
+})
+</script>
