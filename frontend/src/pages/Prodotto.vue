@@ -1,12 +1,12 @@
 <script lang="ts">
 import { defineComponent } from "vue"
 import axios from "axios"
-import { Prodotto } from "../types"
+import { Articolo } from "../types"
 
 export default defineComponent({
   data() {
     return {
-      montatura: null as Prodotto | null
+      montatura: null as Articolo | null,
     }
   },
   methods: {

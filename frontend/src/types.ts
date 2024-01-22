@@ -1,4 +1,4 @@
-export interface Prodotto {
+export interface Articolo {
     Modello: string
     Brand: string
     IDProdotto: string
