@@ -2,6 +2,7 @@ import { connection } from "../utils/db"
 import { decodeAccessToken, createAccessToken, deleteAccessToken } from "../utils/auth"
 import { Request, Response } from "express"
 import bcrypt from "bcrypt"
+import { loggedIn } from "../utils/loggedIn"
 
 export async function registerUser(req: Request, res: Response) {
     const cookie = decodeAccessToken(req, res)
@@ -10,10 +11,10 @@ export async function registerUser(req: Request, res: Response) {
         return
     }
 
-    const { username, password } = req.body
+    const { username, password, ruolo } = req.body
 
     connection.execute(
-        "SELECT * FROM UtenzeCliente WHERE User = ?",
+        "SELECT * FROM Utenze WHERE User = ?",
         [username],
         async function(err, results, fields) {
             if(Array.isArray(results) && results.length > 0) {
@@ -23,11 +24,11 @@ export async function registerUser(req: Request, res: Response) {
             const passwordHash = await bcrypt.hash(password, 10)
 
             connection.execute(
-                "INSERT INTO UtenzeCliente (User, Password) VALUES(?, ?)",
-                [username, passwordHash],
+                "INSERT INTO Utenze (User, Password, Ruolo) VALUES(?, ?, ?)",
+                [username, passwordHash, ruolo],
                 function(err, results, fields) {
                     connection.execute(
-                        "SELECT IDUtente, User FROM UtenzeCliente WHERE User = ?",
+                        "SELECT IDUtente, User FROM Utenze WHERE User = ?",
                         [username],
                         function(err, results, fields) {
                             const newUser = (results as any)[0]
@@ -52,7 +53,7 @@ export async function loginUser(req: Request, res: Response) {
     const { username, password } = req.body
 
     connection.execute(
-        "SELECT * FROM UtenzeCliente WHERE User = ?",
+        "SELECT IDUtente, User, Password FROM Utenze WHERE User = ?",
         [username],
         async function(err, results, fields) {
             if(!Array.isArray(results) || results.length == 0) {
@@ -76,13 +77,8 @@ export async function loginUser(req: Request, res: Response) {
 }
 
 export async function logoutUser(req: Request, res: Response) {
-    const cookie = decodeAccessToken(req, res)
-
-    if(!cookie) {
-        res.status(403).send("Log-Out già effettuato")
-        return
-    }
-
+    if(!await loggedIn(req, res)) return
+        
     deleteAccessToken(req, res)
     res.json({message: "Log-Out effettuato con successo"})
 }
@@ -91,4 +87,36 @@ export async function getUser(req: Request, res: Response) {
     const user = decodeAccessToken(req, res)
 
     res.json(user)
+}
+
+export async function modifyPassword(req: Request, res: Response) {
+    const user = await loggedIn(req, res)
+    if(!user) return
+
+    const oldPassword = req.body.oldPassword
+
+    connection.execute(
+        "SELECT Password FROM Utenze WHERE IDUtente = ?",
+        [user.IDUtente],
+        async function(err, results, fields) {
+            const result = (results as any)[0]
+
+            if(!bcrypt.compare(oldPassword, result['Password'])) {
+                res.status(400).send("Credenziali errate")
+                return
+            }
+            const newPassword = await bcrypt.hash(req.body.newPassword, 10)
+
+            connection.execute(
+                "UPDATE Utenze SET Password = ?",
+                [newPassword],
+                function(err, results, fields) {
+                    if(err) {
+                        res.status(400).send(err)
+                    }            
+                    res.send("Password modificata")
+                }
+            )
+        }
+    )
 }

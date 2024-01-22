@@ -3,7 +3,7 @@ import { createRouter, createWebHistory, Router } from 'vue-router'
 import App from './App.vue'
 import 'bootstrap'
 import "bootstrap/dist/css/bootstrap.min.css"
-
+import { User } from './types'
 import Home from './pages/Home.vue'
 import SingInVue from './pages/SingIn.vue'
 import LogInVue from './pages/LogIn.vue'

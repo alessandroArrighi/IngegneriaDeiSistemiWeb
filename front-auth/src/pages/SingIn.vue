@@ -20,7 +20,8 @@
                 try {
                     await axios.post("/api/auth/singin", {
                         username: this.username,
-                        password: this.password
+                        password: this.password,
+                        ruolo: "user"
                     })
                     window.location.href = "/"
                 } catch(e: any) {

@@ -2,8 +2,8 @@ import { Request, Response } from "express"
 import jwt from "jsonwebtoken"
 
 interface user {
-    id: number,
-    username: string
+    IDUtente: number,
+    User: string
 }
 
 const JWT_SECRET = "foo"

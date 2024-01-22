@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar.vue"
 import Footer from "./components/Footer.vue"
 import LogOut from "./components/LogOut.vue"
 import axios from "axios"
+import {User} from "./types"
 
 export default defineComponent({
   components: {
@@ -39,9 +40,9 @@ export default defineComponent({
         <li><RouterLink to = "/login">Accedi</RouterLink></li>
       </template>
     </ul>
-    <div>
+    <main>
       <RouterView :user = "user"/>
-    </div>
+    </main>
 </template>
 
 <style lang="scss">

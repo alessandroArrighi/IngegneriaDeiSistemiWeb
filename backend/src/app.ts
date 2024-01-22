@@ -1,9 +1,7 @@
 import express, { Express } from 'express'
 import cookieParser from "cookie-parser"
 import bodyParser from "body-parser"
-import framesRouter from "./routes/frames-router"
-import lensesRouter from "./routes/lenses-router"
-import lacRouter from "./routes/lac-router"
+import framesRouter from "./routes/products-router"
 import appointmentsRouter from "./routes/appointments-router"
 import ordersRouter from "./routes/orders-router"
 import usersRouter from "./routes/users-router"
@@ -16,14 +14,12 @@ app.use(bodyParser.json())
 app.use(cookieParser())
 
 app.use(framesRouter)
-app.use(lensesRouter)
-app.use(lacRouter)
 app.use(appointmentsRouter)
 app.use(ordersRouter)
 app.use(usersRouter)
 app.use(authRouter)
 
-app.use(express.static("dist-forntend"))
+app.use(express.static("dist-frontend"))
 
 app.use(function(req, res, next) {
     res.setHeader("Content-Type", "text/plain")
