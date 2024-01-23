@@ -22,7 +22,9 @@ export default defineComponent({
             }
 
             await axios.post("/api/auth/signin", {
-                nuovoProfilo
+                username: nuovoProfilo.username,
+                password: nuovoProfilo.password,
+                ruolo: nuovoProfilo.ruolo
             })
         },
         async login() {
@@ -32,7 +34,8 @@ export default defineComponent({
             }
 
             await axios.post("/api/auth/login", {
-                profiloEsistente
+                username: profiloEsistente.username,
+                password: profiloEsistente.password
             })
         }
     },
