@@ -1,3 +1,17 @@
+<script lang="ts">
+import { defineComponent, PropType } from "vue"
+import { User } from "../types"
+
+export default defineComponent({
+    props: {
+        user: Object as PropType<User>,
+    }
+})
+
+</script>
+
+
+
 <template>
     <div id="section1" class="row pb-4">
         <div class="col-1 col-sm-1 col-md-1 col-xl-0 "></div>
@@ -15,7 +29,8 @@
                         <li><RouterLink class="nav-link active text-white px-3 py-2 mt-2 me-2 fs-5" aria-current="page" to = "/">Home</RouterLink></li>
                         <li><RouterLink class="nav-link active text-white px-3 py-2 mt-2 me-2 fs-5" to = "/montature">Montature</RouterLink></li>
                         <li><RouterLink class="nav-link active text-white px-3 py-2 mt-2 me-2 fs-5" to = "/lac">Lenti a Contatto</RouterLink></li>
-                        <li><RouterLink class="nav-link text-warning px-3 py-2 mt-2 me-2 fs-5" to = "/profilo">Area Personale</RouterLink></li> <!--deve rimandare all'area di log-in -->
+                        <li><RouterLink class="nav-link text-warning px-3 py-2 mt-2 me-2 fs-5" to = "/accesso">Accedi</RouterLink></li>
+                        <li v-if="user"><RouterLink class="nav-link text-warning px-3 py-2 mt-2 me-2 fs-5" to ="/acesso">Area Personale</RouterLink></li>
                     </ul>
                 </div>
             </div>                       

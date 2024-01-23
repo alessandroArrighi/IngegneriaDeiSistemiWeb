@@ -1,8 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import axios from "axios";
-import { montaturaDaAggiungere } from "../types";
-import { lacDaAggiungere } from "../types";
 
 export default defineComponent({
     data() {
@@ -28,7 +26,7 @@ export default defineComponent({
     },
     methods: {
         async addMontatura() {
-            const montatura: montaturaDaAggiungere = {
+            await axios.post("/api/prodotti/aggiungi/montature", {
                 Modello: this.modelloMontatura,
                 Brand: this.brandMontatura,
                 Prezzo: this.prezzoMontatura,
@@ -39,24 +37,16 @@ export default defineComponent({
                 Materiale: this.materialeMontatura,
                 Colore: this.coloreMontatura,
                 Immagine: this.immagineMontatura
-            }
-
-            await axios.post("/api/prodotti/aggiungi/montature", {
-                montatura
             })
         },
         async addLAC() {
-            const lac: lacDaAggiungere = {
+            await axios.post("/api/prodotti/aggiungi/lac", {
                 Modello: this.modelloLAC,
                 Brand: this.brandLAC,
                 Prezzo: this.prezzoLAC,
                 Durata: this.durataLAC,
                 Fascia: this.fasciaLAC,
                 Focale: this.focaleLAC
-            }
-
-            await axios.post("/api/prodotti/aggiungi/lac", {
-                lac
             })
         }
     },

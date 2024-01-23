@@ -1,7 +1,6 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import axios from "axios";
-import { nuovoProfilo, profiloEsistente } from "../types";
 
 export default defineComponent({
     data() {
@@ -10,33 +9,26 @@ export default defineComponent({
         passwordDaRegistrare: "",
         ruoloDaRegistrare: "",
         usernameEsistente: "",
-        passwordEsistente: ""
+        passwordEsistente: "",
+        risposta: "",
         }
     },
     methods: {
         async signup() {
-            const nuovoProfilo: nuovoProfilo = {
+            await axios.post("/api/auth/signin", {
                 username: this.usernameDaRegistrare,
                 password: this.passwordDaRegistrare,
                 ruolo: this.ruoloDaRegistrare
-            }
-
-            await axios.post("/api/auth/signin", {
-                username: nuovoProfilo.username,
-                password: nuovoProfilo.password,
-                ruolo: nuovoProfilo.ruolo
             })
         },
         async login() {
-            const profiloEsistente: profiloEsistente = {
+            await axios.post("/api/auth/login", {
                 username: this.usernameEsistente,
                 password: this.passwordEsistente
-            }
-
-            await axios.post("/api/auth/login", {
-                username: profiloEsistente.username,
-                password: profiloEsistente.password
             })
+        },
+        async logout() {
+            await axios.post("/api/auth/logout")
         }
     },
 })
@@ -53,7 +45,7 @@ export default defineComponent({
         <input v-model="passwordDaRegistrare" type="text" />
         <label>Ruolo</label>
         <input v-model="ruoloDaRegistrare" type="text" />
-        <button type="submit">Registrati</button>
+        <RouterLink :to="'/'"><button type="submit">Registrati</button></RouterLink>
     </form>
 
     <form @submit.prevent="login">
@@ -63,5 +55,9 @@ export default defineComponent({
         <input v-model="passwordEsistente" type="text" />
         <button type="submit">Registrati</button>
     </form>
+
+    <RouterLink :to="'/'">
+        <button @click="logout" type="submit">Logout</button>
+    </RouterLink>
 
 </template>

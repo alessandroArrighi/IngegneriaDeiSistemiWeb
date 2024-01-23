@@ -20,8 +20,8 @@ const router: Router = createRouter({
         {path:"/", component: Home},
         {path:"/montature", component: Montature},
         {path:"/montatura/:idProdotto", component: Prodotto},
-        {path:"/prova1", component: AddArticolo},
-        {path:"/prova2", component: Accesso},
+        {path:"/operazioni/articoli", component: AddArticolo},
+        {path:"/accesso", component: Accesso},
         {path:"/lac", component: LAC},
         //ricordarsi path per /lac/:idProdotto
         {path: "/:pathMatch(.*)*", component: NotFound},

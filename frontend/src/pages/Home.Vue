@@ -1,5 +1,26 @@
+<script lang="ts">
+import { defineComponent, PropType } from "vue"
+import { User } from "../types"
+import { Carousel, Navigation, Slide, Pagination } from 'vue3-carousel'
+import 'vue3-carousel/dist/carousel.css'
+
+export default defineComponent({
+  name: 'WrapAround',
+  components: {
+    Carousel,
+    Slide,
+    Navigation,
+    Pagination,
+  },
+  props: {
+        user: Object as PropType<User>,
+    }
+})
+</script>
+
+
 <template>
-  <Carousel class="primary-carousel" :wrap-around="true">
+  <Carousel v-if="!user" class="primary-carousel" :wrap-around="true">
     
     <Slide :key="slide">
       <div class="carousel__item">
@@ -51,21 +72,3 @@
 
   </Carousel>
 </template>
-
-<script>
-import {defineComponent} from 'vue'
-import { Carousel, Navigation, Slide, Pagination } from 'vue3-carousel'
-
-
-import 'vue3-carousel/dist/carousel.css'
-
-export default defineComponent({
-  name: 'WrapAround',
-  components: {
-    Carousel,
-    Slide,
-    Navigation,
-    Pagination,
-  },
-})
-</script>
