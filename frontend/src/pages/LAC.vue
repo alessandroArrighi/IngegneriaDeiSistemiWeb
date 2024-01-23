@@ -17,7 +17,7 @@ export default defineComponent({
     },
     methods: {
         getLAC() {
-            axios.get("api/lac")
+            axios.get("api/prodotti/lac")
                 .then(response => this.datiLAC = response.data)
         },
         filterProduct() {

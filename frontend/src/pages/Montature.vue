@@ -47,7 +47,7 @@ export default defineComponent({
   },
   methods: {
     getMontature() {
-      axios.get("/api/montature")
+      axios.get("/api/prodotti/montature")
         .then(response => this.datiMontature = response.data)
         .catch(error => console.error("Errore durante la richiesta axios:", error));
     }
@@ -83,7 +83,7 @@ export default defineComponent({
     </form>
 
       <div v-for="montatura  in sortedData.slice(0, aggiungiElementi)" class="flex-item">
-        <RouterLink :to="'/public/img' + montatura.IDProdotto">
+        <RouterLink :to="'/montatura/' + montatura.IDProdotto">
           <img loading="lazy" :src="montatura.Immagine" alt="/">
           <p>{{ montatura.IDProdotto }}</p>
           <p>{{ montatura.Brand }}</p>
