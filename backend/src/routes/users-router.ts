@@ -3,7 +3,7 @@ import * as usersController from "../controllers/users-controller"
 
 const router: Router = Router()
 
-router.get("/api/utenzeClienti/:id", usersController.customersUsersFromID)
-router.get("/api/utenzeAdmin/:id", usersController.adminUsersFromID)
+router.get("/api/utenze/:id", usersController.getUsersFromID)
+router.post("/api/utenze/modifica", usersController.modifyUser)
 
 export default router
