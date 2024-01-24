@@ -1,7 +1,7 @@
 <script lang="ts">
 import axios from "axios"
 import { defineComponent } from "vue"
-import { User } from "./types"
+import { User, Ordine } from "./types"
 import Navbar from "./components/Navbar.vue"
 import Footer from "./components/Footer.vue"
 
@@ -9,6 +9,7 @@ export default defineComponent({
   data() {
     return {
       user: null as User | null,
+      ordine: [] as Ordine[]
     }
   },
   methods: {
@@ -30,7 +31,8 @@ export default defineComponent({
 <template>
     <div>
         <Navbar :user="user"/>
-        <RouterView :user="user"/>
+        <RouterLink to = "/accesso/areaPersonale/creaOrdine">Crea Ordine</RouterLink>
+        <RouterView :user="user" :ordine = "ordine"/>
         <Footer />
     </div>
 </template>

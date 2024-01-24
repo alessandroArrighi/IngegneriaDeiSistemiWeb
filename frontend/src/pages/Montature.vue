@@ -1,9 +1,12 @@
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
 import axios from "axios";
-import { Montatura } from "../types";
+import { Montatura, Ordine } from "../types";
 
 export default defineComponent({
+  props: {
+    ordine: Array as PropType<Ordine[]>
+  },
   data() {
     return {
       datiMontature: [] as Montatura[],
@@ -53,6 +56,7 @@ export default defineComponent({
     }
   },
   mounted() {
+    console.log(this.ordine)
     this.getMontature();
   },
 });

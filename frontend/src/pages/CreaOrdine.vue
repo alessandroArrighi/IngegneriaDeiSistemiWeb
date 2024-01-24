@@ -6,23 +6,21 @@ import { User, Ordine } from "../types";
 export default defineComponent({
     props: {
         user: Object as PropType<User>,
+        ordine: Array as PropType<Ordine[]>
     },
     data() {
         return{
             idProdotto: "",
             categoria: "",
             quantità: 0,
-            ordine: [] as Ordine[],
-            pos: 0
         }
     },
     methods: {
         async creaOrdine() {
-            const ord = this.ordine
-            
+            console.log(this.ordine)
             await axios.post("/api/ordini/crea/ordine", {
                 IDUtente: this.user?.IDUtente,
-                ord
+                ord: this.ordine
             })
         },
 
@@ -33,14 +31,18 @@ export default defineComponent({
                 Categoria: this.categoria,
                 Quantità: this.quantità
             }
-            this.ordine[this.pos] = tmp
+            if(this.ordine != null) {
+                this.ordine.push(tmp)
+            }
             console.log(this.ordine)
             console.log(this.user?.Role)
-            this.pos++
             /*tmp.IDProdotto = ""
             tmp.Categoria = ""
             tmp.Quantità = 0*/
         }
+    },
+    mounted() {
+        console.log(this.ordine)
     }
 })
 </script>
