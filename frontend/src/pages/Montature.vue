@@ -83,7 +83,7 @@ export default defineComponent({
     </form>
 
       <div v-for="montatura  in sortedData.slice(0, aggiungiElementi)" class="flex-item">
-        <RouterLink :to="'/montatura/' + montatura.IDProdotto">
+        <RouterLink :to="'/montature/' + montatura.IDProdotto">
           <img loading="lazy" :src="montatura.Immagine" alt="/">
           <p>{{ montatura.IDProdotto }}</p>
           <p>{{ montatura.Brand }}</p>

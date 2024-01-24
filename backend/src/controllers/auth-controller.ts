@@ -11,7 +11,7 @@ export async function registerUser(req: Request, res: Response) {
         return
     }
 
-    const { username, password, ruolo } = req.body
+    const { username, password, role } = req.body
 
     connection.execute(
         "SELECT * FROM Utenze WHERE User = ?",
@@ -24,11 +24,11 @@ export async function registerUser(req: Request, res: Response) {
             const passwordHash = await bcrypt.hash(password, 10)
 
             connection.execute(
-                "INSERT INTO Utenze (User, Password, Ruolo) VALUES(?, ?, ?)",
-                [username, passwordHash, ruolo],
+                "INSERT INTO Utenze (User, Password, Role) VALUES(?, ?, ?)",
+                [username, passwordHash, role],
                 function(err, results, fields) {
                     connection.execute(
-                        "SELECT IDUtente, User FROM Utenze WHERE User = ?",
+                        "SELECT IDUtente, User, Role FROM Utenze WHERE User = ?",
                         [username],
                         function(err, results, fields) {
                             const newUser = (results as any)[0]
@@ -53,7 +53,7 @@ export async function loginUser(req: Request, res: Response) {
     const { username, password } = req.body
 
     connection.execute(
-        "SELECT IDUtente, User, Password FROM Utenze WHERE User = ?",
+        "SELECT IDUtente, User, Password, Role FROM Utenze WHERE User = ?",
         [username],
         async function(err, results, fields) {
             if(!Array.isArray(results) || results.length == 0) {

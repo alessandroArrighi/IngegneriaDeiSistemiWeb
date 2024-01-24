@@ -13,6 +13,7 @@ export interface Articolo {
 }
 
 export interface User {
-    IDUtente: number,
+    IDUtente: number
     User: string
+    Role: "admin" | "user"
 }

@@ -2,8 +2,9 @@ import { Request, Response } from "express"
 import jwt from "jsonwebtoken"
 
 interface user {
-    IDUtente: number,
+    IDUtente: number
     User: string
+    Role: "admin" | "user"         //la mia modifica per controllare che si sia fatto accesso come admin o come user
 }
 
 const JWT_SECRET = "foo"
