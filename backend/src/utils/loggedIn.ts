@@ -24,12 +24,12 @@ export async function adminLoggedIn(req: Request, res: Response) {
     const risultato = await connection
                 .promise()
                 .query(
-                    "SELECT Ruolo FROM Utenze WHERE IDUtente = ?",
+                    "SELECT Role FROM Utenze WHERE IDUtente = ?",
                     [cookie.IDUtente]
                 )
                 .then(([rows, fields]) => {
-                    const ruolo = (rows as any)[0]['Ruolo']
-                    if(ruolo != 'admin') {
+                    const role = (rows as any)[0]['Role']
+                    if(role != 'admin') {
                         res.status(403).send("Permesso negato")
                         return false
                     }

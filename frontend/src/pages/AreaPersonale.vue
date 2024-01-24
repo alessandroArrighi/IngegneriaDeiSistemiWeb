@@ -42,6 +42,7 @@ export default defineComponent({
         <button type="submit">Cambia Password</button>
     </form>
 
-    <RouterLink v-if="user?.Role == 'admin'" :to="'/accesso/areaPersonale/operazioniAdmin'"><button>Operazioni Admin</button></RouterLink>
+    <RouterLink v-if="user?.Role == 'admin'" :to="'/accesso/areaPersonale/operazioniProdotti'"><button>Operazioni Prodotti Admin</button></RouterLink>
+    <RouterLink v-if="user?.Role == 'admin'" :to="'/accesso/areaPersonale/operazioniOrdini'"><button>Operazioni Ordini Admin</button></RouterLink>
 
 </template>

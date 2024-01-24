@@ -17,3 +17,9 @@ export interface User {
     User: string
     Role: "admin" | "user"
 }
+
+export interface Ordine {
+    IDProdotto: string
+    Categoria: string
+    Quantità: number
+}

@@ -71,18 +71,19 @@ export async function createOrder(req: Request, res: Response) {
 
     const data = new Date().toISOString().slice(0, 19)
     const ord = req.body.ord
-
+    const IDUtente = req.body.IDUtente
+    console.log(ord, IDUtente)
     connection.execute(
         "INSERT INTO Ordini(IDUtente, Data) VALUES(?, ?)",
-        [ord[0], data],
+        [IDUtente, data],
         async function(err, results, fields) {
             connection.execute(
                 "SELECT IDOrdine FROM Ordini WHERE IDUtente = ? AND Data = ?",
-                [ord[0], data],
+                [IDUtente, data],
                 async function(err, results, fields) {
                     const IDOrdine = (results as any)[0]['IDOrdine']
 
-                    for(let i = 1; i < ord.length; ++i) {
+                    for(let i = 0; i < ord.length; ++i) {
                         let IDProdotto: string = (ord as any)[i]['IDProdotto']
                         let Quantità: number = (ord as any)[i]['Quantità']
                         let Categoria: string = (ord as any)[i]['Categoria']
@@ -95,6 +96,7 @@ export async function createOrder(req: Request, res: Response) {
     )
     res.send("Ordine creato")
 }
+
 
 /*
 const createProd = async (categoria: any, IDProdotto: string) => {
