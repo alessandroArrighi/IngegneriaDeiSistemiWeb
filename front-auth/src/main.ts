@@ -14,12 +14,13 @@ const router: Router = createRouter({
     history: createWebHistory(),
     routes: [
         {path:"/", component: Home},
-        {path:"/singin", component: SingInVue, meta: {requireLogOut: true}},
-        {path: "/login", component: LogInVue, meta: {requireLogOut: true}},
-        {path: "/prova", component: ProvaVue}
+        {path:"/singin", component: SingInVue},
+        {path: "/login", component: LogInVue},
+        {path: "/prova", component: ProvaVue, props: true}
     ]
 })
 
+/*
 router.beforeEach(async (to) => {
     const res = await axios.get("/api/auth/getUser")
     const user = res.data as User | null
@@ -27,7 +28,7 @@ router.beforeEach(async (to) => {
     if(to.meta.requireLogOut && user) {
         return { path: "/" }
     }
-})
+})*/
 
 createApp(App).use(router).mount('#app')
 

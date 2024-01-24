@@ -1,6 +1,9 @@
 <script lang = "ts">
     import axios from 'axios';
     import { defineComponent } from 'vue'
+    import { PropType } from 'vue'
+    import { User } from '../types';
+    
 
     interface Ordine {
         IDProdotto: string
@@ -10,15 +13,30 @@
     
     export default defineComponent({
         props: {
-            //user: Object as PropType<User>,
+            user: Object as PropType<User>,
         },
         data() {
             return {
                 risultato: null as Object | null,
+                prodotti: "occhiali",
+                ordine: null as Ordine | null,
+                ord: [] as Ordine[],
+                IDProdotto: "",
+                Categoria: "",
+                Quantità: 1,
+                pos: 0
             }
         },
         methods: {
-            async sendReq() {
+            async aggiungiOrd() {
+                this.ord[this.pos].Categoria = this.Categoria
+                this.ord[this.pos].IDProdotto = this.IDProdotto
+                this.ord[this.pos].Quantità = this.Quantità
+                this.pos++
+                console.log(this.ord[0])
+            },
+
+            async sendReq() {/*
                 const ord1: Ordine = {
                     IDProdotto: "CCC03",
                     Categoria: "Montature",
@@ -33,13 +51,13 @@
                     IDProdotto: "BBB12",
                     Categoria: "Lenti",
                     Quantità: 2
-                }
-                                
-                const ord = [1, ord1, ord2, ord3]
+                }*/
 
+                console.log(this.ord)
+                            
+                /*
                 await axios.post("/api/ordini/crea/ordine", {
-                    ord
-                })
+                })*/
             },
 
             async selecOrd() {
@@ -73,8 +91,11 @@
                 console.log(res.data)
             }
         },
-        mounted() {
-            
+        mounted() {/*
+            this.$router.push({
+                name: 'Prova',
+                params: {data: this.prodotti}
+            })*/
         }
     })
 </script>
@@ -85,4 +106,13 @@
     <button type="submit" @click = "selecOrd">Seleziona Ordine</button>
     <button type="submit" @click = "sendImg">Immagine</button>
     <button type="submit" @click = "carrello">Carrello</button>
+    <form @click = "aggiungiOrd">
+        <label>IDProdotto</label>
+        <input v-model="IDProdotto" type="text" />
+        <label>Categoria</label>
+        <input v-model="Categoria" type="text" />
+        <label>Quantità</label>
+        <input v-model="Quantità" type="text" />
+        <button type="submit">Invia</button>
+    </form>
 </template>
