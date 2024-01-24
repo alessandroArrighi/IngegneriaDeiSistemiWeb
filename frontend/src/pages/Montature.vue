@@ -1,12 +1,12 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import axios from "axios";
-import { Articolo } from "../types";
+import { Montatura } from "../types";
 
 export default defineComponent({
   data() {
     return {
-      datiMontature: [] as Articolo[],
+      datiMontature: [] as Montatura[],
       filterId: "",
       filterBrand: "",
       filterPrice: "",
@@ -16,7 +16,7 @@ export default defineComponent({
     };
   },
   computed: {
-    filteredData(): Articolo[] {
+    filteredData(): Montatura[] {
       let filteredData = [...this.datiMontature];
 
       if (this.filterId) {
@@ -33,7 +33,7 @@ export default defineComponent({
 
       return filteredData;
     },
-    sortedData(): Articolo[] {
+    sortedData(): Montatura[] {
       let sortedData = [...this.filteredData];
 
       if (this.ordinaPer === "prezzo") {

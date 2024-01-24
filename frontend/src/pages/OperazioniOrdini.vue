@@ -6,15 +6,15 @@ export default defineComponent({
     data() {
         return{
             idRicerca: "",
-            datiOrdine: [] as Ordine[],
+            datiOrdine: [] as any[],
         }
     },
     methods: {
         async getOrderFromID() {
             await axios.post("/api/ordini/idordine", {
                 id: this.idRicerca,
-            }).then(response => this.datiOrdine = response.data);
-            console.log(this.datiOrdine);
+            }).then(response => this.datiOrdine = response.data)
+            console.log(this.datiOrdine)
             this.idRicerca= "";
         }
     }
@@ -29,12 +29,18 @@ export default defineComponent({
             <button type="submit">Cerca</button>
         </form>
         
-        <!--<div v-for="ordine  in sortedData.slice(0, aggiungiElementi)" class="flex-item">
-            <RouterLink :to="'/montature/' + montatura.IDProdotto">
-            <img loading="lazy" :src="montatura.Immagine" alt="/">
-            <p>{{ montatura.IDProdotto }}</p>
-            <p>{{ montatura.Brand }}</p>
-            <p>{{ montatura.Prezzo }}</p>
+        <!--<div v-for="articolo  in datiOrdine.slice(0, aggiungiElementi)" class="flex-item">
+            <RouterLink :to="'/montature/' + articolo.IDProdotto">
+            <img loading="lazy" :src="articolo.Immagine" alt="/">
+            <p>{{ articolo[][][].IDProdotto }}</p>
+            <p>{{ articolo.Brand }}</p>
+            <p>{{ articolo.Prezzo }}</p>
+            <p>{{ articolo.IDProdotto }}</p>
+            <p>{{ articolo.Brand }}</p>
+            <p>{{ articolo.Prezzo }}</p>            
+            <p>{{ articolo.Brand }}</p>
+            <p>{{ articolo.Prezzo }}</p>
+            <p>{{ articolo.IDProdotto }}</p>
             </RouterLink>
         </div>-->
 

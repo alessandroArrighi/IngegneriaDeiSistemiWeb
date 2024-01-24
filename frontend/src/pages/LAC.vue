@@ -1,12 +1,12 @@
 <script lang="ts">
 import { defineComponent } from "vue"
 import axios from "axios"
-import { Articolo } from "../types"
+import { LAC } from "../types"
 
 export default defineComponent({
     data() {
         return {
-            datiLAC: [] as Articolo[],
+            datiLAC: [] as LAC[],
             filterId: "",
             filterBrand: "",
             filterPrice: "",
