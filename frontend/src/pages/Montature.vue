@@ -56,7 +56,6 @@ export default defineComponent({
     }
   },
   mounted() {
-    console.log(this.ordine)
     this.getMontature();
   },
 });
