@@ -18,16 +18,8 @@ export default defineComponent({
     },
     methods: {
         async creaOrdine() {
+            const ord = this.ordine
             
-            //let ord = [this.user?.IDUtente]
-
-            let ord = this.ordine
-            console.log(ord[0])
-             
-            ord += (this.ordine as any)
-            
-            console.log(ord)
-
             await axios.post("/api/ordini/crea/ordine", {
                 IDUtente: this.user?.IDUtente,
                 ord

@@ -72,7 +72,7 @@ export async function createOrder(req: Request, res: Response) {
     const data = new Date().toISOString().slice(0, 19)
     const ord = req.body.ord
     const IDUtente = req.body.IDUtente
-    console.log(ord, IDUtente)
+
     connection.execute(
         "INSERT INTO Ordini(IDUtente, Data) VALUES(?, ?)",
         [IDUtente, data],
