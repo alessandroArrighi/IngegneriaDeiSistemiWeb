@@ -12,6 +12,16 @@ export async function allFrames(req: Request, res: Response) {
     )
 }
 
+export async function getFrameFromID(req: Request, res: Response) {
+    connection.execute(
+        "SELECT * FROM Montature WHERE Modello = ?",
+        [req.params.id],
+        function(err, results, fields) {
+            res.json(results)
+        }
+    )
+}
+
 export async function addNewFrame(req: Request, res: Response) {
     if(!await adminLoggedIn(req, res)) return
 
@@ -172,8 +182,19 @@ export async function allLac(req: Request, res: Response) {
         `SELECT * FROM LAC`,
         [],
         function(err, results, fields) {
+            console.log(results as any)
             res.json(results)
         } 
+    )
+}
+
+export async function getLacFromID(req: Request, res: Response) {
+    connection.execute(
+        "SELECT * FROM LAC WHERE Modello = ?",
+        [req.params.id],
+        function(err, results, fields) {
+            res.json(results)
+        }
     )
 }
 
@@ -181,6 +202,16 @@ export async function allLenses(req: Request, res: Response) {
     connection.execute(
         `SELECT * FROM Lenti`,
         [],
+        function(err, results, fields) {
+            res.json(results)
+        }
+    )
+}
+
+export async function getLensesFromID(req: Request, res: Response) {
+    connection.execute(
+        "SELECT * FROM Lenti WHERE Modello = ?",
+        [req.params.id],
         function(err, results, fields) {
             res.json(results)
         }

@@ -21,9 +21,9 @@ const router: Router = createRouter({
     history: createWebHistory(),
     routes: [
         {path:"/", component: Home},
-        {path:"/prodotti/:categoria", component: Montature},
-        {path:"/montature/:idProdotto", component: Prodotto},  //da scegliere se fare una get o se possare un prop con tutti i dati a "montature" e poi da questa passare il prop ristresso per id a Prodotto. Lo svantaggio è che se scarichiamo tutti all'apertura del sito scarichiamo immediatamente il json di tutti gli occhiali e le lenti
-        {path:"/lac", component: LAC},
+        {path:"/prodotti/vista", component: Montature},
+        {path:"/prodotti/visita/:idProdotto", component: Prodotto},  //da scegliere se fare una get o se possare un prop con tutti i dati a "montature" e poi da questa passare il prop ristresso per id a Prodotto. Lo svantaggio è che se scarichiamo tutti all'apertura del sito scarichiamo immediatamente il json di tutti gli occhiali e le lenti
+        {path:"/prodotti/lac", component: LAC},
         //ricordarsi {path:"/lac/:idProdotto", component: },
         {path:"/accesso", component: Accesso},
         {path:"/accesso/areaPersonale", component: AreaPersonale},

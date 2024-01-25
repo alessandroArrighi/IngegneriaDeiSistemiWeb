@@ -7,11 +7,10 @@ export default defineComponent({
   props: {
     ordine: Array as PropType<Ordine[]>
   },
-  emits: ["sendProd", "viewProd"],
+  emits: ["sendProd", "viewVista"],
   data() {
     return {
       datiMontature: [] as any[],
-      datiLAC: [] as any[],
       filterId: "",
       filterBrand: "",
       filterPrice: "",
@@ -58,14 +57,6 @@ export default defineComponent({
         .then(response => this.datiMontature = response.data)
         .catch(error => console.error("Errore durante la richiesta axios:", error));
     },
-    async getLAC() {
-      /*
-      axios.get("api/prodotti/lac")
-          .then(response => this.datiLAC = response.data)*/
-      const prova = await axios.get("api/prodotti/lac")
-      this.datiLAC = prova.data
-      console.log(prova.data)
-    },
     addItem(montatura: Montatura) {
       const prodotto = {
         IDProdotto: montatura.Modello,
@@ -76,12 +67,11 @@ export default defineComponent({
       this.quantità = 0
     },
     viewItem(montatura: Montatura) {
-      this.$emit("viewProd", montatura)
+      this.$emit("viewVista", montatura)
     }
   },
   mounted() {
-    if(this.$route.params.categoria == "vista") this.getMontature();
-    if(this.$route.params.categoria == "lac") this.getLAC();
+    this.getMontature()
   },
 });
 </script>
@@ -111,7 +101,7 @@ export default defineComponent({
     </form>
 
       <div v-for="montatura in sortedData.slice(0, aggiungiElementi)" class="flex-item">
-        <RouterLink :to="'/montature/' + montatura.Modello" @click = "viewItem(montatura)">
+        <RouterLink :to="'/prodotti/visita/' + montatura.Modello" @click = "viewItem(montatura)">
           <img loading="lazy" :src="montatura.Immagine" alt="/">
           <p>{{ montatura.Modello }}</p>
           <p>{{ montatura.Brand }}</p>
