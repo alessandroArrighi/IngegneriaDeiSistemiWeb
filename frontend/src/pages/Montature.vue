@@ -10,7 +10,7 @@ export default defineComponent({
   data() {
     return {
       datiMontature: [] as Montatura[],
-      tmp: [] as Ordine[],
+      tmp: {} as Ordine,
       filterId: "",
       filterBrand: "",
       filterPrice: "",
@@ -58,9 +58,9 @@ export default defineComponent({
         .catch(error => console.error("Errore durante la richiesta axios:", error));
     },
     addItem(montatura: Montatura) {
-      this.tmp[0].IDProdotto = montatura.IDProdotto;
-      this.tmp[0].Categoria = this.categoria;
-      this.tmp[0].Quantità = this.quantità;
+      this.tmp.IDProdotto = montatura.IDProdotto;
+      this.tmp.Categoria = this.categoria;
+      this.tmp.Quantità = this.quantità;
       this.quantità = 0
     }
   },
@@ -101,14 +101,14 @@ export default defineComponent({
           <p>{{ montatura.Brand }}</p>
           <p>{{ montatura.Prezzo }}</p>
         </RouterLink>
-        <form>
+        <form @submit.prevent="addItem(montatura)">
           <select v-model="quantità">
             <option value=0>-- Seleziona --</option>
             <option value=3>3</option>
             <option value=6>6</option>
             <option value=9>9</option>
           </select>
-          <button @click="addItem(montatura)">Aggiungi ad Ordine</button>
+          <button type="submit">Aggiungi ad Ordine</button>
         </form>
       </div>
 

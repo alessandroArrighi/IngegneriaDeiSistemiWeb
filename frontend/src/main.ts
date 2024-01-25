@@ -31,6 +31,7 @@ const router: Router = createRouter({
         {path:"/accesso/areaPersonale/creaOrdine", component: CreaOrdine},            //di prova
         {path:"/accesso/areaPersonale/ordiniUtente", component: OrdiniUtente},        //di prova
         {path:"/accesso/areaPersonale/operazioniProdotti", component: OperazioniProdotti},
+        {path:"/accesso/areaPersonale/operazioniOrdini", component: OperazioniOrdini},
         {path:"/accesso/areaPersonale/operazioniOrdini/:IDOrdine", component: OperazioniOrdini},
         {path: "/:pathMatch(.*)*", component: NotFound},
     ]

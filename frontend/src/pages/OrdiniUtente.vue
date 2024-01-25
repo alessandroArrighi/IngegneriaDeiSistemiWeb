@@ -11,7 +11,6 @@ export default defineComponent({
     methods: {
         async getOrderFromID() {
             const res = await axios.post("/api/ordini/user")
-            console.log(res)
             this.datiOrdine = res.data
         }
     }

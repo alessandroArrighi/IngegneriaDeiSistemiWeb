@@ -19,6 +19,7 @@ export default defineComponent({
                 id: this.idRicerca,
             })
             this.datiOrdine = res.data
+            console.log(res.data)
             this.idRicerca= ""
         },
         async getOrderIniziale() {
@@ -26,10 +27,13 @@ export default defineComponent({
                 id: this.$route.params.IDOrdine,
             })
             this.datiOrdine = res.data
+            console.log(res.data)
         }
     },
     mounted() {
-        this.getOrderIniziale()
+        if (this.$route.params.IDOrdine) {
+            this.getOrderIniziale()
+        }
     }
 })
 </script>
