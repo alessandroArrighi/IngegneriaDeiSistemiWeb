@@ -15,7 +15,7 @@ export async function allFrames(req: Request, res: Response) {
 export async function addNewFrame(req: Request, res: Response) {
     if(!await adminLoggedIn(req, res)) return
 
-    const { Modello, Brand, Prezzo, Versione, Calibro, Ponte, Aste, Materiale, Colore, Immagine } = req.body
+    const { Modello, Brand, Prezzo, Versione, Calibro, Ponte, Aste, Materiale, Colore, Immagine } = req.body.dati
     
     connection.execute(
         "INSERT INTO Montature(Modello, Brand, Prezzo, Versione, Calibro, Ponte, Aste, Materiale, Colore, Immagine) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
@@ -33,7 +33,7 @@ export async function addNewFrame(req: Request, res: Response) {
 export async function modifyFrame(req: Request, res: Response) {
     if(!await adminLoggedIn(req, res)) return
 
-    const { Modello, Brand, Prezzo, Versione, Calibro, Ponte, Aste, Materiale, Colore, Immagine, NewModello } = req.body
+    const { Modello, Brand, Prezzo, Versione, Calibro, Ponte, Aste, Materiale, Colore, Immagine, NewModello } = req.body.dati
 
     connection.execute(
         "SELECT * FROM Montature WHERE Modello = ?",
@@ -63,7 +63,7 @@ export async function modifyFrame(req: Request, res: Response) {
 export async function addNewLens(req: Request, res: Response) {
     if(!await adminLoggedIn(req, res)) return
 
-    const { Modello, Brand, Prezzo, Versione, Antiriflesso, Sfericità, Focale } = req.body
+    const { Modello, Brand, Prezzo, Versione, Antiriflesso, Sfericità, Focale } = req.body.dati
 
     connection.execute(
         "INSERT INTO Lenti(Modello, Brand, Prezzo, Versione, Antiriflesso, Sfericità, Focale) VALUES(?, ?, ?, ?, ?, ?, ?)",
@@ -81,7 +81,7 @@ export async function addNewLens(req: Request, res: Response) {
 export async function modifyLens(req: Request, res: Response) {
     if(!await adminLoggedIn(req, res)) return
 
-    const { Modello, Brand, Prezzo, Versione, Antiriflesso, Sfericità, Focale, NewModello } = req.body
+    const { Modello, Brand, Prezzo, Versione, Antiriflesso, Sfericità, Focale, NewModello } = req.body.dati
 
     connection.execute(
         "SELECT * FROM Lenti WHERE Modello = ?",
@@ -108,7 +108,7 @@ export async function modifyLens(req: Request, res: Response) {
 export async function addNewLAC(req: Request, res: Response) {
     if(!await adminLoggedIn(req, res)) return
 
-    const { Modello, Brand, Prezzo, Durata, Fascia, Focale } = req.body
+    const { Modello, Brand, Prezzo, Durata, Fascia, Focale } = req.body.dati
 
     connection.execute(
         "INSERT INTO LAC(Modello, Brand, Prezzo, Durata, Fascia, Focale) VALUES(?, ?, ?, ?, ?, ?)",
@@ -126,7 +126,7 @@ export async function addNewLAC(req: Request, res: Response) {
 export async function modifyLAC(req: Request, res: Response) {
     if(!await adminLoggedIn(req, res)) return
 
-    const { Modello, Brand, Prezzo, Durata, Fascia, Focale, NewModello } = req.body
+    const { Modello, Brand, Prezzo, Durata, Fascia, Focale, NewModello } = req.body.dati
 
     connection.execute(
         "SELECT * FROM LAC WHERE Modello = ?",
@@ -152,7 +152,7 @@ export async function modifyLAC(req: Request, res: Response) {
 export async function deleteProduct(req: Request, res: Response) {
     if(!await adminLoggedIn(req, res)) return
 
-    const { modello, categoria } = req.body
+    const { modello, categoria } = req.body.dati
 
     connection.execute(
         `DELETE FROM ${categoria} WHERE Modello = ?`,

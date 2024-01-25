@@ -3,12 +3,12 @@ import { connection } from '../utils/db'
 import { loggedIn } from '../utils/loggedIn'
 
 export async function getUsersFromID(req: Request, res: Response) {
-    const IDUtente = await loggedIn(req, res)
-    if(!IDUtente) return
+    const utente = await loggedIn(req, res)
+    if(!utente) return
         
     connection.execute(
         `SELECT * FROM Utenze WHERE IDUtente = ?`,
-        [IDUtente],
+        [utente.IDUtente],
         function(err, results, fields) {
             const user = (results as any)[0]
             delete user.password
@@ -22,8 +22,6 @@ export async function modifyUser(req: Request, res: Response) {
     if(!usr) return
 
     const { User, Nome, Cognome, Mail, Telefono, Indirizzo } = req.body.dati
-    console.log(User)
-    console.log(req.body.dati.User)
 
     connection.execute(
         "SELECT * FROM Utenze WHERE IDUtente = ?",
