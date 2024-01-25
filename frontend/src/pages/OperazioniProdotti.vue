@@ -52,7 +52,7 @@ export default defineComponent({
     methods: {
         async addMontatura() {
             await axios.post("/api/prodotti/aggiungi/montature", {
-                Modello: this.modelloMontatura,
+                Modello: this.modelloMontatura,             //si può inviare direttamente la struttura
                 Brand: this.brandMontatura,
                 Prezzo: this.prezzoMontatura,
                 Versione: this.versioneMontatura,

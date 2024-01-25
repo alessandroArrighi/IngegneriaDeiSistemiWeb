@@ -26,7 +26,7 @@ export default defineComponent({
       let filteredData = [...this.datiMontature];
 
       if (this.filterId) {
-        filteredData = filteredData.filter(montatura => montatura.IDProdotto.includes(this.filterId));
+        filteredData = filteredData.filter(montatura => montatura.Modello.includes(this.filterId));
       }
 
       if (this.filterBrand) {

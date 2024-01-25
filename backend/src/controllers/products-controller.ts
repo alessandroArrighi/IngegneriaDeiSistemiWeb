@@ -29,7 +29,7 @@ export async function addNewFrame(req: Request, res: Response) {
         }
     )
 }
-
+ 
 export async function modifyFrame(req: Request, res: Response) {
     if(!await adminLoggedIn(req, res)) return
 

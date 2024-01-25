@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS Utenze (
     Mail          varchar(100),
     Telefono        varchar(20),
     Indirizzo       varchar(100),
-    Role           ENUM("admin", "user") default "user"     '''modifica a Ruolo in role.. se è la soluzione mi ammazzo'''                            );
+    Role           ENUM("admin", "user") default "user"                                  );
 
 CREATE TABLE IF NOT EXISTS Appuntamenti (
     Data            char(8),
