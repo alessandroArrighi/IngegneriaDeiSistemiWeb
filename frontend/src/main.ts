@@ -10,7 +10,8 @@ import Prodotto from './pages/Prodotto.vue'
 import LAC from './pages/LAC.vue'
 import Accesso from './pages/Accesso.vue'
 import AreaPersonale from './pages/AreaPersonale.vue'
-import CreaOrdine from './pages/CreaOrdine.vue'
+import CreaOrdine from './pages/CreaOrdine.vue'                     //di prova 
+import OrdiniUtente from './pages/OrdiniUtente.vue'                 //di prova
 import OperazioniProdotti from './pages/OperazioniProdotti.vue'
 import OperazioniOrdini from './pages/OperazioniOrdini.vue'
 import NotFound from "./pages/NotFound.vue"
@@ -28,6 +29,7 @@ const router: Router = createRouter({
         {path:"/accesso", component: Accesso},
         {path:"/accesso/areaPersonale", component: AreaPersonale},
         {path:"/accesso/areaPersonale/creaOrdine", component: CreaOrdine},            //di prova
+        {path:"/accesso/areaPersonale/ordiniUtente", component: OrdiniUtente},        //di prova
         {path:"/accesso/areaPersonale/operazioniProdotti", component: OperazioniProdotti},
         {path:"/accesso/areaPersonale/operazioniOrdini", component: OperazioniOrdini},
         {path: "/:pathMatch(.*)*", component: NotFound},

@@ -1,0 +1,26 @@
+<script lang="ts">
+import { defineComponent } from "vue";
+import axios from "axios";
+
+export default defineComponent({
+    data() {
+        return{
+            datiOrdine: [] as any[],
+        }
+    },
+    methods: {
+        async getOrderFromID() {
+            const res = await axios.post("/api/ordini/user")
+            console.log(res)
+            this.datiOrdine = res.data
+        }
+    }
+})
+</script>
+
+<template>
+    <div class="flex-container">
+        <button @click="getOrderFromID">Ordini Utente</button>
+    </div>
+    
+</template>

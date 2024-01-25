@@ -43,6 +43,7 @@ export default defineComponent({
     </form>
 
     <RouterLink v-if="user?.Role == 'admin'" :to="'/accesso/areaPersonale/operazioniProdotti'"><button>Operazioni Prodotti Admin</button></RouterLink>
-    <RouterLink v-if="user?.Role == 'admin'" :to="'/accesso/areaPersonale/operazioniOrdini'"><button>Operazioni Ordini Admin</button></RouterLink>
+    <RouterLink v-if="user?.Role == 'admin'" :to="'/accesso/areaPersonale/operazioniOrdini'"><button>Ordini per ID Admin</button></RouterLink>
+    <RouterLink :to="'/accesso/areaPersonale/ordiniUtente'"><button>Ordini Utente</button></RouterLink>
 
 </template>
