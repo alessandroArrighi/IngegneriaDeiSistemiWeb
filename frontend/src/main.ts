@@ -14,6 +14,7 @@ import CreaOrdine from './pages/CreaOrdine.vue'                     //di prova
 import OrdiniUtente from './pages/OrdiniUtente.vue'                 //di prova
 import OperazioniProdotti from './pages/OperazioniProdotti.vue'
 import OperazioniOrdini from './pages/OperazioniOrdini.vue'
+import Anagrafica from './pages/Anagrafica.vue'
 import NotFound from "./pages/NotFound.vue"
 
 const router: Router = createRouter({
@@ -31,6 +32,7 @@ const router: Router = createRouter({
         {path:"/accesso/areaPersonale/operazioniProdotti", component: OperazioniProdotti},
         {path:"/accesso/areaPersonale/operazioniOrdini", component: OperazioniOrdini},
         {path:"/accesso/areaPersonale/operazioniOrdini/:IDOrdine", component: OperazioniOrdini},
+        {path:"/accesso/areaPersonale/anagrafica", component: Anagrafica},
         {path: "/:pathMatch(.*)*", component: NotFound},
     ]
 })

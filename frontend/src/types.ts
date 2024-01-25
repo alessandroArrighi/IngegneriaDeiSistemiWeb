@@ -22,3 +22,24 @@ export interface Ordine {
     Categoria: string
     Quantità: number
 }
+
+export interface Utente {
+	IDUtente: number
+    User: string 	
+    Password: string
+    Nome: string
+    Cognome: string 	
+    Mail: string 	
+    Telefono: number 	
+    Indirizzo: string 
+    Role: "admin" | "user" 	
+}
+
+export interface nuoviDatiUtente {
+    User: string 	
+    Nome: string
+    Cognome: string 	
+    Mail: string 	
+    Telefono: number 	
+    Indirizzo: string
+}

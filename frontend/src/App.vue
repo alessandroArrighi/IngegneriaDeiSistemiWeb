@@ -18,6 +18,7 @@ export default defineComponent({
     async getUser() {
       const res = await axios.get("/api/auth/getUser")
       this.user = res.data
+      //console.log(res.data)
     },
     async addToOrd(prodotto: any) {
       this.ordine.push(prodotto)
