@@ -22,16 +22,14 @@ export default defineComponent({
             this.idRicerca= ""
         },
         async getOrderIniziale() {
-            const res = await axios.post("/api/ordini/idordine", {
+            const res = await axios.post("/api/ordini/getordine", {
                 id: this.$route.params.IDOrdine,
             })
             this.datiOrdine = res.data
         }
     },
     mounted() {
-        if(this.user?.Role == 'user' || this.user?.Role == 'admin') {
-            this.getOrderIniziale()
-        }
+        this.getOrderIniziale()
     }
 })
 </script>

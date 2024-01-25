@@ -57,10 +57,10 @@ export default defineComponent({
         .then(response => this.datiMontature = response.data)
         .catch(error => console.error("Errore durante la richiesta axios:", error));
     },
-    addItem() {
-      this.tmp.IDProdotto = montatura.IDProdotto;
-      this.tmp.Categoria = this.categoria;
-      this.tmp.Quantità = this.quantità;
+    addItem(montatura: Montatura) {
+      this.tmp[0].IDProdotto = montatura.IDProdotto;
+      this.tmp[0].Categoria = this.categoria;
+      this.tmp[0].Quantità = this.quantità;
       this.quantità = 0
     }
   },
@@ -108,7 +108,7 @@ export default defineComponent({
             <option value=6>6</option>
             <option value=9>9</option>
           </select>
-          <button @click="addItem">Aggiungi ad Ordine</button>
+          <button @click="addItem(montatura)">Aggiungi ad Ordine</button>
         </form>
       </div>
 

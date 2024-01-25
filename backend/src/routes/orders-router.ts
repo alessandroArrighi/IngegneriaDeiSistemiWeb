@@ -8,6 +8,6 @@ router.post("/api/ordini/idordine", ordersController.ordersFromID)      //fatto
 router.get("/api/ordini/crea/lac/:id", ordersController.createLACOreder)*/
 router.post("/api/ordini/crea/ordine", ordersController.createOrder)    //fatto
 router.post("/api/ordini/user", ordersController.ordersFromUser)        // fatto
-router.post("/api/ordini/getordine", ordersController.getOrder)
+router.post("/api/ordini/getordine", ordersController.getOrder)         //fatto
 
 export default router
