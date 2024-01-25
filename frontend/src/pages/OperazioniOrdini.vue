@@ -29,7 +29,7 @@ export default defineComponent({
         }
     },
     mounted() {
-        if(this.user?.Role == 'user') {
+        if(this.user?.Role == 'user' || this.user?.Role == 'admin') {
             this.getOrderIniziale()
         }
     }

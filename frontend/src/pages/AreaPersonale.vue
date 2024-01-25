@@ -31,19 +31,23 @@ export default defineComponent({
 
 
 <template>
+    <div v-if="user">
 
-    <button v-if="user" @click="logout" type="submit">Logout</button>
+        <button @click="logout" type="submit">Logout</button>
 
-    <form @submit.prevent="modifyPassword">
-        <label>Inserisci la vecchia password</label>
-        <input v-model="oldPassword" type="text"/>
-        <label>Inserisci la nuova password</label>
-        <input v-model="newPassword" type="text"/>
-        <button type="submit">Cambia Password</button>
-    </form>
+        <form @submit.prevent="modifyPassword">
+            <label>Inserisci la vecchia password</label>
+            <input v-model="oldPassword" type="text"/>
+            <label>Inserisci la nuova password</label>
+            <input v-model="newPassword" type="text"/>
+            <button type="submit">Cambia Password</button>
+        </form>
 
-    <RouterLink v-if="user?.Role == 'admin'" :to="'/accesso/areaPersonale/operazioniProdotti'"><button>Operazioni Prodotti Admin</button></RouterLink>
-    <RouterLink v-if="user?.Role == 'admin'" :to="'/accesso/areaPersonale/operazioniOrdini'"><button>Ordini per ID Admin</button></RouterLink>
-    <RouterLink :to="'/accesso/areaPersonale/ordiniUtente'"><button>Ordini Utente</button></RouterLink>
+        <RouterLink v-if="user?.Role == 'admin'" :to="'/accesso/areaPersonale/operazioniProdotti'"><button>Operazioni Prodotti Admin</button></RouterLink>
+        <RouterLink v-if="user?.Role == 'admin'" :to="'/accesso/areaPersonale/operazioniOrdini/:IDOrdine'"><button>Ordini per ID Admin</button></RouterLink>
+        <RouterLink :to="'/accesso/areaPersonale/ordiniUtente'"><button>Ordini Utente</button></RouterLink>
+    </div>
+
+
 
 </template>

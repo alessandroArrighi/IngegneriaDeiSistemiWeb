@@ -10,12 +10,15 @@ export default defineComponent({
   data() {
     return {
       datiMontature: [] as Montatura[],
+      tmp: [] as Ordine[],
       filterId: "",
       filterBrand: "",
       filterPrice: "",
       mostraFiltri: false,
       ordinaPer: "",
       aggiungiElementi: 4,
+      categoria: "montature",
+      quantità: 0,
     };
   },
   computed: {
@@ -53,6 +56,12 @@ export default defineComponent({
       axios.get("/api/prodotti/montature")
         .then(response => this.datiMontature = response.data)
         .catch(error => console.error("Errore durante la richiesta axios:", error));
+    },
+    addItem() {
+      this.tmp.IDProdotto = montatura.IDProdotto;
+      this.tmp.Categoria = this.categoria;
+      this.tmp.Quantità = this.quantità;
+      this.quantità = 0
     }
   },
   mounted() {
@@ -92,6 +101,15 @@ export default defineComponent({
           <p>{{ montatura.Brand }}</p>
           <p>{{ montatura.Prezzo }}</p>
         </RouterLink>
+        <form>
+          <select v-model="quantità">
+            <option value=0>-- Seleziona --</option>
+            <option value=3>3</option>
+            <option value=6>6</option>
+            <option value=9>9</option>
+          </select>
+          <button @click="addItem">Aggiungi ad Ordine</button>
+        </form>
       </div>
 
       <div class="flex-item">
