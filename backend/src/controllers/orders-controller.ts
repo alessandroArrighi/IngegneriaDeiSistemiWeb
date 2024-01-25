@@ -28,10 +28,13 @@ export async function ordersFromUser(req: Request, res: Response) {
     if(!user) return;
 
     connection.execute(
-        "SELECT * FROM dettOrdini dt JOIN Ordini o ON dt.IDOrdine = o.IDOrdine WHERE o.IDUtente = ? ORDER BY o.IDOrdine DESC",
+        //"SELECT * FROM dettOrdini dt JOIN Ordini o ON dt.IDOrdine = o.IDOrdine WHERE o.IDUtente = ? ORDER BY o.IDOrdine DESC",
+        "SELECT IDOrdine FROM Ordini WHERE IDUtente = ?",
         [user.IDUtente],
         async function(err, results, fields) {
-            const result = results as any
+            res.json(results)
+
+            /*
             const ordini = []
 
             let id = result[0]['IDOrdine'];
@@ -48,7 +51,7 @@ export async function ordersFromUser(req: Request, res: Response) {
                 tmp.push(prodotto[0])
             }
             ordini[k] = tmp
-            res.json(ordini)
+            res.json(ordini)*/
         }
     )
 }
