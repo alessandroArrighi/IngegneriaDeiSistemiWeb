@@ -1,4 +1,4 @@
-export interface Articolo {
+export interface Montatura {
     Modello: string
     Brand: string
     IDProdotto: string

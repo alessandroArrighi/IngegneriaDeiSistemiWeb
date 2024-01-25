@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 import axios from "axios";
-import { Articolo, Ordine } from "../types";
+import { Montatura, Ordine } from "../types";
 
 export default defineComponent({
   props: {
@@ -9,7 +9,7 @@ export default defineComponent({
   },
   data() {
     return {
-      datiMontature: [] as Articolo[],
+      datiMontature: [] as Montatura[],
       filterId: "",
       filterBrand: "",
       filterPrice: "",
@@ -19,7 +19,7 @@ export default defineComponent({
     };
   },
   computed: {
-    filteredData(): Articolo[] {
+    filteredData(): Montatura[] {
       let filteredData = [...this.datiMontature];
 
       if (this.filterId) {
@@ -36,7 +36,7 @@ export default defineComponent({
 
       return filteredData;
     },
-    sortedData(): Articolo[] {
+    sortedData(): Montatura[] {
       let sortedData = [...this.filteredData];
 
       if (this.ordinaPer === "prezzo") {
@@ -56,7 +56,6 @@ export default defineComponent({
     }
   },
   mounted() {
-    console.log(this.ordine)
     this.getMontature();
   },
 });
