@@ -7,21 +7,26 @@ export default defineComponent({
     data() {
         return {
             datiUtente: {} as Utente,
-            nuoviDati: {} as Utente
+            nuoviDati: {} as Utente,
         }
     },
     props: {
         user: Object as PropType<User>,
     },
     methods: {
-        getUtente(){
-            axios.get("/api/utenze/" + this.user?.IDUtente)
-            .then(response => this.datiUtente = response.data)
+        async getUtente(){
+            const res = await axios.get("/api/utenze")
+            this.datiUtente = res.data
+            console.log(this.user?.IDUtente)
         },
         modifyData() {
+            console.log(this.nuoviDati)
             axios.post("/api/utenze/modifica", {
                 dati: this.nuoviDati
             })
+        },
+        comeVuoi(){
+            console.log(this.user?.IDUtente)
         }
     },
     mounted(){

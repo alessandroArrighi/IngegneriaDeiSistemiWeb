@@ -26,6 +26,9 @@ export default defineComponent({
             window.location.reload()
         }
     },
+    mounted() {
+        console.log(this.user?.IDUtente)
+    }
 })
 </script>
 
@@ -49,6 +52,9 @@ export default defineComponent({
         <RouterLink :to="'/accesso/areaPersonale/anagrafica'"><button>Anagrafica</button></RouterLink>
     </div>
 
+    <div class="flex-item">
+        <p>{{ user?.IDUtente }}</p>
+    </div>
 
 
 </template>

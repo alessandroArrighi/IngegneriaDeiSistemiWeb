@@ -20,7 +20,9 @@ export async function modifyUser(req: Request, res: Response) {
     const usr = await loggedIn(req, res)
     if(!usr) return
 
-    const { User, Nome, Cognome, Mail, Telefono, Indirizzo } = req.body
+    const { User, Nome, Cognome, Mail, Telefono, Indirizzo } = req.body.dati
+    console.log(User)
+    console.log(req.body.dati.User)
 
     connection.execute(
         "SELECT * FROM Utenze WHERE IDUtente = ?",
