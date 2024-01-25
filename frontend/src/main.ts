@@ -16,8 +16,6 @@ import OperazioniProdotti from './pages/OperazioniProdotti.vue'
 import OperazioniOrdini from './pages/OperazioniOrdini.vue'
 import NotFound from "./pages/NotFound.vue"
 
-
-
 const router: Router = createRouter({
     history: createWebHistory(),
     routes: [

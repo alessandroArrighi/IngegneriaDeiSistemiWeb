@@ -18,6 +18,10 @@ export default defineComponent({
       const res = await axios.get("/api/auth/getUser")
       this.user = res.data
     },
+    async addToOrd(prodotto: any) {
+      this.ordine.push(prodotto)
+      console.log(this.ordine)
+    }
   },
   mounted() {
     this.getUser()
@@ -34,7 +38,7 @@ export default defineComponent({
     <div>
         <Navbar :user="user" :ordine = "ordine"/> <!--provare mettere :user in div padre-->
         <RouterLink to = "/accesso/areaPersonale/creaOrdine">Crea Ordine</RouterLink>
-        <RouterView :user="user" :ordine = "ordine"/>
+        <RouterView :user="user" :ordine = "ordine" @sendProd = "addToOrd"/>
         <FooterComp />
     </div>
 </template>

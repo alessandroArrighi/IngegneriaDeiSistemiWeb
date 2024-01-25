@@ -7,10 +7,10 @@ export default defineComponent({
   props: {
     ordine: Array as PropType<Ordine[]>
   },
+  emits: ["sendProd"],
   data() {
     return {
       datiMontature: [] as Montatura[],
-      tmp: [] as Ordine[],
       filterId: "",
       filterBrand: "",
       filterPrice: "",
@@ -58,9 +58,12 @@ export default defineComponent({
         .catch(error => console.error("Errore durante la richiesta axios:", error));
     },
     addItem(montatura: Montatura) {
-      this.tmp[0].IDProdotto = montatura.IDProdotto;
-      this.tmp[0].Categoria = this.categoria;
-      this.tmp[0].Quantità = this.quantità;
+      const prodotto = {
+        IDProdotto: montatura.Modello,
+        Categoria: this.categoria,
+        Quantità: this.quantità,
+      }
+      this.$emit("sendProd", prodotto)
       this.quantità = 0
     }
   },
@@ -94,21 +97,21 @@ export default defineComponent({
       </select>
     </form>
 
-      <div v-for="montatura  in sortedData.slice(0, aggiungiElementi)" class="flex-item">
+      <div v-for="montatura in sortedData.slice(0, aggiungiElementi)" class="flex-item">
         <RouterLink :to="'/montature/' + montatura.IDProdotto">
           <img loading="lazy" :src="montatura.Immagine" alt="/">
           <p>{{ montatura.IDProdotto }}</p>
           <p>{{ montatura.Brand }}</p>
           <p>{{ montatura.Prezzo }}</p>
         </RouterLink>
-        <form>
+        <form @submit.prevent="addItem(montatura)">
           <select v-model="quantità">
             <option value=0>-- Seleziona --</option>
             <option value=3>3</option>
             <option value=6>6</option>
             <option value=9>9</option>
           </select>
-          <button @click="addItem(montatura)">Aggiungi ad Ordine</button>
+          <button>Aggiungi ad Ordine</button>
         </form>
       </div>
 
