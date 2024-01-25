@@ -11,7 +11,7 @@ export default defineComponent({
   },
   methods: {
     getArticolo() {
-      axios.get("/api/prodotto/"+ this.$route.params.idProdotto)  //questa get non va bene perché noi dobbiamo filtrare sul json ottenuto dalla route "padre" montature, non possiamo rifare una chiamate (di cui il controller nemmeno )
+      axios.get("/api/prodotto/"+ this.$route.params.Modello)    //questa get non va bene perché noi dobbiamo filtrare sul json ottenuto dalla route "padre" montature, non possiamo rifare una chiamate (di cui il controller nemmeno )
       .then(response => this.montatura = response.data[0])       //utilizziamo $route.params.idProdotto per filtrare l'array dei prodotti ottenuto con inject e selezionare solo il prodotto voluto
     }
   },
@@ -23,15 +23,15 @@ export default defineComponent({
 
 
 <template>
-    <template v-if="montatura">
-    <h2>{{}}</h2>
-    <article>
-    <img :src="'/img/'" alt="" />
-    <h3>{{}}</h3>
-    <p>
-    {{}} - {{}}
-    </p>
-    <p>{{}}</p>
-    </article>
-    </template>
+    <div v-if="montatura">
+      <h2>{{}}</h2>
+      <article>
+        <img :src="'/img/'" alt="" />
+        <h3>{{}}</h3>
+        <p>
+          {{}} - {{}}
+        </p>
+        <p>{{}}</p>
+      </article>
+    </div>
 </template>
