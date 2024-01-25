@@ -1,4 +1,4 @@
-import { Request, Response } from 'express'
+import { Request, Response, response } from 'express'
 import { connection } from '../utils/db'
 import { loggedIn, adminLoggedIn } from '../utils/loggedIn'
 
@@ -17,6 +17,39 @@ export async function ordersFromID(req: Request, res: Response) {
                 ordine.push(await selecProdotto(`SELECT * FROM ${result[i]['Categoria']} WHERE Modello = '${result[i]['IDProdotto']}'`))
             }
             res.json(ordine)
+        }
+    )
+}
+
+export async function getOrder(req: Request, res: Response) {
+    const user = await loggedIn(req, res)
+    if(!user) return
+
+    const IDOrdine = req.body.id
+
+    connection.execute(
+        "SELECT IDUtente FROM Ordini WHERE IDOrdine = ?",
+        [IDOrdine],
+        function(err, results, fields) {
+            const check = (results as any)[0]['IDUtente']
+            if(check != user.IDUtente) {
+                res.status(403).send("Permesso negato")
+                return
+            }
+            connection.execute(
+                "SELECT IDProdotto, Categoria, Quantità FROM dettOrdini WHERE IDOrdine = ?",
+                [IDOrdine],
+                async function(err, results, fields) {
+                    const result = results as any
+                    const ordine = []
+        
+                    for(let i = 0; i < result.length; ++i) {
+                        //ordine.push(await selecProdotto(result[i]['Categoria'], result[i]['IDProdotto']))
+                        ordine.push(await selecProdotto(`SELECT * FROM ${result[i]['Categoria']} WHERE Modello = '${result[i]['IDProdotto']}'`))
+                    }
+                    res.json(ordine)
+                }
+            )
         }
     )
 }
