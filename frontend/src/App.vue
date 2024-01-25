@@ -44,7 +44,7 @@ export default defineComponent({
     <div>
         <Navbar :user="user" :ordine = "ordine"/> <!--provare mettere :user in div padre-->
         <RouterLink to = "/accesso/areaPersonale/creaOrdine">Crea Ordine</RouterLink>
-        <RouterView :user="user" :ordine = "ordine" @sendProd = "addToOrd" :prodotto = "prodotto" @viewProd = "sendProd"/>
+        <RouterView :user="user" :ordine = "ordine" @sendProd = "addToOrd" :prodotto = "prodotto" @viewVista = "sendProd" @viewLac = "sendProd"/>
         <FooterComp />
     </div>
 </template>

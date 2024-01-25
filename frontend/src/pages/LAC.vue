@@ -1,24 +1,25 @@
 <script lang="ts">
 import { defineComponent } from "vue"
 import axios from "axios"
-import { LAC } from "../types"
+//import { LAC } from "../types"
 
 export default defineComponent({
+    emits: ["viewLac"],
     data() {
         return {
-            datiLAC: [] as LAC[],
+            datiLAC: [] as any[],
             filterId: "",
             filterBrand: "",
             filterPrice: "",
             mostraFiltri: false,
             ordinaPer: "",
-            aggiungiElementi: 5,
+            aggiungiElementi: 5
         }
     },
     methods: {
-        getLAC() {
-            axios.get("api/prodotti/lac")
-                .then(response => this.datiLAC = response.data)
+        async getLAC() {
+            const res = await axios.get("/api/prodotti/lac")
+            this.datiLAC = res.data
         },
         filterProduct() {
 
@@ -50,6 +51,9 @@ export default defineComponent({
                 this.datiLAC.sort((a, b) => a.Brand.localeCompare(b.Brand));
             }
         },
+        viewProd(lac: any) {
+            this.$emit("viewLac", lac)
+        }
     },
     mounted() {
         this.getLAC()
@@ -85,11 +89,12 @@ export default defineComponent({
         </form>
 
         <div v-for="lac in datiLAC.slice(0, aggiungiElementi)" class="flex-item">
-            <RouterLink :to="'/lac/' + lac.IDProdotto">
+            <RouterLink :to="'/prodotti/visita/'" @click = "viewProd(lac)">
                 <img loading="lazy" :src="'/img/' + lac.Immagine" alt="/">
                 <p>{{ lac.IDProdotto }}</p>
                 <p>{{ lac.Modello}}</p>
                 <p>{{ lac.Prezzo }}</p>
+                <p>{{ lac.Immagine }}</p>
             </RouterLink>
         </div>
 
