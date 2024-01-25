@@ -111,7 +111,7 @@ export default defineComponent({
             <option value=6>6</option>
             <option value=9>9</option>
           </select>
-          <button>Aggiungi ad Ordine</button>
+          <button type="submit">Aggiungi ad Ordine</button>
         </form>
       </div>
 
