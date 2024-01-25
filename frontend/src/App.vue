@@ -4,6 +4,7 @@ import { defineComponent } from "vue"
 import { User, Ordine } from "./types"
 import Navbar from "./components/Navbar.vue"
 import FooterComp from "./components/Footer.vue"
+import Carrello from "./components/Carrello.vue"
 
 export default defineComponent({
   data() {
@@ -23,14 +24,15 @@ export default defineComponent({
   },
   components: {
     Navbar,
-    FooterComp
+    FooterComp,
+    Carrello
   }
 })
 </script>
 
 <template>
     <div>
-        <Navbar :user="user"/>      <!--provare mettere :user in div padre-->
+        <Navbar :user="user" :ordine = "ordine"/> <!--provare mettere :user in div padre-->
         <RouterLink to = "/accesso/areaPersonale/creaOrdine">Crea Ordine</RouterLink>
         <RouterView :user="user" :ordine = "ordine"/>
         <FooterComp />

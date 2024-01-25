@@ -1,10 +1,15 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue"
-import { User } from "../types"
+import { Ordine, User } from "../types"
+import Carrello from "./Carrello.vue";
 
 export default defineComponent({
     props: {
-        user: Object as PropType<User>
+        user: Object as PropType<User>,
+        ordine: Array as PropType<Ordine[]>
+    },
+    components: {
+        Carrello
     }
 })
 
@@ -13,6 +18,7 @@ export default defineComponent({
 
 
 <template>
+    <Carrello :ordine = "ordine"/>
     <div id="section1" class="row pb-4">
         <div class="col-1 col-sm-1 col-md-1 col-xl-0 "></div>
         <nav class="col-10 col-sm-10 col-md-10 col-xl-12 navbar navbar-expand-xl py-3 border-bottom border-2 border-white">
