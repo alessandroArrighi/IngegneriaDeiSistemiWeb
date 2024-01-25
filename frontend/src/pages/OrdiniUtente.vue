@@ -22,5 +22,10 @@ export default defineComponent({
     <div class="flex-container">
         <button @click="getOrderFromID">Ordini Utente</button>
     </div>
+
+
+    <div v-for="ordine in datiOrdine" class="flex-item">
+        <RouterLink :to="'/accesso/areaPersonale/operazioniOrdini/' + ordine.IDOrdine"><p>{{ ordine.IDOrdine }}</p></RouterLink>
+    </div>
     
 </template>
