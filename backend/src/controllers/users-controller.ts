@@ -3,11 +3,12 @@ import { connection } from '../utils/db'
 import { loggedIn } from '../utils/loggedIn'
 
 export async function getUsersFromID(req: Request, res: Response) {
-    if(!await loggedIn(req, res)) return
+    const IDUtente = await loggedIn(req, res)
+    if(!IDUtente) return
         
     connection.execute(
         `SELECT * FROM Utenze WHERE IDUtente = ?`,
-        [req.params.id],
+        [IDUtente],
         function(err, results, fields) {
             const user = (results as any)[0]
             delete user.password
