@@ -1,8 +1,12 @@
 <script lang="ts">
-import { defineComponent } from "vue";
+import { defineComponent, PropType } from "vue";
 import axios from "axios";
+import { User } from "../types"
 
 export default defineComponent({
+    props: {
+        user: Object as PropType<User>,
+    },
     data() {
         return{
             idRicerca: "",
@@ -16,6 +20,17 @@ export default defineComponent({
             })
             this.datiOrdine = res.data
             this.idRicerca= ""
+        },
+        async getOrderIniziale() {
+            const res = await axios.post("/api/ordini/idordine", {
+                id: this.$route.params.IDOrdine,
+            })
+            this.datiOrdine = res.data
+        }
+    },
+    mounted() {
+        if(this.user?.Role == 'user') {
+            this.getOrderIniziale()
         }
     }
 })
@@ -23,21 +38,19 @@ export default defineComponent({
 
 <template>
     <div class="flex-container">
-        <form @submit.prevent="getOrderFromID" class="flex-item">
+        <form v-if="user?.Role == 'admin'" @submit.prevent="getOrderFromID" class="flex-item">
             <label>ID Ordine</label>
             <input v-model="idRicerca" type="text" />
             <button type="submit">Cerca</button>
         </form>
 
-        <div v-for="gruppoArticoli in datiOrdine" class="flex-item-group">
-            <div v-for="articolo in gruppoArticoli" class="flex-item">
-                <router-link :to="'/montature/' + articolo.IDProdotto">
-                    <img loading="lazy" :src="articolo.Immagine" alt="/">
-                    <p>{{ articolo.Modello }}</p>
-                    <p>{{ articolo.Brand }}</p>
-                    <p>{{ articolo.Prezzo }}</p>
-                </router-link>
-            </div>
+        <div v-for="articolo in datiOrdine" class="flex-item">
+            <router-link :to="'/montature/' + articolo.IDProdotto">
+                <img loading="lazy" :src="articolo.Immagine" alt="/">
+                <p>{{ articolo.Modello }}</p>
+                <p>{{ articolo.Brand }}</p>
+                <p>{{ articolo.Prezzo }}</p>
+            </router-link>
         </div>
 
     </div>

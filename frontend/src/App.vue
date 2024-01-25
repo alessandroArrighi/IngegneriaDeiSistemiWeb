@@ -32,7 +32,7 @@ export default defineComponent({
 
 <template>
     <div>
-        <Navbar :user="user" :ordine = "ordine"/>
+        <Navbar :user="user" :ordine = "ordine"/> <!--provare mettere :user in div padre-->
         <RouterLink to = "/accesso/areaPersonale/creaOrdine">Crea Ordine</RouterLink>
         <RouterView :user="user" :ordine = "ordine"/>
         <FooterComp />
