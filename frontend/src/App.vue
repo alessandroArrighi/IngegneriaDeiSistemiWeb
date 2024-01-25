@@ -10,7 +10,8 @@ export default defineComponent({
   data() {
     return {
       user: null as User | null,
-      ordine: [] as Ordine[]
+      ordine: [] as Ordine[],
+      prodotto: {} as any
     }
   },
   methods: {
@@ -21,6 +22,10 @@ export default defineComponent({
     async addToOrd(prodotto: any) {
       this.ordine.push(prodotto)
       console.log(this.ordine)
+    },
+    async sendProd(prodotto: any) {
+      this.prodotto = prodotto
+      console.log(this.prodotto)
     }
   },
   mounted() {
@@ -38,7 +43,7 @@ export default defineComponent({
     <div>
         <Navbar :user="user" :ordine = "ordine"/> <!--provare mettere :user in div padre-->
         <RouterLink to = "/accesso/areaPersonale/creaOrdine">Crea Ordine</RouterLink>
-        <RouterView :user="user" :ordine = "ordine" @sendProd = "addToOrd"/>
+        <RouterView :user="user" :ordine = "ordine" @sendProd = "addToOrd" :prodotto = "prodotto" @viewProd = "sendProd"/>
         <FooterComp />
     </div>
 </template>

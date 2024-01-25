@@ -7,10 +7,11 @@ export default defineComponent({
   props: {
     ordine: Array as PropType<Ordine[]>
   },
-  emits: ["sendProd"],
+  emits: ["sendProd", "viewProd"],
   data() {
     return {
-      datiMontature: [] as Montatura[],
+      datiMontature: [] as any[],
+      datiLAC: [] as any[],
       filterId: "",
       filterBrand: "",
       filterPrice: "",
@@ -39,7 +40,7 @@ export default defineComponent({
 
       return filteredData;
     },
-    sortedData(): Montatura[] {
+    sortedData(): any[] {
       let sortedData = [...this.filteredData];
 
       if (this.ordinaPer === "prezzo") {
@@ -57,6 +58,14 @@ export default defineComponent({
         .then(response => this.datiMontature = response.data)
         .catch(error => console.error("Errore durante la richiesta axios:", error));
     },
+    async getLAC() {
+      /*
+      axios.get("api/prodotti/lac")
+          .then(response => this.datiLAC = response.data)*/
+      const prova = await axios.get("api/prodotti/lac")
+      this.datiLAC = prova.data
+      console.log(prova.data)
+    },
     addItem(montatura: Montatura) {
       const prodotto = {
         IDProdotto: montatura.Modello,
@@ -65,10 +74,14 @@ export default defineComponent({
       }
       this.$emit("sendProd", prodotto)
       this.quantità = 0
+    },
+    viewItem(montatura: Montatura) {
+      this.$emit("viewProd", montatura)
     }
   },
   mounted() {
-    this.getMontature();
+    if(this.$route.params.categoria == "vista") this.getMontature();
+    if(this.$route.params.categoria == "lac") this.getLAC();
   },
 });
 </script>
@@ -98,7 +111,7 @@ export default defineComponent({
     </form>
 
       <div v-for="montatura in sortedData.slice(0, aggiungiElementi)" class="flex-item">
-        <RouterLink :to="'/montature/' + montatura.Modello">
+        <RouterLink :to="'/montature/' + montatura.Modello" @click = "viewItem(montatura)">
           <img loading="lazy" :src="montatura.Immagine" alt="/">
           <p>{{ montatura.Modello }}</p>
           <p>{{ montatura.Brand }}</p>

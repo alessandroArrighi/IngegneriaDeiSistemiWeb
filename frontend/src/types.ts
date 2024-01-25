@@ -1,7 +1,6 @@
 export interface Montatura {
     Modello: string
     Brand: string
-    IDProdotto: string
     Prezzo: number
     Versione: string
     Calibro: string
