@@ -91,8 +91,8 @@ export default defineComponent({
         <div v-for="lac in datiLAC.slice(0, aggiungiElementi)" class="flex-item">
             <RouterLink :to="'/prodotti/visita/'" @click = "viewProd(lac)">
                 <img loading="lazy" :src="'/img/' + lac.Immagine" alt="/">
-                <p>{{ lac.IDProdotto }}</p>
-                <p>{{ lac.Modello}}</p>
+                <p>{{ lac.Modello }}</p>
+                <p>{{ lac.Brand}}</p>
                 <p>{{ lac.Prezzo }}</p>
                 <p>{{ lac.Immagine }}</p>
             </RouterLink>
