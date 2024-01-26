@@ -15,7 +15,7 @@ export default defineComponent({
         scrollToTop() {
             window.scrollTo({
                 top: 0,
-                behavior: 'smooth' // Optional: Add smooth scrolling behavior
+                behavior: 'smooth'
             });
         }
     } 
