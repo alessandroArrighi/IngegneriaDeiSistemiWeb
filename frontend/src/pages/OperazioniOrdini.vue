@@ -10,7 +10,7 @@ export default defineComponent({
     data() {
         return{
             idRicerca: "",
-            datiOrdine: [] as any[],
+            datiOrdine: [] as any[]
         }
     },
     methods: {
@@ -26,6 +26,10 @@ export default defineComponent({
                 id: this.$route.params.IDOrdine,
             })
             this.datiOrdine = res.data
+        },
+        getRouterLink(articolo: any) {
+            const categoria = articolo.Aste ? "Montature" : "LAC"
+            return `/prodotti/${categoria}-${articolo.Modello}`;
         }
     },
     mounted() {
@@ -45,7 +49,7 @@ export default defineComponent({
         </form>
 
         <div v-for="articolo in datiOrdine" class="flex-item">
-            <router-link :to="'/montature/' + articolo.IDProdotto">
+            <router-link :to="getRouterLink(articolo)">
                 <img loading="lazy" :src="articolo.Immagine" alt="/">
                 <p>{{ articolo.Modello }}</p>
                 <p>{{ articolo.Brand }}</p>

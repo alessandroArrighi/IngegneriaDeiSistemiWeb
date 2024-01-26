@@ -10,7 +10,15 @@ export default defineComponent({
     },
     components: {
         Carrello
-    }
+    },
+    methods: {
+        scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+    } 
 })
 
 </script>
@@ -25,10 +33,10 @@ export default defineComponent({
             <button class="navbar-toggler navbar-dark" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <a class="navbar-brand ps-5 pt-3 me-0 text-white" href="/">
+            <RouterLink class="navbar-brand ps-5 pt-3 me-0 text-white" :to="'/'">
                 <img src="../../public/tumefatti-eyewear-high-resolution-logo-transparent.png" width="110" height="80" alt="Logo" loading="lazy">
                 <h1 class="d-inline fs-3 fw-bold">Tumefatti</h1>
-            </a>    
+            </RouterLink>    
             <div class="collapse navbar-collapse justify-content-end fw-bold" id="navbarNavAltMarkup">
                 <div class="navbar-nav pb-1 me-5">
                     <ul>
@@ -36,7 +44,7 @@ export default defineComponent({
                         <li><RouterLink class="nav-link active text-white px-3 py-2 mt-2 me-2 fs-5" to = "/prodotti/tutti/vista/MontatureV">Occhiali da Vista</RouterLink></li>
                         <li><RouterLink class="nav-link active text-white px-3 py-2 mt-2 me-2 fs-5" to = "/prodotti/tutti/sole/MontatureS">Occhiali da Sole</RouterLink></li>
                         <li><RouterLink class="nav-link active text-white px-3 py-2 mt-2 me-2 fs-5" to = "/prodotti/tutti/lac/LACC">Lenti a Contatto</RouterLink></li>
-                        <li v-if="!user"><RouterLink class="nav-link text-warning px-3 py-2 mt-2 me-2 fs-5" to = "/accesso">Accedi</RouterLink></li>
+                        <li v-if="!user"><RouterLink class="nav-link text-warning px-3 py-2 mt-2 me-2 fs-5" to = "/accesso/user">Accedi</RouterLink></li>
                         <li v-if="user"><RouterLink class="nav-link text-warning px-3 py-2 mt-2 me-2 fs-5" to ="/accesso/areaPersonale">Area Personale</RouterLink></li>
                     </ul>
                 </div>
@@ -44,7 +52,7 @@ export default defineComponent({
         </nav>
         <div class="col-1 col-sm-1 col-sm-1"></div>
     </div>
-        <button type="button" id="scrollButton2" class = "btn border-0 p-0"> <!--senza script non funziona-->
+        <button type="button" @click="scrollToTop" id="scrollButton2" class = "btn border-0 p-0"> <!--senza script non funziona-->
             <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="white" class="bi bi-arrow-up-circle-fill" viewBox="0 0 16 16">
                 <path d="M16 8A8 8 0 1 0 0 8a8 8 0 0 0 16 0zm-7.5 3.5a.5.5 0 0 1-1 0V5.707L5.354 7.854a.5.5 0 1 1-.708-.708l3-3a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708L8.5 5.707V11.5z"/>
             </svg>
