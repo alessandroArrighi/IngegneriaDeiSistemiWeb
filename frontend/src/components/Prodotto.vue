@@ -67,7 +67,7 @@ export default defineComponent({
     addItem(prod: any) {
       const prodotto = {
         IDProdotto: prod.Modello,
-        Categoria: this.categoria.substring(0, this.categoria.length - 1),
+        Categoria: this.categoria,
         Quantità: this.quantità,
       }
       this.$emit("sendProd", prodotto)
@@ -77,15 +77,15 @@ export default defineComponent({
   mounted() {
     if(this.$route.params.categoria == "MontatureV") {
         this.getVista()
-        this.categoria = "MontatureV"
+        this.categoria = "Montature"
     }
     if(this.$route.params.categoria == "MontatureS") {
       this.getSole()
-      this.categoria = "MontatureS"
+      this.categoria = "Montature"
     }
     if(this.$route.params.categoria == "LACC") {
         this.getLAC()
-        this.categoria = "LACC"
+        this.categoria = "LAC"
     }
   },
 });
