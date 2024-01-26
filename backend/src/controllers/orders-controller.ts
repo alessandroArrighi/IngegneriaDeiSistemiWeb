@@ -16,6 +16,7 @@ export async function ordersFromID(req: Request, res: Response) {
                 ordine.push((await selecProdotto(`SELECT * FROM ${result[i]['Categoria']} WHERE Modello = '${result[i]['IDProdotto']}'`))[0])
             }
             res.json(ordine)
+            console.log(ordine)
         }
     )
 }

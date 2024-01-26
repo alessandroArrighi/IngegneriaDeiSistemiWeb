@@ -23,6 +23,7 @@ export default defineComponent({
                 IDUtente: this.user?.IDUtente,
                 ord: this.ordine
             })
+            window.location.href="/"
         },
         rimuoviProdotto(prodotto: any) {
             const item = {
@@ -64,8 +65,8 @@ export default defineComponent({
                 <p>{{ prodotto.IDProdotto }}</p>
                 <p>{{ prodotto.Categoria }}</p>
                 <p>{{ prodotto.Quantità }}</p>
-                <button @click = "rimuoviProdotto(prodotto)">Rimuovi</button>
             </RouterLink>
+            <button @click = "rimuoviProdotto(prodotto)">Rimuovi</button>
         </div>
         <!--<form @submit.prevent="aggiungiProdotto" class="flex-item">
             <label>idProdotto</label>
