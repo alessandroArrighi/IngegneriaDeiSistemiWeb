@@ -6,6 +6,8 @@ export default defineComponent({
   data() {
     return {
       prodotto: null as any | null,
+      quantità: 1,
+      categoria: ""
     }
   },
   methods: {
@@ -21,19 +23,28 @@ export default defineComponent({
       axios.get("/api/prodotti/vista/" + this.$route.params.idProdotto)
       .then(response => this.prodotto = response.data[0])
     },
-    prova() {
-      console.log(this.prodotto)
+    addItem(prod: any) {
+      const prodotto = {
+        IDProdotto: prod.Modello,
+        Categoria: this.categoria,
+        Quantità: this.quantità,
+      }
+      this.$emit("sendProd", prodotto)
+      this.quantità = 1
     }
   },
   mounted() {
     if(this.$route.params.categoria == "vista") {
         this.getVista()
+        this.categoria = "vista"
     }
     if(this.$route.params.categoria == "sole") {
       this.getSole()
+      this.categoria = "sole"
     }
     if(this.$route.params.categoria == "lac") {
         this.getLac()
+        this.categoria = "lac"
     }
   }
 })
@@ -41,7 +52,7 @@ export default defineComponent({
 
 
 <template>
-    <button @click = "prova">Prodotto</button>
+    
     <div v-if="prodotto">
       <h2 style="color: white">{{prodotto.Modello}}</h2>
       <article>
@@ -51,6 +62,15 @@ export default defineComponent({
           {{}} - {{}}
         </p>
         <p>{{}}</p>
+        <form @submit.prevent="addItem(prodotto)">
+          <select v-model="quantità">
+            <option value=0>-- Seleziona --</option>
+            <option value=3>3</option>
+            <option value=6>6</option>
+            <option value=9>9</option>
+          </select>
+          <button type="submit">Aggiungi ad Ordine</button>
+        </form>
       </article>
     </div>
 </template>

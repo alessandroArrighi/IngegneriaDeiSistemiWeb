@@ -20,6 +20,7 @@ export default defineComponent({
     },
     async addToOrd(prodotto: any) {
       this.ordine.push(prodotto)
+      console.log(this.ordine)
     },
     //di prova
     async deleteProd(item: any) {
@@ -28,7 +29,6 @@ export default defineComponent({
     }
   },
   mounted() {
-    this.addToOrd("hello")
     this.getUser()
   },
   components: {

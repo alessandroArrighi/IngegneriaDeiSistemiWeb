@@ -5,11 +5,17 @@ import ProdottoSpec from "../../components/ProdottoSpec.vue";
 export default defineComponent({
   components: {
     ProdottoSpec
+  },
+  emits: ["sendProd"],
+  methods: {
+    async sendProd(prodotto: any) {
+      this.$emit("sendProd", prodotto)
+    }
   }
 })
 </script>
 
 
 <template>
-    <ProdottoSpec />
+    <ProdottoSpec @sendProd = "sendProd"/>
 </template>
