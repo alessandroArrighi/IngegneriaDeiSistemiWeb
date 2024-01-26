@@ -13,6 +13,9 @@ export default defineComponent({
       ordine: [] as Ordine[]
     }
   },
+  provide() {
+    return { ordine: this.ordine }
+  },
   methods: {
     async getUser() {
       const res = await axios.get("/api/auth/getUser")

@@ -18,7 +18,7 @@ export default defineComponent({
       ordinaPer: "",
       aggiungiElementi: 4,
       categoria: "",
-      quantità: 0,
+      quantità: 1,
     }
   },
   computed: {
@@ -71,7 +71,7 @@ export default defineComponent({
         Quantità: this.quantità,
       }
       this.$emit("sendProd", prodotto)
-      this.quantità = 0
+      this.quantità = 1
     }
   },
   mounted() {
