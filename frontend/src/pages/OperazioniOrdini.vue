@@ -45,7 +45,7 @@ export default defineComponent({
         </form>
 
         <div v-for="articolo in datiOrdine" class="flex-item">
-            <router-link :to="'/montature/' + articolo.IDProdotto">
+            <router-link :to="'/prodotti/' + articolo.Categoria + '-'+ articolo.Modello">                 //non rimanda ad ordine specifico
                 <img loading="lazy" :src="articolo.Immagine" alt="/">
                 <p>{{ articolo.Modello }}</p>
                 <p>{{ articolo.Brand }}</p>

@@ -60,7 +60,7 @@ export default defineComponent({
     <div class="flex-container">
         <h1 style="color: white;">CARRELLO</h1>
         <div style="color: white;" v-for = "prodotto in ordine">
-            <RouterLink :to="'/prodotti/' + prodotto.Categoria + prodotto.IDProdotto">
+            <RouterLink :to="'/prodotti/' + prodotto.Categoria + '-' + prodotto.IDProdotto">
                 <p>{{ prodotto.IDProdotto }}</p>
                 <p>{{ prodotto.Categoria }}</p>
                 <p>{{ prodotto.Quantità }}</p>
