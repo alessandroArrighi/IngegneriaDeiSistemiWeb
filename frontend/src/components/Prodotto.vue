@@ -1,17 +1,16 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 import axios from "axios";
-import { Montatura, Ordine } from "../types";
+import { Ordine } from "../types";
 
 export default defineComponent({
   props: {
     ordine: Array as PropType<Ordine[]>
   },
-  emits: ["sendProd", "viewVista"],
+  emits: ["sendProd"],
   data() {
     return {
-      datiMontature: [] as any[],
-      datiLAC: [] as any[],
+      datiProdotto: [] as any[],
       filterId: "",
       filterBrand: "",
       filterPrice: "",
@@ -20,22 +19,22 @@ export default defineComponent({
       aggiungiElementi: 4,
       categoria: "",
       quantità: 0,
-    };
+    }
   },
   computed: {
-    filteredData(): Montatura[] {
-      let filteredData = [...this.datiMontature];
+    filteredData(): any[] {
+      let filteredData = [...this.datiProdotto];
 
       if (this.filterId) {
-        filteredData = filteredData.filter(montatura => montatura.Modello.includes(this.filterId));
+        filteredData = filteredData.filter(prodotto => prodotto.Modello.includes(this.filterId));
       }
 
       if (this.filterBrand) {
-        filteredData = filteredData.filter(montatura => montatura.Brand.includes(this.filterBrand));
+        filteredData = filteredData.filter(prodotto => prodotto.Brand.includes(this.filterBrand));
       }
 
       if (this.filterPrice) {
-        filteredData = filteredData.filter(montatura => montatura.Prezzo.toString().includes(this.filterPrice));
+        filteredData = filteredData.filter(prodotto => prodotto.Prezzo.toString().includes(this.filterPrice));
       }
 
       return filteredData;
@@ -53,35 +52,36 @@ export default defineComponent({
     }
   },
   methods: {
-    getMontature() {
-      axios.get("/api/prodotti/vista")
-        .then(response => this.datiMontature = response.data)
-        .catch(error => console.error("Errore durante la richiesta axios:", error));
+    async getVista() {
+      const res = await axios.get("/api/prodotti/vista")
+        this.datiProdotto = res.data
     },
-    addItem(montatura: Montatura) {
+    async getLAC() {
+        const res = await axios.get("/api/prodotti/lac")
+        this.datiProdotto = res.data
+    },
+    async getSole() {
+      const res = await axios.get("/api/prodotti/sole")
+      this.datiProdotto = res.data
+    },
+    addItem(prod: any) {
       const prodotto = {
-        IDProdotto: montatura.Modello,
+        IDProdotto: prod.Modello,
         Categoria: this.categoria,
         Quantità: this.quantità,
       }
       this.$emit("sendProd", prodotto)
       this.quantità = 0
-    },
-    viewItem(montatura: Montatura) {
-      this.$emit("viewVista", montatura)
-    },
-    async getLAC() {
-        const res = await axios.get("/api/prodotti/lac")
-        this.datiMontature = res.data
     }
   },
   mounted() {
     if(this.$route.params.categoria == "vista") {
-        this.getMontature()
+        this.getVista()
         this.categoria = "vista-"
     }
     if(this.$route.params.categoria == "sole") {
-
+      this.getSole()
+      this.categoria = "sole-"
     }
     if(this.$route.params.categoria == "lac") {
         this.getLAC()
@@ -115,14 +115,14 @@ export default defineComponent({
       </select>
     </form>
 
-      <div v-for="montatura in sortedData.slice(0, aggiungiElementi)" class="flex-item">
-        <RouterLink :to="'/prodotti/' + categoria + montatura.Modello" @click = "viewItem(montatura)">
-          <img loading="lazy" :src="montatura.Immagine" alt="/">
-          <p>{{ montatura.Modello }}</p>
-          <p>{{ montatura.Brand }}</p>
-          <p>{{ montatura.Prezzo }}</p>
+      <div v-for="prodotto in sortedData.slice(0, aggiungiElementi)" class="flex-item">
+        <RouterLink :to="'/prodotti/' + categoria + prodotto.Modello">
+          <img loading="lazy" :src="prodotto.Immagine" alt="/">
+          <p>{{ prodotto.Modello }}</p>
+          <p>{{ prodotto.Brand }}</p>
+          <p>{{ prodotto.Prezzo }}</p>
         </RouterLink>
-        <form @submit.prevent="addItem(montatura)">
+        <form @submit.prevent="addItem(prodotto)">
           <select v-model="quantità">
             <option value=0>-- Seleziona --</option>
             <option value=3>3</option>

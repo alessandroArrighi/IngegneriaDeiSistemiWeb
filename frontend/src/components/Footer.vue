@@ -1,18 +1,34 @@
+<script lang = "ts">
+    import { defineComponent } from 'vue';
+import { RouterLink } from 'vue-router';
+
+    export default defineComponent({
+    components: { RouterLink }
+})
+</script>
+
 <template>
     <footer>
-        <div class="container-fluid py-5 overflow-hidden border-top border-2 border-white" id="section2">
-            <div class="row">
-                <div class="col-1 col-sm-1 col-md-1"></div>
-                <div class="row col-md-10 text-center">
-                    <p class="col-md-4 pb-3"><a class="link-light focus-ring py-2 px-2 text-decoration-none border rounded-2 link-offset-2 link-opacity-25-hover" href="https://www.i18next.com/" target="d_blank">i18next Homepage</a></p>
-                    <p class="col-md-4 pb-3"><a class="link-light focus-ring py-2 px-2 text-decoration-none border rounded-2 link-offset-2 link-opacity-25-hover" href="https://github.com/i18next" target="d_blank">i18next Github</a></p>
-                    <p class="col-md-4 pb-3"><a class="link-light focus-ring py-2 px-2 text-decoration-none border rounded-2 link-offset-2 link-opacity-25-hover" href="https://locize.com/blog/i18next-vue/" target="d_blank">i18next Locize</a></p>
-                    <p class="col-md-4 pb-3"><a class="link-light focus-ring py-2 px-2 text-decoration-none border rounded-2 link-offset-2 link-opacity-25-hover" href="https://i18next.github.io/i18next-vue/" target="d_blank">i18next-Vue Homepage</a></p>
-                    <p class="col-md-4 pb-3"><a class="link-light focus-ring py-2 px-2 text-decoration-none border rounded-2 link-offset-2 link-opacity-25-hover" href="https://www.digitalocean.com/community/tutorials/vuejs-vue-with-i18n" target="d_blank">Implementing i18next</a></p>
-                    <p class="col-md-4 pb-3"><a class="link-light focus-ring py-2 px-2 text-decoration-none border rounded-2 link-offset-2 link-opacity-25-hover" href="https://phrase.com/blog/posts/vue-translation-with-vue-i18next/" target="d_blank">i18next-Vue Deep Dive</a></p>
-                </div>
-                <div class="col-1 col-sm-1 col-md-1"></div>
+        <div class="container-fluid py-5 overflow-hidden border-top border-2 border-white" id="section2" style = "color: white">
+            <div>
+                <h4>Chi siamo</h4>
+                <p>Alessandro Arrighi alessandajksd@studio.unibo.it</p>
+                <p>Riccardo Medri riccardoakjndsfla@studio.unibo.it</p>
+                <p>Corso di Laura Professionalizzante in Tecnologie dei Sistemi Informatici</p>
+                <p>Progetto di Ingegneria dei Sistemi Web</p>
+            </div>
+            <div>
+                <h4>Link Utili</h4>
+                <a href="#">Pacchetto per la gestione del carosello</a>
+                <a href="#">Repository di github del nostro progetto</a>
+                <a href="#">Corso Universitario</a>
+            </div>
+            <div>
+                <h4>Amministrazione</h4>
+                <RouterLink to = "#">Log-In Admin</RouterLink>
             </div>
         </div>
     </footer> 
 </template>
+
+chi siamo, login admin, link carosello

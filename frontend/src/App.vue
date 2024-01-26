@@ -10,8 +10,7 @@ export default defineComponent({
   data() {
     return {
       user: null as User | null,
-      ordine: [] as Ordine[],
-      prodotto: {} as any
+      ordine: [] as Ordine[]
     }
   },
   methods: {
@@ -21,9 +20,6 @@ export default defineComponent({
     },
     async addToOrd(prodotto: any) {
       this.ordine.push(prodotto)
-    },
-    async sendProd(prodotto: any) {
-      this.prodotto = prodotto
     },
     //di prova
     async deleteProd(item: any) {
@@ -46,7 +42,7 @@ export default defineComponent({
     <div>
         <Navbar :user="user" :ordine = "ordine"/> <!--provare mettere :user in div padre-->
         <RouterLink to = "/accesso/areaPersonale/creaOrdine" >Carrello</RouterLink>
-        <RouterView :user="user" :ordine = "ordine" @sendProd = "addToOrd" :prodotto = "prodotto" @viewVista = "sendProd" @viewLac = "sendProd" @cancella = "deleteProd"/>
+        <RouterView :user="user" :ordine = "ordine" @sendProd = "addToOrd" @cancella = "deleteProd"/>
         <FooterComp />
     </div>
 </template>

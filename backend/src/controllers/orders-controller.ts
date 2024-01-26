@@ -13,8 +13,6 @@ export async function ordersFromID(req: Request, res: Response) {
             const ordine = []
 
             for(let i = 0; i < result.length; ++i) {
-                //ordine.push(await selecProdotto(result[i]['Categoria'], result[i]['IDProdotto']))
-                /*ordine.push*/
                 ordine.push((await selecProdotto(`SELECT * FROM ${result[i]['Categoria']} WHERE Modello = '${result[i]['IDProdotto']}'`))[0])
             }
             res.json(ordine)
@@ -45,7 +43,6 @@ export async function getOrder(req: Request, res: Response) {
                     const ordine = []
         
                     for(let i = 0; i < result.length; ++i) {
-                        //ordine.push(await selecProdotto(result[i]['Categoria'], result[i]['IDProdotto']))
                         ordine.push((await selecProdotto(`SELECT * FROM ${result[i]['Categoria']} WHERE Modello = '${result[i]['IDProdotto']}'`))[0])
                     }
                     console.log(ordine)
@@ -61,30 +58,10 @@ export async function ordersFromUser(req: Request, res: Response) {
     if(!user) return;
 
     connection.execute(
-        //"SELECT * FROM dettOrdini dt JOIN Ordini o ON dt.IDOrdine = o.IDOrdine WHERE o.IDUtente = ? ORDER BY o.IDOrdine DESC",
         "SELECT IDOrdine FROM Ordini WHERE IDUtente = ?",
         [user.IDUtente],
         async function(err, results, fields) {
             res.json(results)
-
-            /*
-            const ordini = []
-
-            let id = result[0]['IDOrdine'];
-            let k = 0
-            let tmp: any = []
-            for(let i = 0; i < result.length; ++i) {
-                if(id != result[i]['IDOrdine']) {
-                    id = result[i]['IDOrdine']
-                    ordini[k] = tmp
-                    ++k
-                    tmp = []
-                }
-                const prodotto = await selecProdotto(`SELECT * FROM ${result[i]['Categoria']} WHERE Modello = '${result[i]['IDProdotto']}'`)
-                tmp.push(prodotto[0])
-            }
-            ordini[k] = tmp
-            res.json(ordini)*/
         }
     )
 }
@@ -92,9 +69,7 @@ export async function ordersFromUser(req: Request, res: Response) {
 const selecProdotto = async (query: string) => {
     const res = await connection
                 .promise()
-                .query(/*
-                    `SELECT * FROM ${prodotto} WHERE Modello = ?`,
-                    [modello]*/
+                .query(
                     query,
                     []
                 )
@@ -134,57 +109,3 @@ export async function createOrder(req: Request, res: Response) {
     )
     res.send("Ordine creato")
 }
-
-
-/*
-const createProd = async (categoria: any, IDProdotto: string) => {
-    const IDCategoria = "ID" + categoria
-
-    const res = await connection
-                                    .promise()
-                                    .execute(
-                                        `SELECT IDProdotto FROM Prodotti WHERE ${IDCategoria} = ?`, [IDProdotto]
-                                    )
-                                    .then(([rows, fields]) => { // IDMontature
-                                        return rows
-                                    })
-    return (res as any)[0]['IDProdotto']
-}*/
-
-/*
-export async function createGlassesOrder(req: Request, res: Response) {
-    if(!await loggedIn(req, res)) return
-
-    const { IDUtente, IDMontature, IDLenti } = req.params
-
-    connection.execute(
-        "INSERT INTO Ordini(IDUtente, IDMontature, IDLenti) VALUES(?, ?, ?)",
-        [IDUtente, IDMontature, IDLenti],
-        function(err, results, fields) {
-            if(err) {
-                res.send(err)
-            }
-            else {
-                res.send("Ordine creato")
-            }
-        }
-    )
-}
-
-export async function createLACOreder(req: Request, res: Response) {
-    if(!await loggedIn(req, res)) return
-
-    connection.execute(
-        "INSERT INTO Ordini(IDLAC) VALUES(?)",
-        [req.params.id],
-        function(err, results, fields) {
-            if(err) {
-                res.send(err)
-            }
-            else {
-                res.send("Ordine creato")
-            }
-        }
-    )
-}
-*/

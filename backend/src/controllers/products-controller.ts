@@ -206,7 +206,6 @@ export async function allLac(req: Request, res: Response) {
         `SELECT * FROM LAC`,
         [],
         function(err, results, fields) {
-            console.log(results as any)
             res.json(results)
         } 
     )
