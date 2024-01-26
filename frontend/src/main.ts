@@ -17,6 +17,8 @@ import OperazioniOrdini from './pages/OperazioniOrdini.vue'
 import Anagrafica from './pages/Anagrafica.vue'
 import NotFound from "./pages/NotFound.vue"
 import LacSpec from './pages/products/LacSpec.vue'
+import Sole from './pages/products/Sole.vue'
+import SoleSpec from './pages/products/SoleSpec.vue'
 
 const router: Router = createRouter({
     history: createWebHistory(),
@@ -26,6 +28,8 @@ const router: Router = createRouter({
         {path:"/prodotti/:categoria-:idProdotto", component: VistaSpec},  //da scegliere se fare una get o se possare un prop con tutti i dati a "montature" e poi da questa passare il prop ristresso per id a Prodotto. Lo svantaggio è che se scarichiamo tutti all'apertura del sito scarichiamo immediatamente il json di tutti gli occhiali e le lenti
         {path:"/prodotti/:categoria-:idProdotto", component: LacSpec},
         {path:"/prodotti/tutti/lac/:categoria", component: LAC},
+        {path:"/prodotti/tutti/sole/:categoria", component: Sole},
+        {path:"/prodotti/:categoria-:idProdotto", component: SoleSpec},
         //ricordarsi {path:"/lac/:idProdotto", component: },
         {path:"/accesso", component: Accesso},
         {path:"/accesso/areaPersonale", component: AreaPersonale},
