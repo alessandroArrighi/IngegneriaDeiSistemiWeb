@@ -4,8 +4,8 @@
 
     export default defineComponent({
         components: {
-    Prodotto
-}
+            Prodotto
+        }
     })
 </script>
 

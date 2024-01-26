@@ -29,12 +29,9 @@ const router: Router = createRouter({
         {path:"/prodotti/:categoria-:idProdotto", component: VistaSpec},
         {path:"/prodotti/:categoria-:idProdotto", component: LacSpec},
         {path:"/prodotti/tutti/lac/:categoria", component: LAC},
-<<<<<<< HEAD
-=======
         {path:"/prodotti/tutti/sole/:categoria", component: Sole},
         {path:"/prodotti/:categoria-:idProdotto", component: SoleSpec},
         //ricordarsi {path:"/lac/:idProdotto", component: },
->>>>>>> ec5c517ace5830bc3695d4341dc531ef3b3b9a7b
         {path:"/accesso", component: Accesso},
         {path:"/accesso/areaPersonale", component: AreaPersonale},
         {path:"/accesso/areaPersonale/creaOrdine", component: CreaOrdine},
