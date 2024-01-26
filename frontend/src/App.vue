@@ -9,12 +9,13 @@ import Carrello from "./components/Carrello.vue"
 export default defineComponent({
   data() {
     return {
-      user: null as User | null,
-      ordine: [] as Ordine[]
+      user: {} as User,
+      ordine: [] as Ordine[],
+      check: true
     }
   },
   provide() {
-    return { ordine: this.ordine }
+    return { user: this.user }
   },
   methods: {
     async getUser() {
@@ -32,10 +33,15 @@ export default defineComponent({
       if (index !== -1) {
         this.ordine.splice(index, 1);
       }
+    },
+    async checkUser() {
+      if(this.user) this.check = true
+      else this.check = false
     }
   },
   mounted() {
     this.getUser()
+    this.checkUser()
   },
   components: {
     Navbar,
@@ -47,7 +53,7 @@ export default defineComponent({
 
 <template>
     <div>
-        <Navbar :user="user" :ordine = "ordine"/> <!--provare mettere :user in div padre-->
+        <Navbar :user = "user"/> <!--provare mettere :user in div padre-->
         <RouterLink to = "/accesso/areaPersonale/creaOrdine" >Carrello</RouterLink>
         <RouterView :user="user" :ordine = "ordine" @sendProd = "addToOrd" @cancella = "deleteProd"/>
         <FooterComp />

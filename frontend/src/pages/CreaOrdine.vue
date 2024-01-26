@@ -2,11 +2,12 @@
 import { defineComponent, PropType } from "vue";
 import axios from "axios";
 import { User, Ordine } from "../types";
+import { setItem, getItem, STORAGE_NAME, EXPIRE_TIME } from "../utils/localStorage"
 
 export default defineComponent({
     props: {
         user: Object as PropType<User>,
-        ordine: Array as PropType<Ordine[]>
+        //ordine: Array as PropType<Ordine[]>
     },
     emits: ["cancella"],
     data() {
@@ -14,6 +15,7 @@ export default defineComponent({
             idProdotto: "",
             categoria: "",
             quantità: 0,
+            ordine: [] as Ordine[]
         }
     },
     methods: {
@@ -25,16 +27,24 @@ export default defineComponent({
             })
             window.location.href="/"
         },
-        rimuoviProdotto(prodotto: any) {
+        async rimuoviProdotto(prodotto: any) {
             const item = {
                 IDProdotto: prodotto.IDProdotto,
                 Categoria: prodotto.Categoria,
                 Quantità: prodotto.Quantità,
             }
-            this.$emit("cancella", item)
+            var index = this.ordine.findIndex(obj => obj.IDProdotto === item.IDProdotto);
+
+            if (index !== -1) {
+                this.ordine.splice(index, 1);
+            }
+            await setItem(STORAGE_NAME, this.ordine, EXPIRE_TIME)
+        },
+
+        async getOrder() {
+            const order = await getItem(STORAGE_NAME)
+            this.ordine = order
         }
-
-
         /*aggiungiProdotto() {
             const tmp: Ordine = {
                 IDProdotto: this.idProdotto,
@@ -52,7 +62,7 @@ export default defineComponent({
         }*/
     },
     mounted() {
-        console.log(this.ordine)
+        this.getOrder()
     }
 })
 </script>
