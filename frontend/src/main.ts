@@ -6,7 +6,7 @@ import "bootstrap/dist/css/bootstrap.min.css"
 
 import Home from './pages/Home.vue'
 import Montature from './pages/Montature.vue'
-import Prodotto from './pages/Prodotto.vue'
+import VistaSpec from './pages/VistaSpec.vue'
 import LAC from './pages/LAC.vue'
 import Accesso from './pages/Accesso.vue'
 import AreaPersonale from './pages/AreaPersonale.vue'
@@ -16,13 +16,15 @@ import OperazioniProdotti from './pages/OperazioniProdotti.vue'
 import OperazioniOrdini from './pages/OperazioniOrdini.vue'
 import Anagrafica from './pages/Anagrafica.vue'
 import NotFound from "./pages/NotFound.vue"
+import LacSpec from './pages/LacSpec.vue'
 
 const router: Router = createRouter({
     history: createWebHistory(),
     routes: [
         {path:"/", component: Home},
         {path:"/prodotti/vista", component: Montature},
-        {path:"/prodotti/visita/:idProdotto", component: Prodotto},  //da scegliere se fare una get o se possare un prop con tutti i dati a "montature" e poi da questa passare il prop ristresso per id a Prodotto. Lo svantaggio è che se scarichiamo tutti all'apertura del sito scarichiamo immediatamente il json di tutti gli occhiali e le lenti
+        {path:"/prodotti/visita/:idProdotto", component: VistaSpec},  //da scegliere se fare una get o se possare un prop con tutti i dati a "montature" e poi da questa passare il prop ristresso per id a Prodotto. Lo svantaggio è che se scarichiamo tutti all'apertura del sito scarichiamo immediatamente il json di tutti gli occhiali e le lenti
+        {path:"/prodotti/lac/:idProdotto", component: LacSpec},
         {path:"/prodotti/lac", component: LAC},
         //ricordarsi {path:"/lac/:idProdotto", component: },
         {path:"/accesso", component: Accesso},

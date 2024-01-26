@@ -1,12 +1,9 @@
 <script lang="ts">
-import { PropType, defineComponent } from "vue"
+import { defineComponent } from "vue"
 import axios from "axios"
 import { Montatura } from "../types"
 
 export default defineComponent({
-  props: {
-    prodotto: {} as PropType<any>
-  },
   data() {
     return {
       montatura: null as Montatura | null,

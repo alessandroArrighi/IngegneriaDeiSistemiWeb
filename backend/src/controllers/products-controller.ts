@@ -2,9 +2,19 @@ import { Request, Response } from 'express'
 import { connection } from '../utils/db'
 import { adminLoggedIn } from "../utils/loggedIn"
 
-export async function allFrames(req: Request, res: Response) {
+export async function allFramesGrad(req: Request, res: Response) {
     connection.execute(
-        `SELECT * FROM Montature`,
+        `SELECT * FROM Montature WHERE Versione = 'da vista'`,
+        [],
+        function(err, results, fields) {
+            res.json(results)
+        }
+    )
+}
+
+export async function allFramesSun(req: Request, res: Response) {
+    connection.execute(
+        `SELECT * FROM Montature WHERE Versione = 'da sole'`,
         [],
         function(err, results, fields) {
             res.json(results)

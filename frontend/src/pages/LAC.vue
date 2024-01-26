@@ -89,7 +89,7 @@ export default defineComponent({
         </form>
 
         <div v-for="lac in datiLAC.slice(0, aggiungiElementi)" class="flex-item">
-            <RouterLink :to="'/prodotti/visita/'" @click = "viewProd(lac)">
+            <RouterLink :to="'/prodotti/lac/' + lac.Modello">
                 <img loading="lazy" :src="'/img/' + lac.Immagine" alt="/">
                 <p>{{ lac.IDProdotto }}</p>
                 <p>{{ lac.Modello}}</p>
