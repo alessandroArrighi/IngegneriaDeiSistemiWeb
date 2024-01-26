@@ -10,6 +10,9 @@ export default defineComponent({
       categoria: ""
     }
   },
+  inject: [
+    "ordine"
+  ],
   methods: {
     getVista() {
       axios.get("/api/prodotti/vista/"+ this.$route.params.idProdotto)    //questa get non va bene perché noi dobbiamo filtrare sul json ottenuto dalla route "padre" montature, non possiamo rifare una chiamate (di cui il controller nemmeno )
@@ -26,7 +29,7 @@ export default defineComponent({
     addItem(prod: any) {
       const prodotto = {
         IDProdotto: prod.Modello,
-        Categoria: this.categoria.substring(0, this.categoria.length - 1),
+        Categoria: this.categoria,
         Quantità: this.quantità,
       }
       this.$emit("sendProd", prodotto)
@@ -34,17 +37,18 @@ export default defineComponent({
     }
   },
   mounted() {
-    if(this.$route.params.categoria == "MontatureV") {
+    console.log(this.ordine)
+    if(this.$route.params.categoria == "Montature") {
         this.getVista()
-        this.categoria = "MontatureV"
-    }
-    if(this.$route.params.categoria == "MontatureS") {
+        this.categoria = "Montature"
+    }/*
+    if(this.$route.params.categoria == "Montature") {
       this.getSole()
-      this.categoria = "MontatureS"
-    }
-    if(this.$route.params.categoria == "LACC") {
+      this.categoria = "Montature"
+    }*/
+    if(this.$route.params.categoria == "LAC") {
         this.getLac()
-        this.categoria = "LACC"
+        this.categoria = "LAC"
     }
   }
 })

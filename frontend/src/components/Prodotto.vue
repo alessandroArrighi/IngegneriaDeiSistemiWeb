@@ -18,7 +18,7 @@ export default defineComponent({
       ordinaPer: "",
       aggiungiElementi: 4,
       categoria: "",
-      quantità: 0,
+      quantità: 1,
     }
   },
   computed: {
@@ -67,25 +67,25 @@ export default defineComponent({
     addItem(prod: any) {
       const prodotto = {
         IDProdotto: prod.Modello,
-        Categoria: this.categoria.substring(0, this.categoria.length - 1),
+        Categoria: this.categoria,
         Quantità: this.quantità,
       }
       this.$emit("sendProd", prodotto)
-      this.quantità = 0
+      this.quantità = 1
     }
   },
   mounted() {
     if(this.$route.params.categoria == "MontatureV") {
         this.getVista()
-        this.categoria = "MontatureV"
+        this.categoria = "Montature"
     }
     if(this.$route.params.categoria == "MontatureS") {
       this.getSole()
-      this.categoria = "MontatureS"
+      this.categoria = "Montature"
     }
     if(this.$route.params.categoria == "LACC") {
         this.getLAC()
-        this.categoria = "LACC"
+        this.categoria = "LAC"
     }
   },
 });
