@@ -27,8 +27,11 @@ export default defineComponent({
     },
     //di prova
     async deleteProd(item: any) {
-      var index = this.ordine.indexOf(item)
-      this.ordine.splice(index, 1)
+      var index = this.ordine.findIndex(obj => obj.IDProdotto === item.IDProdotto);
+
+      if (index !== -1) {
+        this.ordine.splice(index, 1);
+      }
     }
   },
   mounted() {
