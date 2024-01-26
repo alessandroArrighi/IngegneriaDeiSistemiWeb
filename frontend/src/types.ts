@@ -16,7 +16,6 @@ export interface LAC {
     Modello: string
     Brand: string
     Prezzo: number
-    Versione: string
     Durata: string
     Fascia: string
     Focale: string

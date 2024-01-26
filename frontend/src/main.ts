@@ -10,8 +10,8 @@ import VistaSpec from './pages/products/VistaSpec.vue'
 import LAC from './pages/products/LAC.vue'
 import Accesso from './pages/Accesso.vue'
 import AreaPersonale from './pages/AreaPersonale.vue'
-import CreaOrdine from './pages/CreaOrdine.vue'                     //di prova 
-import OrdiniUtente from './pages/OrdiniUtente.vue'                 //di prova
+import CreaOrdine from './pages/CreaOrdine.vue'                     
+import OrdiniUtente from './pages/OrdiniUtente.vue'                 
 import OperazioniProdotti from './pages/OperazioniProdotti.vue'
 import OperazioniOrdini from './pages/OperazioniOrdini.vue'
 import Anagrafica from './pages/Anagrafica.vue'
@@ -23,14 +23,14 @@ const router: Router = createRouter({
     routes: [
         {path:"/", component: Home},
         {path:"/prodotti/tutti/vista/:categoria", component: Vista},
-        {path:"/prodotti/:categoria-:idProdotto", component: VistaSpec},  //da scegliere se fare una get o se possare un prop con tutti i dati a "montature" e poi da questa passare il prop ristresso per id a Prodotto. Lo svantaggio è che se scarichiamo tutti all'apertura del sito scarichiamo immediatamente il json di tutti gli occhiali e le lenti
+      //{path:"/prodotti/tutti/:categoria", component: Vista},
+        {path:"/prodotti/:categoria-:idProdotto", component: VistaSpec},
         {path:"/prodotti/:categoria-:idProdotto", component: LacSpec},
         {path:"/prodotti/tutti/lac/:categoria", component: LAC},
-        //ricordarsi {path:"/lac/:idProdotto", component: },
         {path:"/accesso", component: Accesso},
         {path:"/accesso/areaPersonale", component: AreaPersonale},
-        {path:"/accesso/areaPersonale/creaOrdine", component: CreaOrdine},            //di prova
-        {path:"/accesso/areaPersonale/ordiniUtente", component: OrdiniUtente},        //di prova
+        {path:"/accesso/areaPersonale/creaOrdine", component: CreaOrdine},
+        {path:"/accesso/areaPersonale/ordiniUtente", component: OrdiniUtente},
         {path:"/accesso/areaPersonale/operazioniProdotti", component: OperazioniProdotti},
         {path:"/accesso/areaPersonale/operazioniOrdini", component: OperazioniOrdini},
         {path:"/accesso/areaPersonale/operazioniOrdini/:IDOrdine", component: OperazioniOrdini},

@@ -74,7 +74,14 @@ export async function modifyFrame(req: Request, res: Response) {
                     Colore != null ? Colore : result['Colore'],
                     Immagine != null ? Immagine : result['Immagine'],
                     Modello
-                ]
+                ],
+                function(err, results, fields) {
+                    if(err) {
+                        res.status(400).send(err)
+                        return
+                    }
+                    res.send("Prodotto modificato")
+                }
             )
         }
     )
@@ -163,7 +170,14 @@ export async function modifyLAC(req: Request, res: Response) {
                     Fascia != null ? Fascia : result['Fascia'],
                     Focale != null ? Focale : result['Focale'],
                     Modello
-                ]
+                ],
+                function(err, results, fields) {
+                    if(err) {
+                        res.status(400).send(err)
+                        return
+                    }
+                    res.send("Prodotto modificato")
+                }
             )
         }
     )
@@ -172,11 +186,11 @@ export async function modifyLAC(req: Request, res: Response) {
 export async function deleteProduct(req: Request, res: Response) {
     if(!await adminLoggedIn(req, res)) return
 
-    const { modello, categoria } = req.body.dati
+    const { Modello, Categoria } = req.body.dati
 
     connection.execute(
-        `DELETE FROM ${categoria} WHERE Modello = ?`,
-        [modello],
+        `DELETE FROM ${Categoria} WHERE Modello = ?`,
+        [Modello],
         function(err, results, fields) {
             if(err) {
                 res.status(400).send(err)

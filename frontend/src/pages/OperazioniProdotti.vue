@@ -75,7 +75,7 @@ export default defineComponent({
             this.eliminaItem.Modello = "";
             this.eliminaItem.Categoria = "";
         }
-    },
+    }
 })
 
 </script>
