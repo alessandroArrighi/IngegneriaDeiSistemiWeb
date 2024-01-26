@@ -32,7 +32,7 @@ const router: Router = createRouter({
         {path:"/prodotti/tutti/sole/:categoria", component: Sole},
         {path:"/prodotti/:categoria-:idProdotto", component: SoleSpec},
         //ricordarsi {path:"/lac/:idProdotto", component: },
-        {path:"/accesso", component: Accesso},
+        {path:"/accesso/:permesso", component: Accesso},
         {path:"/accesso/areaPersonale", component: AreaPersonale},
         {path:"/accesso/areaPersonale/creaOrdine", component: CreaOrdine},
         {path:"/accesso/areaPersonale/ordiniUtente", component: OrdiniUtente},

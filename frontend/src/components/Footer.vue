@@ -25,7 +25,7 @@ import { RouterLink } from 'vue-router';
             </div>
             <div>
                 <h4>Amministrazione</h4>
-                <RouterLink to = "#">Log-In Admin</RouterLink>
+                <RouterLink to = "/accesso/admin">Log-In Admin</RouterLink>
             </div>
         </div>
     </footer> 

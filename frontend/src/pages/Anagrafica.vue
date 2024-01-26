@@ -22,7 +22,8 @@ export default defineComponent({
         modifyData() {
             axios.post("/api/utenze/modifica", {
                 dati: this.nuoviDati
-            })
+            }),
+            window.location.reload()
         }
     },
     mounted(){
@@ -47,17 +48,17 @@ export default defineComponent({
 
     
     <form @submit.prevent="modifyData" class="flex-item">
-        <label >Modello</label>
+        <label >User</label>
         <input v-model="nuoviDati.User" type="text" />
-        <label >Brand</label>
+        <label >Nome</label>
         <input v-model="nuoviDati.Nome" type="text" />
-        <label >Prezzo</label>
+        <label >Cognome</label>
         <input v-model="nuoviDati.Cognome" type="text" />
-        <label >Durata</label>
+        <label >Mail</label>
         <input v-model="nuoviDati.Mail" type="text" />
-        <label >Fascia</label>
+        <label >Telefono</label>
         <input v-model="nuoviDati.Telefono" type="text" />
-        <label >Focale</label>
+        <label >Indirizzo</label>
         <input v-model="nuoviDati.Indirizzo" type="text" />
         <button type="submit">Modifica LAC</button>
     </form>

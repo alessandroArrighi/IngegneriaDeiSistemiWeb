@@ -33,6 +33,14 @@ export default defineComponent({
             window.location.href ="/accesso/areaPersonale"
         }
     },
+    mounted() {
+        if(this.$route.params.permesso == "admin") {
+            this.ruoloDaRegistrare = "admin"
+        }
+        if(this.$route.params.permesso == "user") {
+            this.ruoloDaRegistrare = "user"
+        }
+    }
 })
 
 
@@ -45,8 +53,6 @@ export default defineComponent({
         <input v-model="usernameDaRegistrare" type="text" />
         <label>Password</label>
         <input v-model="passwordDaRegistrare" type="text" />
-        <label>Ruolo</label>
-        <input v-model="ruoloDaRegistrare" type="text" />
         <button type="submit">Registrati</button>
     </form>
 
