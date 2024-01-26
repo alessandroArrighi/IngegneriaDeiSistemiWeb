@@ -33,17 +33,10 @@ export default defineComponent({
                 <div class="navbar-nav pb-1 me-5">
                     <ul>
                         <li><RouterLink class="nav-link active text-white px-3 py-2 mt-2 me-2 fs-5" aria-current="page" to = "/">Home</RouterLink></li>
-<<<<<<< HEAD
                         <li><RouterLink class="nav-link active text-white px-3 py-2 mt-2 me-2 fs-5" to = "/prodotti/tutti/vista/MontatureV">Occhiali da Vista</RouterLink></li>
                         <li><RouterLink class="nav-link active text-white px-3 py-2 mt-2 me-2 fs-5" to = "/prodotti/tutti/sole/MontatureS">Occhiali da Sole</RouterLink></li>
                         <li><RouterLink class="nav-link active text-white px-3 py-2 mt-2 me-2 fs-5" to = "/prodotti/tutti/lac/LACC">Lenti a Contatto</RouterLink></li>
                         <li v-if="!user"><RouterLink class="nav-link text-warning px-3 py-2 mt-2 me-2 fs-5" to = "/accesso">Accedi</RouterLink></li>
-=======
-                        <li><RouterLink class="nav-link active text-white px-3 py-2 mt-2 me-2 fs-5" to = "/prodotti/tutti/vista/vista">Occhiali da Vista</RouterLink></li>
-                        <li><RouterLink class="nav-link active text-white px-3 py-2 mt-2 me-2 fs-5" to = "/prodotti/tutti/sole/sole">Occhiali da Sole</RouterLink></li>
-                        <li><RouterLink class="nav-link active text-white px-3 py-2 mt-2 me-2 fs-5" to = "/prodotti/tutti/lac/lac">Lenti a Contatto</RouterLink></li>
-                        <li v-if="!user"><RouterLink class="nav-link text-warning px-3 py-2 mt-2 me-2 fs-5" to = "/accesso/user">Accedi</RouterLink></li>
->>>>>>> 929df041b8d28d135971519e200d2ff2ce19104d
                         <li v-if="user"><RouterLink class="nav-link text-warning px-3 py-2 mt-2 me-2 fs-5" to ="/accesso/areaPersonale">Area Personale</RouterLink></li>
                     </ul>
                 </div>
