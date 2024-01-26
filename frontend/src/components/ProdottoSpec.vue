@@ -1,6 +1,7 @@
 <script lang="ts">
 import { defineComponent } from "vue"
 import axios from "axios"
+import { addToOrder, STORAGE_NAME } from '../utils/localStorage'
 
 export default defineComponent({
   data() {
@@ -10,9 +11,6 @@ export default defineComponent({
       categoria: ""
     }
   },
-  inject: [
-    "ordine"
-  ],
   methods: {
     getVista() {
       axios.get("/api/prodotti/vista/"+ this.$route.params.idProdotto)    //questa get non va bene perché noi dobbiamo filtrare sul json ottenuto dalla route "padre" montature, non possiamo rifare una chiamate (di cui il controller nemmeno )
@@ -26,18 +24,20 @@ export default defineComponent({
       axios.get("/api/prodotti/vista/" + this.$route.params.idProdotto)
       .then(response => this.prodotto = response.data[0])
     },
-    addItem(prod: any) {
+    async addItem(prod: any) {
       const prodotto = {
         IDProdotto: prod.Modello,
         Categoria: this.categoria,
         Quantità: this.quantità,
       }
+      /*
       this.$emit("sendProd", prodotto)
       this.quantità = 1
+      */
+     await addToOrder(STORAGE_NAME, prodotto)
     }
   },
   mounted() {
-    console.log(this.ordine)
     if(this.$route.params.categoria == "Montature") {
         this.getVista()
         this.categoria = "Montature"

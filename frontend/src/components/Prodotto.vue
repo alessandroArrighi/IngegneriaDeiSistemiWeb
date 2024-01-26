@@ -2,6 +2,7 @@
 import { defineComponent, PropType } from "vue";
 import axios from "axios";
 import { Ordine } from "../types";
+import { addToOrder, STORAGE_NAME } from "../utils/localStorage"
 
 export default defineComponent({
   props: {
@@ -64,14 +65,16 @@ export default defineComponent({
       const res = await axios.get("/api/prodotti/sole")
       this.datiProdotto = res.data
     },
-    addItem(prod: any) {
+    async addItem(prod: any) {
       const prodotto = {
         IDProdotto: prod.Modello,
         Categoria: this.categoria,
         Quantità: this.quantità,
       }
+      /*
       this.$emit("sendProd", prodotto)
-      this.quantità = 1
+      this.quantità = 1*/
+      await addToOrder(STORAGE_NAME, prodotto)
     }
   },
   mounted() {
