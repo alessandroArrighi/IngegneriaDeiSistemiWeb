@@ -92,8 +92,7 @@ export default defineComponent({
 </script>
 
 <template>
-  <div class="flex-container">
-
+  <div class="flex-container-filtri">
     <div class="flex-item">
       <button @click="mostraFiltri = !mostraFiltri">Applica Filtri</button>
       <form v-if="mostraFiltri">
@@ -114,27 +113,29 @@ export default defineComponent({
         <option value="brand">Brand</option>
       </select>
     </form>
+  </div>
+  
+  <div class="flex-container-prodotti">
+    <div v-for="prodotto in sortedData.slice(0, aggiungiElementi)" class="flex-item">
+      <RouterLink :to="'/prodotti/' + categoria + '-' + prodotto.Modello">
+        <img loading="lazy" :src="prodotto.Immagine" alt="/">
+        <p>{{ prodotto.Modello }}</p>
+        <p>{{ prodotto.Brand }}</p>
+        <p>{{ prodotto.Prezzo }}</p>
+      </RouterLink>
+      <form @submit.prevent="addItem(prodotto)">
+        <select v-model="quantità">
+          <option value=0>-- Seleziona --</option>
+          <option value=3>3</option>
+          <option value=6>6</option>
+          <option value=9>9</option>
+        </select>
+        <button type="submit">Aggiungi ad Ordine</button>
+      </form>
+    </div>
 
-      <div v-for="prodotto in sortedData.slice(0, aggiungiElementi)" class="flex-item">
-        <RouterLink :to="'/prodotti/' + categoria + '-' + prodotto.Modello">
-          <img loading="lazy" :src="prodotto.Immagine" alt="/">
-          <p>{{ prodotto.Modello }}</p>
-          <p>{{ prodotto.Brand }}</p>
-          <p>{{ prodotto.Prezzo }}</p>
-        </RouterLink>
-        <form @submit.prevent="addItem(prodotto)">
-          <select v-model="quantità">
-            <option value=0>-- Seleziona --</option>
-            <option value=3>3</option>
-            <option value=6>6</option>
-            <option value=9>9</option>
-          </select>
-          <button type="submit">Aggiungi ad Ordine</button>
-        </form>
+    <div class="flex-item">
+          <button @click="aggiungiElementi += 4">Carica Altri</button>
       </div>
-
-      <div class="flex-item">
-            <button @click="aggiungiElementi += 4">Carica Altri</button>
-        </div>
   </div>
 </template>

@@ -10,6 +10,11 @@ export default defineComponent({
     Slide,
     Navigation,
     Pagination,
+  },
+  data() {
+    return {
+      slide: 0,
+    }
   }
 })
 </script>
@@ -50,19 +55,19 @@ export default defineComponent({
     <Slide :key="slide">
       <div class="carousel__item">
         <img src="../../public/1.jpg" style="width:100%">
-        <RouterLink to = "/prodotti/tutti/vista/MontatureV"><p>ciaoooooo</p></RouterLink>
+        <RouterLink to = "/prodotti/tutti/vista/MontatureV"><p>Le Nostre Montature da Vista</p></RouterLink>
       </div>
     </Slide>
     <Slide :key="slide">
       <div class="carousel__item">
         <img src="../../public/2.jpg" style="width:100%">
-        <RouterLink to = "/prodotti/tutti/vista/MontatureS"><p>ciaoooooo</p></RouterLink>
+        <RouterLink to = "/prodotti/tutti/vista/MontatureS"><p>I Nostri Occhiali da Sole</p></RouterLink>
       </div>
     </Slide>
     <Slide :key="slide">
       <div class="carousel__item">
         <img src="../../public/3.jpg" style="width:100%">
-        <RouterLink to = "/prodotti/tutti/vista/LACC"><p>ciaoooooo</p></RouterLink>
+        <RouterLink to = "/prodotti/tutti/vista/LACC"><p>Lenti a Contatto</p></RouterLink>
       </div>
     </Slide>
 

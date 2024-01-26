@@ -9,23 +9,23 @@ import { RouterLink } from 'vue-router';
 
 <template>
     <footer>
-        <div class="container-fluid py-5 overflow-hidden border-top border-2 border-white" id="section2" style = "color: white">
-            <div>
-                <h4>Chi siamo</h4>
+        <div class="flex-container-footer" id="section2">
+            <div class="flex-item">
+                <h4>Per Conoscerci Meglio:</h4>
                 <p>Alessandro Arrighi alessandajksd@studio.unibo.it</p>
                 <p>Riccardo Medri riccardoakjndsfla@studio.unibo.it</p>
                 <p>Corso di Laura Professionalizzante in Tecnologie dei Sistemi Informatici</p>
                 <p>Progetto di Ingegneria dei Sistemi Web</p>
             </div>
-            <div>
+            <div class="flex-item">
                 <h4>Link Utili</h4>
-                <a href="#">Pacchetto per la gestione del carosello</a>
-                <a href="#">Repository di github del nostro progetto</a>
-                <a href="#">Corso Universitario</a>
+                <a href="https://ismail9k.github.io/vue3-carousel/" target="_blank">Vue3-Carousel</a>
+                <a href="/" target="_blank">Repository Github</a>
+                <a href="https://corsi.unibo.it/laurea/TecnologieSistemiInformatici" target="_blank">Corso Universitario</a>
             </div>
-            <div>
+            <div class="flex-item">
                 <h4>Amministrazione</h4>
-                <RouterLink to = "/accesso/admin">Log-In Admin</RouterLink>
+                <RouterLink to = "/accesso/admin" class="pill-item">Log-In Admin</RouterLink>
             </div>
         </div>
     </footer> 
