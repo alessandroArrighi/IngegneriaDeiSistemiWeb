@@ -10,6 +10,11 @@ export default defineComponent({
     Slide,
     Navigation,
     Pagination,
+  },
+  data() {
+    return {
+      slide: 0
+    }
   }
 })
 </script>

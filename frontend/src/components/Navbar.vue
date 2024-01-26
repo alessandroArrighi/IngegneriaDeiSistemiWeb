@@ -5,20 +5,21 @@ import Carrello from "./Carrello.vue";
 
 export default defineComponent({
     props: {
-        user: Object as PropType<User>,
-        ordine: Array as PropType<Ordine[]>
+        user: {} as PropType<User>,
+        ordine: Array as PropType<Ordine[]>,
     },
     components: {
         Carrello
     },
     methods: {
         scrollToTop() {
+            console.log(this.user)
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         }
-    } 
+    }
 })
 
 </script>
