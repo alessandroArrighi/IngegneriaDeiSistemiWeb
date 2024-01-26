@@ -60,10 +60,12 @@ export default defineComponent({
     <div class="flex-container">
         <h1 style="color: white;">CARRELLO</h1>
         <div style="color: white;" v-for = "prodotto in ordine">
-            <p>{{ prodotto.IDProdotto }}</p>
-            <p>{{ prodotto.Categoria }}</p>
-            <p>{{ prodotto.Quantità }}</p>
-            <button @click = "rimuoviProdotto(prodotto)">Rimuovi</button>
+            <RouterLink :to="'/prodotti/' + prodotto.Categoria + prodotto.IDProdotto">
+                <p>{{ prodotto.IDProdotto }}</p>
+                <p>{{ prodotto.Categoria }}</p>
+                <p>{{ prodotto.Quantità }}</p>
+                <button @click = "rimuoviProdotto(prodotto)">Rimuovi</button>
+            </RouterLink>
         </div>
         <!--<form @submit.prevent="aggiungiProdotto" class="flex-item">
             <label>idProdotto</label>
