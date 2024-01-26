@@ -5,9 +5,9 @@ import 'bootstrap'
 import "bootstrap/dist/css/bootstrap.min.css"
 
 import Home from './pages/Home.vue'
-import Montature from './pages/Montature.vue'
-import VistaSpec from './pages/VistaSpec.vue'
-import LAC from './pages/LAC.vue'
+import Vista from './pages/products/Vista.vue'
+import VistaSpec from './pages/products/VistaSpec.vue'
+import LAC from './pages/products/LAC.vue'
 import Accesso from './pages/Accesso.vue'
 import AreaPersonale from './pages/AreaPersonale.vue'
 import CreaOrdine from './pages/CreaOrdine.vue'                     //di prova 
@@ -16,16 +16,16 @@ import OperazioniProdotti from './pages/OperazioniProdotti.vue'
 import OperazioniOrdini from './pages/OperazioniOrdini.vue'
 import Anagrafica from './pages/Anagrafica.vue'
 import NotFound from "./pages/NotFound.vue"
-import LacSpec from './pages/LacSpec.vue'
+import LacSpec from './pages/products/LacSpec.vue'
 
 const router: Router = createRouter({
     history: createWebHistory(),
     routes: [
         {path:"/", component: Home},
-        {path:"/prodotti/vista", component: Montature},
-        {path:"/prodotti/visita/:idProdotto", component: VistaSpec},  //da scegliere se fare una get o se possare un prop con tutti i dati a "montature" e poi da questa passare il prop ristresso per id a Prodotto. Lo svantaggio è che se scarichiamo tutti all'apertura del sito scarichiamo immediatamente il json di tutti gli occhiali e le lenti
-        {path:"/prodotti/lac/:idProdotto", component: LacSpec},
-        {path:"/prodotti/lac", component: LAC},
+        {path:"/prodotti/tutti/vista/:categoria", component: Vista},
+        {path:"/prodotti/:categoria-:idProdotto", component: VistaSpec},  //da scegliere se fare una get o se possare un prop con tutti i dati a "montature" e poi da questa passare il prop ristresso per id a Prodotto. Lo svantaggio è che se scarichiamo tutti all'apertura del sito scarichiamo immediatamente il json di tutti gli occhiali e le lenti
+        {path:"/prodotti/:categoria-:idProdotto", component: LacSpec},
+        {path:"/prodotti/tutti/lac/:categoria", component: LAC},
         //ricordarsi {path:"/lac/:idProdotto", component: },
         {path:"/accesso", component: Accesso},
         {path:"/accesso/areaPersonale", component: AreaPersonale},
