@@ -67,7 +67,7 @@ export default defineComponent({
     addItem(prod: any) {
       const prodotto = {
         IDProdotto: prod.Modello,
-        Categoria: this.categoria,
+        Categoria: this.categoria.substring(0, this.categoria.length - 1),
         Quantità: this.quantità,
       }
       this.$emit("sendProd", prodotto)
@@ -75,17 +75,17 @@ export default defineComponent({
     }
   },
   mounted() {
-    if(this.$route.params.categoria == "vista") {
+    if(this.$route.params.categoria == "MontatureV") {
         this.getVista()
-        this.categoria = "vista-"
+        this.categoria = "MontatureV"
     }
-    if(this.$route.params.categoria == "sole") {
+    if(this.$route.params.categoria == "MontatureS") {
       this.getSole()
-      this.categoria = "sole-"
+      this.categoria = "MontatureS"
     }
-    if(this.$route.params.categoria == "lac") {
+    if(this.$route.params.categoria == "LACC") {
         this.getLAC()
-        this.categoria = "lac-"
+        this.categoria = "LACC"
     }
   },
 });
@@ -116,7 +116,7 @@ export default defineComponent({
     </form>
 
       <div v-for="prodotto in sortedData.slice(0, aggiungiElementi)" class="flex-item">
-        <RouterLink :to="'/prodotti/' + categoria + prodotto.Modello">
+        <RouterLink :to="'/prodotti/' + categoria + '-' + prodotto.Modello">
           <img loading="lazy" :src="prodotto.Immagine" alt="/">
           <p>{{ prodotto.Modello }}</p>
           <p>{{ prodotto.Brand }}</p>
