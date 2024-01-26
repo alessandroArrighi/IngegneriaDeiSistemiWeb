@@ -19,10 +19,10 @@ export default defineComponent({
             this.datiUtente = res.data
 
         },
-        modifyData() {
-            axios.post("/api/utenze/modifica", {
+        async modifyData() {
+            await axios.post("/api/utenze/modifica", {
                 dati: this.nuoviDati
-            }),
+            })
             window.location.reload()
         }
     },
