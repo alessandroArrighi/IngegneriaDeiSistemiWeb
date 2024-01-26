@@ -18,15 +18,17 @@ export default defineComponent({
     async getUser() {
       const res = await axios.get("/api/auth/getUser")
       this.user = res.data
-      //console.log(res.data)
     },
     async addToOrd(prodotto: any) {
       this.ordine.push(prodotto)
-      console.log(this.ordine)
     },
     async sendProd(prodotto: any) {
       this.prodotto = prodotto
-      console.log(this.prodotto)
+    },
+    //di prova
+    async deleteProd(item: any) {
+      var index = this.ordine.indexOf(item)
+      this.ordine.splice(index, 1)
     }
   },
   mounted() {
@@ -43,8 +45,8 @@ export default defineComponent({
 <template>
     <div>
         <Navbar :user="user" :ordine = "ordine"/> <!--provare mettere :user in div padre-->
-        <RouterLink to = "/accesso/areaPersonale/creaOrdine">Crea Ordine</RouterLink>
-        <RouterView :user="user" :ordine = "ordine" @sendProd = "addToOrd" :prodotto = "prodotto" @viewVista = "sendProd" @viewLac = "sendProd"/>
+        <RouterLink to = "/accesso/areaPersonale/creaOrdine" >Carrello</RouterLink>
+        <RouterView :user="user" :ordine = "ordine" @sendProd = "addToOrd" :prodotto = "prodotto" @viewVista = "sendProd" @viewLac = "sendProd" @cancella = "deleteProd"/>
         <FooterComp />
     </div>
 </template>

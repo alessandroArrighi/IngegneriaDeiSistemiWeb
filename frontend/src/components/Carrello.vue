@@ -5,6 +5,17 @@
     export default defineComponent({
         props: {
             ordine: Array as PropType<Ordine[]>
+        },
+        emits: ["cancella"],
+        methods: {
+            rimuoviProdotto(prodotto: any) {
+                const item = {
+                    IDProdotto: prodotto.IDProdotto,
+                    Categoria: prodotto.Categoria,
+                    Quantità: prodotto.Quantità,
+                }
+                this.$emit("cancella", item)
+            }
         }
     })
 </script>
@@ -15,5 +26,6 @@
         <p>{{ prodotto.IDProdotto }}</p>
         <p>{{ prodotto.Categoria }}</p>
         <p>{{ prodotto.Quantità }}</p>
+        <button @click.prevent = "rimuoviProdotto(prodotto)">Rimuovi</button>
     </div>
 </template>

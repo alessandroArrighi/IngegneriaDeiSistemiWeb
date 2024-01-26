@@ -8,6 +8,7 @@ export default defineComponent({
         user: Object as PropType<User>,
         ordine: Array as PropType<Ordine[]>
     },
+    emits: ["cancella"],
     data() {
         return{
             idProdotto: "",
@@ -23,9 +24,17 @@ export default defineComponent({
                 ord: this.ordine
             })
         },
+        rimuoviProdotto(prodotto: any) {
+            const item = {
+                IDProdotto: prodotto.IDProdotto,
+                Categoria: prodotto.Categoria,
+                Quantità: prodotto.Quantità,
+            }
+            this.$emit("cancella", item)
+        }
 
 
-        aggiungiProdotto() {
+        /*aggiungiProdotto() {
             const tmp: Ordine = {
                 IDProdotto: this.idProdotto,
                 Categoria: this.categoria,
@@ -38,8 +47,8 @@ export default defineComponent({
             console.log(this.user?.Role)
             /*tmp.IDProdotto = ""
             tmp.Categoria = ""
-            tmp.Quantità = 0*/
-        }
+            tmp.Quantità = 0
+        }*/
     },
     mounted() {
         console.log(this.ordine)
@@ -49,7 +58,14 @@ export default defineComponent({
 
 <template>
     <div class="flex-container">
-        <form @submit.prevent="aggiungiProdotto" class="flex-item">
+        <h1 style="color: white;">CARRELLO</h1>
+        <div style="color: white;" v-for = "prodotto in ordine">
+            <p>{{ prodotto.IDProdotto }}</p>
+            <p>{{ prodotto.Categoria }}</p>
+            <p>{{ prodotto.Quantità }}</p>
+            <button @click = "rimuoviProdotto(prodotto)">Rimuovi</button>
+        </div>
+        <!--<form @submit.prevent="aggiungiProdotto" class="flex-item">
             <label>idProdotto</label>
             <input v-model="idProdotto" type="text" />
 
@@ -59,7 +75,7 @@ export default defineComponent({
             <label>quantità</label>
             <input v-model="quantità" type="text" />
             <button type="submit">Crea</button>
-        </form>
+        </form>-->
         <button @click="creaOrdine">Ordina</button>
         <!--<div v-for="ordine  in sortedData.slice(0, aggiungiElementi)" class="flex-item">
             <RouterLink :to="'/montature/' + montatura.IDProdotto">

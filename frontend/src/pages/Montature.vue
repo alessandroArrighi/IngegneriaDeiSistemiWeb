@@ -53,7 +53,7 @@ export default defineComponent({
   },
   methods: {
     getMontature() {
-      axios.get("/api/prodotti/montature")
+      axios.get("/api/prodotti/vista")
         .then(response => this.datiMontature = response.data)
         .catch(error => console.error("Errore durante la richiesta axios:", error));
     },
