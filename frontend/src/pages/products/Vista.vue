@@ -4,12 +4,18 @@
 
     export default defineComponent({
         components: {
-    Prodotto
-}
+            Prodotto
+        },
+        emits: ["sendProd"],
+        methods: {
+            sendProd(prodotto: any) {
+                this.$emit("sendProd", prodotto)
+            }
+        }
     })
 </script>
 
 <template>
     <h1>Occhiali da vista</h1>
-    <Prodotto />
+    <Prodotto @sendProd = "sendProd"/>
 </template>
