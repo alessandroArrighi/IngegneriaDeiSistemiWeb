@@ -28,6 +28,7 @@ export default defineComponent({
     }
   },
   mounted() {
+    this.addToOrd("hello")
     this.getUser()
   },
   components: {
