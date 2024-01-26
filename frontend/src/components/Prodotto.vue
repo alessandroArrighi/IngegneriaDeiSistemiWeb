@@ -11,13 +11,14 @@ export default defineComponent({
   data() {
     return {
       datiMontature: [] as any[],
+      datiLAC: [] as any[],
       filterId: "",
       filterBrand: "",
       filterPrice: "",
       mostraFiltri: false,
       ordinaPer: "",
       aggiungiElementi: 4,
-      categoria: "montature",
+      categoria: "",
       quantità: 0,
     };
   },
@@ -68,10 +69,24 @@ export default defineComponent({
     },
     viewItem(montatura: Montatura) {
       this.$emit("viewVista", montatura)
+    },
+    async getLAC() {
+        const res = await axios.get("/api/prodotti/lac")
+        this.datiMontature = res.data
     }
   },
   mounted() {
-    this.getMontature()
+    if(this.$route.params.categoria == "vista") {
+        this.getMontature()
+        this.categoria = "vista-"
+    }
+    if(this.$route.params.categoria == "sole") {
+
+    }
+    if(this.$route.params.categoria == "lac") {
+        this.getLAC()
+        this.categoria = "lac-"
+    }
   },
 });
 </script>
@@ -101,7 +116,7 @@ export default defineComponent({
     </form>
 
       <div v-for="montatura in sortedData.slice(0, aggiungiElementi)" class="flex-item">
-        <RouterLink :to="'/prodotti/visita/' + montatura.Modello" @click = "viewItem(montatura)">
+        <RouterLink :to="'/prodotti/' + categoria + montatura.Modello" @click = "viewItem(montatura)">
           <img loading="lazy" :src="montatura.Immagine" alt="/">
           <p>{{ montatura.Modello }}</p>
           <p>{{ montatura.Brand }}</p>
