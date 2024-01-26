@@ -1,147 +1,79 @@
 <script lang="ts">
 import { defineComponent } from "vue";
 import axios from "axios";
+import { Montatura, LAC } from "../types";
 
 export default defineComponent({
     data() {
         return {
-        //datiMontature: [] as Articolo[],
-        modelloMontatura: "",
-        brandMontatura: "",
-        prezzoMontatura: 0,
-        versioneMontatura: "",
-        calibroMontatura: "",
-        ponteMontatura: "",
-        asteMontatura: "",
-        materialeMontatura: "",
-        coloreMontatura: "",
-        immagineMontatura:"",
-
-        modelloLAC: "",
-        brandLAC: "",
-        prezzoLAC: 0,
-        durataLAC: "",
-        fasciaLAC: "",
-        focaleLAC: "",
-
-        modelloMontaturaNuovo: "",
-        brandMontaturaNuovo: "",
-        prezzoMontaturaNuovo: 0,
-        versioneMontaturaNuovo: "",
-        calibroMontaturaNuovo: "",
-        ponteMontaturaNuovo: "",
-        asteMontaturaNuovo: "",
-        materialeMontaturaNuovo: "",
-        coloreMontaturaNuovo: "",
-        immagineMontaturaNuovo: "",
-        newmodelloMontaturaNuovo: "",
-
-        modelloLACNuovo: "",
-        brandLACNuovo: "",
-        prezzoLACNuovo: "",
-        versioneLACNuovo: "",
-        durataLACNuovo: "", 
-        fasciaLACNuovo: "",
-        focaleLACNuovo: "",
-        newmodelloLACNuovo: "",
-
-        modelloDaEliminare: "",
-        categoriaModelloDaEliminare: ""
+        nuovaMontatura: {} as Montatura,
+        nuovaLAC: {} as LAC,
+        modificaMontatura: {} as Montatura,
+        modificaLAC: {} as LAC,
+        eliminaItem: {} as LAC
         }
     },
     methods: {
         async addMontatura() {
             await axios.post("/api/prodotti/aggiungi/montature", {
-                Modello: this.modelloMontatura,             //si può inviare direttamente la struttura
-                Brand: this.brandMontatura,
-                Prezzo: this.prezzoMontatura,
-                Versione: this.versioneMontatura,
-                Calibro: this.calibroMontatura,
-                Ponte: this.ponteMontatura,
-                Aste: this.asteMontatura,
-                Materiale: this.materialeMontatura,
-                Colore: this.coloreMontatura,
-                Immagine: this.immagineMontatura
+                dati: this.nuovaMontatura
             });
-            this.modelloMontatura = "";
-            this.brandMontatura = "";
-            this.prezzoMontatura = 0;
-            this.versioneMontatura = "";
-            this.calibroMontatura = "";
-            this.ponteMontatura = "";
-            this.asteMontatura = "";
-            this.materialeMontatura = "";
-            this.coloreMontatura = "";
-            this.immagineMontatura = "";
+            this.nuovaMontatura.Modello = "";
+            this.nuovaMontatura.Brand = "";
+            this.nuovaMontatura.Prezzo = 0;
+            this.nuovaMontatura.Versione = "";
+            this.nuovaMontatura.Calibro = "";
+            this.nuovaMontatura.Ponte = "";
+            this.nuovaMontatura.Aste = "";
+            this.nuovaMontatura.Materiale = "";
+            this.nuovaMontatura.Colore = "";
+            this.nuovaMontatura.Immagine = "";
         },
         async addLAC() {
             await axios.post("/api/prodotti/aggiungi/lac", {
-                Modello: this.modelloLAC,
-                Brand: this.brandLAC,
-                Prezzo: this.prezzoLAC,
-                Durata: this.durataLAC,
-                Fascia: this.fasciaLAC,
-                Focale: this.focaleLAC
+                dati: this.nuovaLAC
             });
-            this.modelloLAC = "";
-            this.brandLAC = "";
-            this.prezzoLAC = 0;
-            this.durataLAC = "";
-            this.fasciaLAC = "";
-            this.focaleLAC = "";
+            this.nuovaLAC.Modello = "";
+            this.nuovaLAC.Brand = "";
+            this.nuovaLAC.Prezzo = 0;
+            this.nuovaLAC.Durata = "";
+            this.nuovaLAC.Fascia = "";
+            this.nuovaLAC.Focale = "";
         },
         async modifyMontatura() {
             await axios.post("/api/prodotti/modifica/montature", {
-                Modello: this.modelloMontaturaNuovo,
-                Brand: this.brandMontaturaNuovo,
-                Prezzo: this.prezzoMontaturaNuovo,
-                Versione: this.versioneMontaturaNuovo,
-                Calibro: this.calibroMontaturaNuovo,
-                Ponte: this.ponteMontaturaNuovo,
-                Aste: this.asteMontaturaNuovo,
-                Materiale: this.materialeMontaturaNuovo,
-                Colore: this.coloreMontaturaNuovo,
-                Immagine: this.immagineMontaturaNuovo,
-                NewModello: this.newmodelloMontaturaNuovo
+                dati: this.modificaMontatura
             });
-            this.modelloMontaturaNuovo = "";
-            this.brandMontaturaNuovo = "";
-            this.prezzoMontaturaNuovo = 0;
-            this.versioneMontaturaNuovo = "";
-            this.calibroMontaturaNuovo = "";
-            this.ponteMontaturaNuovo = "";
-            this.asteMontaturaNuovo = "";
-            this.materialeMontaturaNuovo = "";
-            this.coloreMontaturaNuovo = "";
-            this.immagineMontaturaNuovo = "";
-            this.newmodelloMontaturaNuovo = "";
+            this.modificaMontatura.Modello = "";
+            this.modificaMontatura.Brand = "";
+            this.modificaMontatura.Prezzo = 0;
+            this.modificaMontatura.Versione = "";
+            this.modificaMontatura.Calibro = "";
+            this.modificaMontatura.Ponte = "";
+            this.modificaMontatura.Aste = "";
+            this.modificaMontatura.Materiale = "";
+            this.modificaMontatura.Colore = "";
+            this.modificaMontatura.Immagine = "";
+            this.modificaMontatura.NewModello = "";
         },
         async modifyLAC() {
             await axios.post("/api/prodotti/modifica/lac", {
-                Modello: this.modelloLACNuovo,
-                Brand: this.brandLACNuovo,
-                Prezzo: this.prezzoLACNuovo,
-                Durata: this.durataLACNuovo,
-                Fascia: this.fasciaLACNuovo,
-                Focale: this.focaleLACNuovo,
-                NewModello: this.newmodelloLACNuovo
+                dati: this.modificaLAC
             });
-            this.modelloLACNuovo = "";
-            this.brandLACNuovo = "";
-            this.prezzoLACNuovo = "";
-            this.versioneLACNuovo = "";
-            this.durataLACNuovo = "";
-            this.fasciaLACNuovo = "";
-            this.focaleLACNuovo = "";
-            this.newmodelloLACNuovo = "";
+            this.modificaLAC.Modello = "";
+            this.modificaLAC.Brand = "";
+            this.modificaLAC.Prezzo = 0;
+            this.modificaLAC.Durata = "";
+            this.modificaLAC.Fascia = "";
+            this.modificaLAC.Focale = "";
+            this.modificaLAC.NewModello = "";
         }, 
         async deleteProduct() {
             await axios.post("/api/prodotti/elimina", {
-                modello: this.modelloDaEliminare,
-                categoria: this.categoriaModelloDaEliminare
+                dati: this.eliminaItem
             });
-            this.modelloDaEliminare = "";
-            this.categoriaModelloDaEliminare = "";
+            this.eliminaItem.Modello = "";
+            this.eliminaItem.Categoria = "";
         }
     },
 })
@@ -153,93 +85,93 @@ export default defineComponent({
     <div class="flex-container">
         <form @submit.prevent="addMontatura" class="flex-item">
             <label >Modello</label>
-            <input v-model="modelloMontatura" type="text" />
+            <input v-model="nuovaMontatura.Modello" type="text" />
             <label >Brand</label>
-            <input v-model="brandMontatura" type="text" />
+            <input v-model="nuovaMontatura.Brand" type="text" />
             <label >Prezzo</label>
-            <input v-model="prezzoMontatura" type="text" />
+            <input v-model="nuovaMontatura.Prezzo" type="text" />
             <label >Versione</label>
-            <input v-model="versioneMontatura" type="text" />
+            <input v-model="nuovaMontatura.Versione" type="text" />
             <label >Calibro</label>
-            <input v-model="calibroMontatura" type="text" />
+            <input v-model="nuovaMontatura.Calibro" type="text" />
             <label >Ponte</label>
-            <input v-model="ponteMontatura" type="text" />
+            <input v-model="nuovaMontatura.Ponte" type="text" />
             <label >Aste</label>
-            <input v-model="asteMontatura" type="text" />
+            <input v-model="nuovaMontatura.Aste" type="text" />
             <label >Materiale</label>
-            <input v-model="materialeMontatura" type="text" />
+            <input v-model="nuovaMontatura.Materiale" type="text" />
             <label >Colore</label>
-            <input v-model="coloreMontatura" type="text" />
+            <input v-model="nuovaMontatura.Colore" type="text" />
             <label >Immagine</label>
-            <input v-model="immagineMontatura" type="text" />
+            <input v-model="nuovaMontatura.Immagine" type="text" />
             <button type="submit">Aggiungi Montatura</button>
         </form>
 
         <form @submit.prevent="addLAC" class="flex-item">
             <label >Modello</label>
-            <input v-model="modelloLAC" type="text" />
+            <input v-model="nuovaLAC.Modello" type="text" />
             <label >Brand</label>
-            <input v-model="brandLAC" type="text" />
+            <input v-model="nuovaLAC.Brand" type="text" />
             <label >Prezzo</label>
-            <input v-model="prezzoLAC" type="text" />
+            <input v-model="nuovaLAC.Prezzo" type="text" />
             <label >Durata</label>
-            <input v-model="durataLAC" type="text" />
+            <input v-model="nuovaLAC.Durata" type="text" />
             <label >Fascia</label>
-            <input v-model="fasciaLAC" type="text" />
+            <input v-model="nuovaLAC.Fascia" type="text" />
             <label >Focale</label>
-            <input v-model="focaleLAC" type="text" />
+            <input v-model="nuovaLAC.Focale" type="text" />
             <button type="submit">Aggiungi LAC</button>
         </form>
 
         <form @submit.prevent="modifyMontatura" class="flex-item">
             <label >Modello</label>
-            <input v-model="modelloMontaturaNuovo" type="text" />
+            <input v-model="modificaMontatura.Modello" type="text" />
             <label >Brand</label>
-            <input v-model="brandMontaturaNuovo" type="text" />
+            <input v-model="modificaMontatura.Brand" type="text" />
             <label >Prezzo</label>
-            <input v-model="prezzoMontaturaNuovo" type="text" />
+            <input v-model="modificaMontatura.Prezzo" type="text" />
             <label >Versione</label>
-            <input v-model="versioneMontaturaNuovo" type="text" />
+            <input v-model="modificaMontatura.Versione" type="text" />
             <label >Calibro</label>
-            <input v-model="calibroMontaturaNuovo" type="text" />
+            <input v-model="modificaMontatura.Calibro" type="text" />
             <label >Ponte</label>
-            <input v-model="ponteMontaturaNuovo" type="text" />
+            <input v-model="modificaMontatura.Ponte" type="text" />
             <label >Aste</label>
-            <input v-model="asteMontaturaNuovo" type="text" />
+            <input v-model="modificaMontatura.Aste" type="text" />
             <label >Materiale</label>
-            <input v-model="materialeMontaturaNuovo" type="text" />
+            <input v-model="modificaMontatura.Materiale" type="text" />
             <label >Colore</label>
-            <input v-model="coloreMontaturaNuovo" type="text" />
+            <input v-model="modificaMontatura.Colore" type="text" />
             <label >Immagine</label>
-            <input v-model="immagineMontaturaNuovo" type="text" />
+            <input v-model="modificaMontatura.Immagine" type="text" />
             <label >NewModello</label>
-            <input v-model="newmodelloMontaturaNuovo" type="text" />
+            <input v-model="modificaMontatura.NewModello" type="text" />
             <button type="submit">Modifica Montatura</button>
         </form>
 
         <form @submit.prevent="modifyLAC" class="flex-item">
             <label >Modello</label>
-            <input v-model="modelloLACNuovo" type="text" />
+            <input v-model="modificaLAC.Modello" type="text" />
             <label >Brand</label>
-            <input v-model="brandLACNuovo" type="text" />
+            <input v-model="modificaLAC.Brand" type="text" />
             <label >Prezzo</label>
-            <input v-model="prezzoLACNuovo" type="text" />
+            <input v-model="modificaLAC.Prezzo" type="text" />
             <label >Durata</label>
-            <input v-model="durataLACNuovo" type="text" />
+            <input v-model="modificaLAC.Durata" type="text" />
             <label >Fascia</label>
-            <input v-model="fasciaLACNuovo" type="text" />
+            <input v-model="modificaLAC.Fascia" type="text" />
             <label >Focale</label>
-            <input v-model="focaleLACNuovo" type="text" />
+            <input v-model="modificaLAC.Focale" type="text" />
             <label >Nuovo Modello</label>
-            <input v-model="newmodelloLACNuovo" type="text" />
+            <input v-model="modificaLAC.NewModello" type="text" />
             <button type="submit">Modifica LAC</button>
         </form>
 
         <form @submit.prevent="deleteProduct" class="flex-item">
             <label>Modello da eliminare</label>
-            <input v-model="modelloDaEliminare" type="text"/>
+            <input v-model="eliminaItem.Modello" type="text"/>
             <label>Categoria prodotto</label>
-            <input v-model="categoriaModelloDaEliminare" type="text" />
+            <input v-model="eliminaItem.Categoria" type="text" />
             <button type="submit">Elimina</button>
         </form>
     </div>

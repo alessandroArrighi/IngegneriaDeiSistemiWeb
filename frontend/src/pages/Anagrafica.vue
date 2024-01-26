@@ -17,16 +17,12 @@ export default defineComponent({
         async getUtente(){
             const res = await axios.get("/api/utenze")
             this.datiUtente = res.data
-            console.log(this.user?.IDUtente)
+
         },
         modifyData() {
-            console.log(this.nuoviDati)
             axios.post("/api/utenze/modifica", {
                 dati: this.nuoviDati
             })
-        },
-        comeVuoi(){
-            console.log(this.user?.IDUtente)
         }
     },
     mounted(){
