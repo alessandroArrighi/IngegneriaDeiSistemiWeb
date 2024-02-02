@@ -9,11 +9,11 @@ import { RouterLink } from 'vue-router';
 
 <template>
     <footer>
-        <div class="flex-container-footer" id="section2">
+        <div class="flex-container-footer">
             <div class="flex-item">
-                <h4>Per Conoscerci Meglio:</h4>
-                <p>Alessandro Arrighi alessandajksd@studio.unibo.it</p>
-                <p>Riccardo Medri riccardoakjndsfla@studio.unibo.it</p>
+                <h4>Chi Siamo:</h4>
+                <p>Alessandro Arrighi</p>
+                <p>Riccardo Medri</p>
                 <p>Corso di Laura Professionalizzante in Tecnologie dei Sistemi Informatici</p>
                 <p>Progetto di Ingegneria dei Sistemi Web</p>
             </div>
@@ -21,7 +21,7 @@ import { RouterLink } from 'vue-router';
                 <h4>Link Utili</h4>
                 <a href="https://ismail9k.github.io/vue3-carousel/" target="_blank">Vue3-Carousel</a>
                 <a href="/" target="_blank">Repository Github</a>
-                <a href="https://corsi.unibo.it/laurea/TecnologieSistemiInformatici" target="_blank">Corso Universitario</a>
+                <a href="https://corsi.unibo.it/laurea/TecnologieSistemiInformatici" target="_blank">Sito del Corso</a>
             </div>
             <div class="flex-item">
                 <h4>Amministrazione</h4>

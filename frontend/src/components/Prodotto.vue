@@ -99,19 +99,18 @@ export default defineComponent({
     <div class="flex-item">
       <button @click="mostraFiltri = !mostraFiltri">Applica Filtri</button>
       <form v-if="mostraFiltri">
-        <label for="productId">Filtra per ID Prodotto:</label>
-        <input v-model="filterId" type="text" id="productId" />
-        <label for="productBrand">Filtra per Brand:</label>
-        <input v-model="filterBrand" type="text" id="productBrand" />
-        <label for="productPrice">Filtra per Prezzo:</label>
-        <input v-model="filterPrice" type="text" id="productPrice" />
+        <label>Filtra per ID Prodotto:</label>
+        <input v-model="filterId" type="text"/>
+        <label>Filtra per Brand:</label>
+        <input v-model="filterBrand" type="text"/>
+        <label>Filtra per Prezzo:</label>
+        <input v-model="filterPrice" type="text"/>
       </form>
     </div>
 
     <form class="flex-item">
-      <label for="sortOption">Ordina per:</label>
-      <select v-model="ordinaPer" id="sortOption">
-        <option value="">-- Seleziona --</option>
+      <select v-model="ordinaPer">
+        <option value="">-- Ordina Per --</option>
         <option value="prezzo">Prezzo</option>
         <option value="brand">Brand</option>
       </select>
