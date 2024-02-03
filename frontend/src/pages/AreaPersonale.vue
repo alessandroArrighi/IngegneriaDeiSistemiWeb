@@ -31,24 +31,21 @@ export default defineComponent({
 
 
 <template>
-    <div v-if="user">
-
-        <button @click="logout" type="submit">Logout</button>
-
-        <form @submit.prevent="modifyPassword">
-            <label>Inserisci la vecchia password</label>
+    <div v-if="user" class="flex-container-ap">
+        <form @submit.prevent="modifyPassword" class="flex-item">
+            <label>Inserire la vecchia password</label>
             <input v-model="oldPassword" type="text"/>
-            <label>Inserisci la nuova password</label>
+            <label>Inserire la nuova password</label>
             <input v-model="newPassword" type="text"/>
             <button type="submit">Cambia Password</button>
         </form>
-
-        <RouterLink v-if="user?.Role == 'admin'" :to="'/accesso/areaPersonale/operazioniProdotti'"><button>Operazioni Prodotti Admin</button></RouterLink>
-        <RouterLink v-if="user?.Role == 'admin'" :to="'/accesso/areaPersonale/operazioniOrdini'"><button>Ordini per ID Admin</button></RouterLink>
-        <RouterLink :to="'/accesso/areaPersonale/ordiniUtente'"><button>Ordini Utente</button></RouterLink>
-        <RouterLink :to="'/accesso/areaPersonale/anagrafica'"><button>Anagrafica</button></RouterLink>
     </div>
 
-
-
+    <div class="flex-container-op">
+        <div class="flex-item"><button @click="logout" type="submit">Logout</button></div>
+        <RouterLink v-if="user?.Role == 'admin'" :to="'/accesso/areaPersonale/operazioniProdotti'" class="flex-item"><button>Operazioni Prodotti</button></RouterLink>
+        <RouterLink v-if="user?.Role == 'admin'" :to="'/accesso/areaPersonale/operazioniOrdini'" class="flex-item"><button>Ordini per ID</button></RouterLink>
+        <RouterLink :to="'/accesso/areaPersonale/ordiniUtente'" class="flex-item"><button>Ordini Utente</button></RouterLink>
+        <RouterLink :to="'/accesso/areaPersonale/anagrafica'" class="flex-item"><button>Anagrafica</button></RouterLink>
+    </div>
 </template>

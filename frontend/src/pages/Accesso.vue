@@ -48,19 +48,27 @@ export default defineComponent({
 
 <template>
 
-    <form v-if="!user" @submit.prevent="signup">
-        <label>Username</label>
-        <input v-model="usernameDaRegistrare" type="text" />
-        <label>Password</label>
-        <input v-model="passwordDaRegistrare" type="text" />
-        <button type="submit">Registrati</button>
-    </form>
+    <h2>ACCEDI O CREA UN ACCOUNT</h2>
 
-    <form v-if="!user" @submit.prevent="login">
-        <label>Username</label>
-        <input v-model="usernameEsistente" type="text" />
-        <label>Password</label>
-        <input v-model="passwordEsistente" type="text" />
-        <button type="submit">Accedi</button>
-    </form>
+
+    <div class="flex-container-accesso">
+        <div class="flex-item">
+            <form v-if="!user" @submit.prevent="signup">
+                <label>Username</label>
+                <input v-model="usernameDaRegistrare" type="text" />
+                <label>Password</label>
+                <input v-model="passwordDaRegistrare" type="text" />
+                <button type="submit">Registrati</button>
+            </form>
+        </div>
+        <div class="flex-item">
+            <form v-if="!user" @submit.prevent="login">
+                <label>Username</label>
+                <input v-model="usernameEsistente" type="text" />
+                <label>Password</label>
+                <input v-model="passwordEsistente" type="text" />
+                <button type="submit">Accedi</button>
+            </form>
+        </div>
+    </div>
 </template>

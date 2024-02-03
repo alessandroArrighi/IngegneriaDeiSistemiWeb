@@ -16,6 +16,6 @@
 </script>
 
 <template>
-    <h1>Occhiali da vista</h1>
+    <h1>Montature Da Vista</h1>
     <Prodotto @sendProd = "sendProd"/>
 </template>

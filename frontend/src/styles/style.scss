@@ -32,6 +32,19 @@
   }
 }
 
+h1 {
+  color: white !important;
+  text-align: center;
+}
+
+h2 {
+  padding-top: 10px;
+  margin-left: 24px;
+  margin-right: 24px;
+  color: white !important;
+  text-align: center;
+}
+
 .primary-carousel {
   width: 100%;
   .carousel__slide {
@@ -63,15 +76,6 @@
       }
     }
   }
-}
-
-h2 {
-  padding-top: 10px;
-  margin-left: 24px;
-  margin-right: 24px;
-  border-top: solid 1px;
-  color: white !important;
-  text-align: center;
 }
 
 .secondary-carousel {
@@ -153,7 +157,6 @@ h2 {
     &:nth-last-child(2) {
       border-right: none;
       text-align: center;
-      padding-left: 10px;
       a {
         display: block;
         margin-bottom: 16px;
@@ -165,7 +168,7 @@ h2 {
       width: 100%;
       border-right: none;
       border-top: 1px solid white;
-      margin-top: 15px;
+      margin-top: 30px;
       padding-top: 30px;
       padding-bottom: 20px;
     }
@@ -186,7 +189,6 @@ h2 {
 .flex-container-filtri {
   display: flex;
   padding: 30px;
-  justify-content: space-between;
   justify-content: center;
   flex-wrap: wrap;
   color: white;
@@ -194,14 +196,14 @@ h2 {
   .flex-item{
     width: 50%;
     display: flex;
-    flex-direction: column; /* Imposta la direzione della colonna */
+    flex-direction: column;
     align-items: center;
     form {
       width: 100%;
       padding-right: 10px;
       padding-top: 10px;
       display: flex;
-      flex-direction: column; /* Imposta la direzione della colonna */
+      flex-direction: column;
       align-items: center;
       input {
         width: 100%;
@@ -225,7 +227,98 @@ h2 {
       }
     }
   }
+}
 
+.flex-container-prodotti {
+  padding: 30px;
+  flex-wrap: wrap;
 
+  .flex-item {
+    width: 100%;
+    color: white;
+    text-align: center;
+    border-top: 1px solid white;
+    margin-bottom: 30px;
 
+    &:last-child {
+      padding-top: 30px;
+    }
+  }
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: space-around;
+
+    .flex-item {
+      width: 50%;
+      
+      &:nth-child(odd) {
+        border-right: 1px solid white;
+      }
+
+      &:last-child {
+        width: 100%;
+        border: none;
+      }
+    }
+  }
+}
+
+.flex-container-accesso {
+  display: flex;
+  justify-content: center;
+  color: white;
+
+  .flex-item {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    form {
+      width: 100%;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      input {
+        width: 100%;
+        margin-bottom: 10px;
+
+        @media screen and (min-width: 768px) {
+          width: 50%;
+        }
+      }
+    }
+  }
+}
+
+.flex-container-ap {
+  display: flex;
+  justify-content: center;
+  color: white;
+
+  .flex-item {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+.flex-container-op {
+  display: flex;
+  flex-wrap: wrap;  /* Allow items to wrap onto new rows */
+  justify-content: space-around;  /* Distribute items with equal spacing */
+  align-items: center;  /* Align items vertically at the center */
+
+  .flex-item {
+    width: 50%;  /* Set the width of each item to occupy approximately half of the container */
+    text-align: center;  /* Center the text inside the button horizontally */
+
+    button {
+      width: 50%;  /* Set the button width to 100% of the flex-item */
+    }
+  }
 }

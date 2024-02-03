@@ -127,17 +127,17 @@ export default defineComponent({
       </RouterLink>
       <form @submit.prevent="addItem(prodotto)">
         <select v-model="quantità">
-          <option value=0>-- Seleziona --</option>
+          <option value=0></option>
           <option value=3>3</option>
           <option value=6>6</option>
           <option value=9>9</option>
         </select>
-        <button type="submit">Aggiungi ad Ordine</button>
+        <button type="submit">Aggiungi</button>
       </form>
     </div>
 
     <div class="flex-item">
-          <button @click="aggiungiElementi += 4">Carica Altri</button>
-      </div>
+      <button @click="aggiungiElementi += 4">Carica Altri</button>
+    </div>
   </div>
 </template>
