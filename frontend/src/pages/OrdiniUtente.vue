@@ -18,11 +18,14 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="flex-container">
-        <button @click="getOrderFromID">Ordini Utente</button>
+    <div class="flex-item-command">
+        <button @click="getOrderFromID">Trova I Tuoi Ordini</button>
     </div>
-    <div v-for="ordine in datiOrdine" class="flex-item">
-        <RouterLink :to="'/accesso/areaPersonale/operazioniOrdini/' + ordine.IDOrdine"><p>{{ ordine.IDOrdine }}</p></RouterLink>
+    <div class="flex-container-prodotti">
+        <div v-for="ordine in datiOrdine" class="flex-item">
+            <RouterLink :to="'/accesso/areaPersonale/operazioniOrdini/' + ordine.IDOrdine"><p>{{ ordine.IDOrdine }}</p></RouterLink>
+        </div>
     </div>
+
     
 </template>

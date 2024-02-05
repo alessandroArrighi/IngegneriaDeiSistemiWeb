@@ -135,9 +135,8 @@ export default defineComponent({
         <button type="submit">Aggiungi</button>
       </form>
     </div>
-
-    <div class="flex-item">
-      <button @click="aggiungiElementi += 4">Carica Altri</button>
-    </div>
+  </div>
+  <div class="flex-item-command">
+    <button @click="aggiungiElementi += 4">Carica Altri</button>
   </div>
 </template>

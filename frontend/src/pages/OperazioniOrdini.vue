@@ -41,13 +41,15 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="flex-container">
+    <div class="flex-item-command">
         <form v-if="user?.Role == 'admin'" @submit.prevent="getOrderFromID" class="flex-item">
-            <label>ID Ordine</label>
+            <label>Inserisci ID Ordine</label>
             <input v-model="idRicerca" type="text" />
             <button type="submit">Cerca</button>
         </form>
+    </div>
 
+    <div class="flex-container-prodotti">
         <div v-for="articolo in datiOrdine" class="flex-item">
             <router-link :to="getRouterLink(articolo)">
                 <img loading="lazy" :src="articolo.Immagine" alt="/">

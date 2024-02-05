@@ -239,10 +239,6 @@ h2 {
     text-align: center;
     border-top: 1px solid white;
     margin-bottom: 30px;
-
-    &:last-child {
-      padding-top: 30px;
-    }
   }
 
   @media screen and (min-width: 768px) {
@@ -255,13 +251,17 @@ h2 {
       &:nth-child(odd) {
         border-right: 1px solid white;
       }
-
-      &:last-child {
-        width: 100%;
-        border: none;
-      }
     }
   }
+}
+
+.flex-item-command {
+  display: flex;
+  margin: 20px;
+  justify-content: center; // Center horizontally
+  align-items: center; // Center vertically
+  height: 100%; // Optional, set the height if 
+  color: white;
 }
 
 .flex-container-accesso {
@@ -298,12 +298,17 @@ h2 {
   display: flex;
   justify-content: center;
   color: white;
+  padding: 20px;
 
   .flex-item {
     width: 60%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    
+    input {
+      margin: 10px;
+    }
   }
 }
 
@@ -318,7 +323,12 @@ h2 {
     text-align: center;  /* Center the text inside the button horizontally */
 
     button {
-      width: 50%;  /* Set the button width to 100% of the flex-item */
+      width: 45%;  /* Set the button width to 100% of the flex-item */
+      margin: 10px;
+
+      @media screen and (min-width: 768px) {
+      width: 30%;
+      }
     }
   }
 }
