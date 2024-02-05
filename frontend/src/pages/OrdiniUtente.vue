@@ -25,7 +25,5 @@ export default defineComponent({
         <div v-for="ordine in datiOrdine" class="flex-item">
             <RouterLink :to="'/accesso/areaPersonale/operazioniOrdini/' + ordine.IDOrdine"><p>{{ ordine.IDOrdine }}</p></RouterLink>
         </div>
-    </div>
-
-    
+    </div>    
 </template>

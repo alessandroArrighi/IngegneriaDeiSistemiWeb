@@ -34,33 +34,34 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="flex-item">
-        <p>{{ datiUtente.IDUtente }}</p>
-        <p>{{ datiUtente.User }}</p>
-        <p>{{ datiUtente.Password }}</p>
-        <p>{{ datiUtente.Nome }}</p>
-        <p>{{ datiUtente.Cognome }}</p>
-        <p>{{ datiUtente.Mail }}</p>
-        <p>{{ datiUtente.Telefono }}</p>
-        <p>{{ datiUtente.Indirizzo }}</p>
-        <p>{{ datiUtente.Role }}</p>
+    <div class="flex-container-agr">
+        <div class="flex-item">
+            <h4>Dati Personali:</h4>
+            <p>ID Utente: {{ datiUtente.IDUtente }}</p>
+            <p>Username: {{ datiUtente.User }}</p>
+            <p>Nome: {{ datiUtente.Nome }}</p>
+            <p>Cognome: {{ datiUtente.Cognome }}</p>
+            <p>Indirizzo Email: {{ datiUtente.Mail }}</p>
+            <p>Numero di Telefono: {{ datiUtente.Telefono }}</p>
+            <p>Indirizzo di Spedizione: {{ datiUtente.Indirizzo }}</p>
+            <p>Tipologia Utente: {{ datiUtente.Role }}</p>
+        </div>
+        
+        <form @submit.prevent="modifyData" class="flex-item">
+            <h4>Modificare i Dati Personali:</h4>
+            <label >User</label>
+            <input v-model="nuoviDati.User" type="text" />
+            <label >Nome</label>
+            <input v-model="nuoviDati.Nome" type="text" />
+            <label >Cognome</label>
+            <input v-model="nuoviDati.Cognome" type="text" />
+            <label >Mail</label>
+            <input v-model="nuoviDati.Mail" type="text" />
+            <label >Telefono</label>
+            <input v-model="nuoviDati.Telefono" type="text" />
+            <label >Indirizzo</label>
+            <input v-model="nuoviDati.Indirizzo" type="text" />
+            <button type="submit">Modifica Dati</button>
+        </form>
     </div>
-
-    
-    <form @submit.prevent="modifyData" class="flex-item">
-        <label >User</label>
-        <input v-model="nuoviDati.User" type="text" />
-        <label >Nome</label>
-        <input v-model="nuoviDati.Nome" type="text" />
-        <label >Cognome</label>
-        <input v-model="nuoviDati.Cognome" type="text" />
-        <label >Mail</label>
-        <input v-model="nuoviDati.Mail" type="text" />
-        <label >Telefono</label>
-        <input v-model="nuoviDati.Telefono" type="text" />
-        <label >Indirizzo</label>
-        <input v-model="nuoviDati.Indirizzo" type="text" />
-        <button type="submit">Modifica LAC</button>
-    </form>
-
 </template>

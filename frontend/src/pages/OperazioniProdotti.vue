@@ -81,98 +81,130 @@ export default defineComponent({
 </script>
 
 <template>
-
-    <div class="flex-container">
-        <form @submit.prevent="addMontatura" class="flex-item">
-            <label >Modello</label>
-            <input v-model="nuovaMontatura.Modello" type="text" />
-            <label >Brand</label>
-            <input v-model="nuovaMontatura.Brand" type="text" />
-            <label >Prezzo</label>
-            <input v-model="nuovaMontatura.Prezzo" type="text" />
-            <label >Versione</label>
-            <input v-model="nuovaMontatura.Versione" type="text" />
-            <label >Calibro</label>
-            <input v-model="nuovaMontatura.Calibro" type="text" />
-            <label >Ponte</label>
-            <input v-model="nuovaMontatura.Ponte" type="text" />
-            <label >Aste</label>
-            <input v-model="nuovaMontatura.Aste" type="text" />
-            <label >Materiale</label>
-            <input v-model="nuovaMontatura.Materiale" type="text" />
-            <label >Colore</label>
-            <input v-model="nuovaMontatura.Colore" type="text" />
-            <label >Immagine</label>
-            <input v-model="nuovaMontatura.Immagine" type="text" />
-            <button type="submit">Aggiungi Montatura</button>
+    <div class="flex-container-opProd">
+        <form @submit.prevent="addMontatura" class="flex-item-opProd">
+            <div class="flex-container">
+                <h4>Inserisci una Nuova Montatura</h4>
+                <div class="flex-item">
+                    <label >Modello</label>
+                    <input v-model="nuovaMontatura.Modello" type="text" />
+                    <label >Brand</label>
+                    <input v-model="nuovaMontatura.Brand" type="text" />
+                    <label >Prezzo</label>
+                    <input v-model="nuovaMontatura.Prezzo" type="text" />
+                    <label >Versione</label>
+                    <input v-model="nuovaMontatura.Versione" type="text" />
+                    <label >Calibro</label>
+                    <input v-model="nuovaMontatura.Calibro" type="text" />
+                </div>
+                <div class="flex-item">
+                    <label >Ponte</label>
+                    <input v-model="nuovaMontatura.Ponte" type="text" />
+                    <label >Aste</label>
+                    <input v-model="nuovaMontatura.Aste" type="text" />
+                    <label >Materiale</label>
+                    <input v-model="nuovaMontatura.Materiale" type="text" />
+                    <label >Colore</label>
+                    <input v-model="nuovaMontatura.Colore" type="text" />
+                    <label >Immagine</label>
+                    <input v-model="nuovaMontatura.Immagine" type="text" />
+                </div>
+                <button type="submit">Aggiungi Montatura</button>
+            </div>
         </form>
 
-        <form @submit.prevent="addLAC" class="flex-item">
-            <label >Modello</label>
-            <input v-model="nuovaLAC.Modello" type="text" />
-            <label >Brand</label>
-            <input v-model="nuovaLAC.Brand" type="text" />
-            <label >Prezzo</label>
-            <input v-model="nuovaLAC.Prezzo" type="text" />
-            <label >Durata</label>
-            <input v-model="nuovaLAC.Durata" type="text" />
-            <label >Fascia</label>
-            <input v-model="nuovaLAC.Fascia" type="text" />
-            <label >Focale</label>
-            <input v-model="nuovaLAC.Focale" type="text" />
-            <button type="submit">Aggiungi LAC</button>
+        <form @submit.prevent="addLAC" class="flex-item-opProd">
+            <div class="flex-container">
+                <h4>Inserisci una Nuova LAC</h4>
+                <div class="flex-item">
+                    <label >Modello</label>
+                    <input v-model="nuovaLAC.Modello" type="text" />
+                    <label >Brand</label>
+                    <input v-model="nuovaLAC.Brand" type="text" />
+                    <label >Prezzo</label>
+                    <input v-model="nuovaLAC.Prezzo" type="text" />
+                </div>
+                <div class="flex-item">
+                    <label >Durata</label>
+                    <input v-model="nuovaLAC.Durata" type="text" />
+                    <label >Fascia</label>
+                    <input v-model="nuovaLAC.Fascia" type="text" />
+                    <label >Focale</label>
+                    <input v-model="nuovaLAC.Focale" type="text" />
+                </div>
+                <button type="submit">Aggiungi LAC</button>
+            </div>
         </form>
 
-        <form @submit.prevent="modifyMontatura" class="flex-item">
-            <label >Modello</label>
-            <input v-model="modificaMontatura.Modello" type="text" />
-            <label >Brand</label>
-            <input v-model="modificaMontatura.Brand" type="text" />
-            <label >Prezzo</label>
-            <input v-model="modificaMontatura.Prezzo" type="text" />
-            <label >Versione</label>
-            <input v-model="modificaMontatura.Versione" type="text" />
-            <label >Calibro</label>
-            <input v-model="modificaMontatura.Calibro" type="text" />
-            <label >Ponte</label>
-            <input v-model="modificaMontatura.Ponte" type="text" />
-            <label >Aste</label>
-            <input v-model="modificaMontatura.Aste" type="text" />
-            <label >Materiale</label>
-            <input v-model="modificaMontatura.Materiale" type="text" />
-            <label >Colore</label>
-            <input v-model="modificaMontatura.Colore" type="text" />
-            <label >Immagine</label>
-            <input v-model="modificaMontatura.Immagine" type="text" />
-            <label >NewModello</label>
-            <input v-model="modificaMontatura.NewModello" type="text" />
-            <button type="submit">Modifica Montatura</button>
+        <form @submit.prevent="modifyMontatura" class="flex-item-opProd">
+            <div class="flex-container">
+                <h4>Modifica una Montatura</h4>
+                <div class="flex-item">
+                    <label >Modello</label>
+                    <input v-model="modificaMontatura.Modello" type="text" />
+                    <label >Brand</label>
+                    <input v-model="modificaMontatura.Brand" type="text" />
+                    <label >Prezzo</label>
+                    <input v-model="modificaMontatura.Prezzo" type="text" />
+                    <label >Versione</label>
+                    <input v-model="modificaMontatura.Versione" type="text" />
+                    <label >Calibro</label>
+                    <input v-model="modificaMontatura.Calibro" type="text" />
+                    <label >Ponte</label>
+                    <input v-model="modificaMontatura.Ponte" type="text" />
+                </div>
+                <div class="flex-item">
+                    <label >Aste</label>
+                    <input v-model="modificaMontatura.Aste" type="text" />
+                    <label >Materiale</label>
+                    <input v-model="modificaMontatura.Materiale" type="text" />
+                    <label >Colore</label>
+                    <input v-model="modificaMontatura.Colore" type="text" />
+                    <label >Immagine</label>
+                    <input v-model="modificaMontatura.Immagine" type="text" />
+                    <label >NewModello</label>
+                    <input v-model="modificaMontatura.NewModello" type="text" />
+                </div>
+                <button type="submit">Modifica Montatura</button>
+            </div>
         </form>
 
-        <form @submit.prevent="modifyLAC" class="flex-item">
-            <label >Modello</label>
-            <input v-model="modificaLAC.Modello" type="text" />
-            <label >Brand</label>
-            <input v-model="modificaLAC.Brand" type="text" />
-            <label >Prezzo</label>
-            <input v-model="modificaLAC.Prezzo" type="text" />
-            <label >Durata</label>
-            <input v-model="modificaLAC.Durata" type="text" />
-            <label >Fascia</label>
-            <input v-model="modificaLAC.Fascia" type="text" />
-            <label >Focale</label>
-            <input v-model="modificaLAC.Focale" type="text" />
-            <label >Nuovo Modello</label>
-            <input v-model="modificaLAC.NewModello" type="text" />
-            <button type="submit">Modifica LAC</button>
+        <form @submit.prevent="modifyLAC" class="flex-item-opProd">
+            <div class="flex-container">
+                <h4>Modifica una LAC</h4>
+                <div class="flex-item">
+                    <label >Modello</label>
+                    <input v-model="modificaLAC.Modello" type="text" />
+                    <label >Brand</label>
+                    <input v-model="modificaLAC.Brand" type="text" />
+                    <label >Prezzo</label>
+                    <input v-model="modificaLAC.Prezzo" type="text" />
+                    <label >Durata</label>
+                    <input v-model="modificaLAC.Durata" type="text" />
+                </div>
+                <div class="flex-item">
+                    <label >Fascia</label>
+                    <input v-model="modificaLAC.Fascia" type="text" />
+                    <label >Focale</label>
+                    <input v-model="modificaLAC.Focale" type="text" />
+                    <label >Nuovo Modello</label>
+                    <input v-model="modificaLAC.NewModello" type="text" />
+                </div>
+                <button type="submit">Modifica LAC</button>
+            </div>
         </form>
 
-        <form @submit.prevent="deleteProduct" class="flex-item">
-            <label>Modello da eliminare</label>
-            <input v-model="eliminaItem.Modello" type="text"/>
-            <label>Categoria prodotto</label>
-            <input v-model="eliminaItem.Categoria" type="text" />
-            <button type="submit">Elimina</button>
+        <form @submit.prevent="deleteProduct" class="flex-item-opProd">
+            <div class="flex-container">
+                <h4>Elimina un Prodotto</h4>
+                <div class="flex-item">
+                    <label>Modello da eliminare</label>
+                    <input v-model="eliminaItem.Modello" type="text"/>
+                    <label>Categoria prodotto</label>
+                    <input v-model="eliminaItem.Categoria" type="text" />
+                </div>
+                <button type="submit">Elimina</button>
+            </div>
         </form>
     </div>
 </template>
