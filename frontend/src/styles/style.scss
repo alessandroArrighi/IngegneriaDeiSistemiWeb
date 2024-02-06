@@ -339,6 +339,10 @@ h2, h4 {
 
     .flex-container {
       text-align: center;
+
+      h4 {
+        width: 100%;
+      }
       .flex-item{
         width: 100%;
         color: white;
@@ -441,10 +445,6 @@ h2, h4 {
     width: 100%;
   }
 
-  h2 {
-    width: 100%;
-  }
-
   form {
     margin-top: 10px;
   }
@@ -454,15 +454,15 @@ h2, h4 {
     justify-content: space-around;
     flex-wrap: wrap;
 
+    h2 {
+    width: 100%;
+    }
+
     .flex-item {
       width: 50%;
       
       &:nth-child(odd) {
         border-right: 1px solid white;
-
-        h4 {
-          padding-bottom: 20px;
-        }
       }
     }
   } 

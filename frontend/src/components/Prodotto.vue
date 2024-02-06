@@ -8,7 +8,6 @@ export default defineComponent({
   props: {
     ordine: Array as PropType<Ordine[]>
   },
-  emits: ["sendProd"],
   data() {
     return {
       datiProdotto: [] as any[],
@@ -17,9 +16,10 @@ export default defineComponent({
       filterPrice: "",
       mostraFiltri: false,
       ordinaPer: "",
-      aggiungiElementi: 4,
+      elementiMostrati: 4,
+      num: 0,
       categoria: "",
-      quantità: 1,
+      quantità: 0,
     }
   },
   computed: {
@@ -71,10 +71,12 @@ export default defineComponent({
         Categoria: this.categoria,
         Quantità: this.quantità,
       }
-      /*
-      this.$emit("sendProd", prodotto)
-      this.quantità = 1*/
+      this.quantità = 0,
       await addToOrder(STORAGE_NAME, prodotto)
+    },
+    aggiungiElementi() {
+      this.elementiMostrati += this.num,
+      this.num = 0
     }
   },
   mounted() {
@@ -110,7 +112,7 @@ export default defineComponent({
 
     <form class="flex-item">
       <select v-model="ordinaPer">
-        <option value="">-- Ordina Per --</option>
+        <option value="">Ordina Per</option>
         <option value="prezzo">Prezzo</option>
         <option value="brand">Brand</option>
       </select>
@@ -118,7 +120,7 @@ export default defineComponent({
   </div>
   
   <div class="flex-container-prodotti">
-    <div v-for="prodotto in sortedData.slice(0, aggiungiElementi)" class="flex-item">
+    <div v-for="prodotto in sortedData.slice(0, elementiMostrati)" class="flex-item">
       <RouterLink :to="'/prodotti/' + categoria + '-' + prodotto.Modello">
         <img loading="lazy" :src="prodotto.Immagine" alt="/">
         <p>{{ prodotto.Modello }}</p>
@@ -128,15 +130,23 @@ export default defineComponent({
       <form @submit.prevent="addItem(prodotto)">
         <select v-model="quantità">
           <option value=0></option>
+          <option value=1>1</option>
           <option value=3>3</option>
           <option value=6>6</option>
-          <option value=9>9</option>
         </select>
         <button type="submit">Aggiungi</button>
       </form>
     </div>
   </div>
   <div class="flex-item-command">
-    <button @click="aggiungiElementi += 4">Carica Altri</button>
+    <form @submit.prevent="aggiungiElementi">
+      <select v-model="num">
+        <option value=0>-- Seleziona --</option>
+        <option value=4>4</option>
+        <option value=8>8</option>
+        <option value=16>16</option>
+      </select>
+      <button type="submit">Carica Altri</button>
+    </form>
   </div>
 </template>

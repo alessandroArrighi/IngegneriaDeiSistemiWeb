@@ -8,7 +8,7 @@ export default defineComponent({
     return {
       montatura: null as any | null,
       lac: null as any | null,
-      quantità: 1,
+      quantità: 0,
       categoria: ""
     }
   },
@@ -31,11 +31,8 @@ export default defineComponent({
         Categoria: this.categoria,
         Quantità: this.quantità,
       }
-      /*
-      this.$emit("sendProd", prodotto)
-      this.quantità = 1
-      */
-     await addToOrder(STORAGE_NAME, prodotto)
+      this.quantità = 0,
+      await addToOrder(STORAGE_NAME, prodotto)
     }
   },
   mounted() {
@@ -59,7 +56,7 @@ export default defineComponent({
 <template>
   <div v-if="montatura" class="flex-container-ps">
     <img :src="'./public/img/' + montatura.Immagine" alt="/" />
-    <h2 style="color: white">Modello: {{montatura.Modello}}</h2>
+    <h2>Modello: {{montatura.Modello}}</h2>
     <div class="flex-item">
       <p>Brand: {{ montatura.Brand }}</p>
       <p>Prezzo: {{ montatura.Prezzo }}€</p>
@@ -74,28 +71,32 @@ export default defineComponent({
     </div>
     <form @submit.prevent="addItem(montatura)">
       <select v-model="quantità">
-        <option value=0>-- Seleziona --</option>
+        <option value=0></option>
+        <option value=1>1</option>
         <option value=3>3</option>
-        <option value=6>6</option>  
-        <option value=9>9</option>
+        <option value=6>6</option>
       </select>
       <button type="submit">Aggiungi ad Ordine</button>
     </form>
   </div>
-  <div v-if="lac" class="flex-item-lac">
+  <div v-if="lac" class="flex-container-ps">
     <img :src="'./public/img/' + lac.Immagine" alt="/" />
-    <h2 style="color: white">{{lac.Modello}}</h2>
-    <p>{{ lac.Brand }}</p>
-    <p>{{ lac.Prezzo }}</p>
-    <p>{{ lac.Durata }}</p>
-    <p>{{ lac.Fascia }}</p>
-    <p>{{ lac.Focale }}</p>
+    <h2>{{lac.Modello}}</h2>
+    <div class="flex-item">
+      <p>Brand: {{ lac.Brand }}</p>
+      <p>Prezzo: {{ lac.Prezzo }}€</p>
+      <p>Durata: {{ lac.Durata }}</p>
+    </div>
+    <div class="flex-item">
+      <p>Fascia: {{ lac.Fascia }}</p>
+      <p>Focale: {{ lac.Focale }}</p>
+    </div>
     <form @submit.prevent="addItem(lac)">
       <select v-model="quantità">
-        <option value=0>-- Seleziona --</option>
+        <option value=0></option>
+        <option value=1>1</option>
         <option value=3>3</option>
         <option value=6>6</option>
-        <option value=9>9</option>
       </select>
       <button type="submit">Aggiungi ad Ordine</button>
     </form>
