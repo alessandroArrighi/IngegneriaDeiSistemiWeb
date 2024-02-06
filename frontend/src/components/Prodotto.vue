@@ -70,6 +70,7 @@ export default defineComponent({
         IDProdotto: prod.Modello,
         Categoria: this.categoria,
         Quantità: this.quantità,
+        Prezzo: prod.Prezzo
       }
       this.quantità = 0,
       await addToOrder(STORAGE_NAME, prodotto)

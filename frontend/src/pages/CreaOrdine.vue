@@ -30,6 +30,7 @@ export default defineComponent({
                 IDProdotto: prodotto.IDProdotto,
                 Categoria: prodotto.Categoria,
                 Quantità: prodotto.Quantità,
+                Prezzo: prodotto.Prezzo
             }
             var index = this.ordine.findIndex(obj => obj.IDProdotto === item.IDProdotto);
 
@@ -58,6 +59,7 @@ export default defineComponent({
                 <p>{{ prodotto.IDProdotto }}</p>
                 <p>{{ prodotto.Categoria }}</p>
                 <p>{{ prodotto.Quantità }}</p>
+                <p>{{ prodotto.Prezzo }}</p>
             </RouterLink>
             <button @click = "rimuoviProdotto(prodotto)">Rimuovi</button>
         </div>
@@ -108,7 +110,7 @@ export default defineComponent({
                           <h5 class="fw-normal mb-0">{{ prodotto.Quantità }}</h5>
                         </div>
                         <div style="width: 80px;">
-                          <h5 class="mb-0">$900</h5>
+                          <h5 class="mb-0">{{ prodotto.Prezzo }}</h5>
                         </div>
                         <a href="#!" style="color: #cecece;"><i class="fas fa-trash-alt"></i></a>
                       </div>
