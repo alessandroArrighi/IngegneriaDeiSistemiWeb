@@ -253,9 +253,9 @@ h2, h4 {
 .flex-item-command {
   display: flex;
   margin: 20px;
-  justify-content: center; // Center horizontally
-  align-items: center; // Center vertically
-  height: 100%; // Optional, set the height if 
+  justify-content: center;
+  align-items: center;
+  height: 100%;
   color: white;
 }
 
@@ -417,7 +417,6 @@ h2, h4 {
   }
 
   @media screen and (min-width: 768px) {
-    display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
 
@@ -466,4 +465,65 @@ h2, h4 {
       }
     }
   } 
+}
+
+.flex-container-cart{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  .flex-item-1{
+    display: flex;
+    align-items: center;
+    text-align: center;
+
+    div{
+      justify-content: start;
+      width: 50%;
+      img {
+        width: 100%;
+        transform: scale(0.85);
+      }
+    }
+
+    a{
+      width: 50%;
+    }
+  }
+
+  .flex-item-2{
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    width: 100%;
+    justify-content: space-around;
+
+    div{
+      justify-content: center;
+    }
+
+  }
+
+  @media screen and (min-width: 768px) {
+    flex-wrap: nowrap;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+
+    .flex-item-1{ 
+      a{
+        padding-top: 10px;
+      }
+    }
+
+    .flex-item-2 {
+      div {
+        margin-right: 20px;
+      }
+      button {
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+    }
+    }
 }

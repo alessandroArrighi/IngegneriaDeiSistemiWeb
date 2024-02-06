@@ -33,6 +33,7 @@ export interface Ordine {
     IDProdotto: string
     Categoria: string
     Quantità: number
+    Prezzo: number
 }
 
 export interface Utente {
