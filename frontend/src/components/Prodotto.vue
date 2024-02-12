@@ -139,7 +139,7 @@ export default defineComponent({
       </form>
     </div>
   </div>
-  <div class="flex-item-command">
+  <div class="command">
     <form @submit.prevent="aggiungiElementi">
       <select v-model="num">
         <option value=0>-- Seleziona --</option>

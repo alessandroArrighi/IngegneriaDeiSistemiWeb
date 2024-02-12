@@ -18,7 +18,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="flex-item-command">
+    <div class="command">
         <button @click="getOrderFromID">Trova I Tuoi Ordini</button>
     </div>
     <div class="flex-container-prodotti">

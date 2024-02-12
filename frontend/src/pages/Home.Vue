@@ -38,7 +38,7 @@ export default defineComponent({
     
     <Slide :key="slide">
       <div class="carousel__item">
-        <img src="../../../backend/foto/0RB0298S__13553F__P21__shad__fr.avif">
+        <img src="../../../backend/foto/0RB0298S__13553F__P21__shad__fr.avif" alt="/">        <!--SISTEMARE FOTO-->
         <p>CIAOOOOOOOO</p>
       </div>
     </Slide>

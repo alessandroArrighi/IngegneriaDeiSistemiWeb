@@ -41,7 +41,7 @@ export default defineComponent({
 </script>
 
 <template>
-    <div class="flex-item-command">
+    <div class="command">
         <form v-if="user?.Role == 'admin'" @submit.prevent="getOrderFromID" class="flex-item">
             <label>Inserisci ID Ordine</label>
             <input v-model="idRicerca" type="text" />
