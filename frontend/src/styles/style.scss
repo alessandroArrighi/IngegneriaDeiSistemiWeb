@@ -337,12 +337,18 @@ h2, h4 {
     padding-bottom: 20px;
     border-bottom: 1px solid white;
 
+    h4 {
+      width: 100%;
+      margin-left: 0px;
+    }
+    
+    button {
+      margin-top: 10px;
+    }
+
     .flex-container {
       text-align: center;
 
-      h4 {
-        width: 100%;
-      }
       .flex-item{
         width: 100%;
         color: white;

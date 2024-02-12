@@ -10,7 +10,12 @@ export default defineComponent({
         nuovaLAC: {} as LAC,
         modificaMontatura: {} as Montatura,
         modificaLAC: {} as LAC,
-        eliminaItem: {} as LAC
+        eliminaItem: {} as LAC,
+        mostra1: false,
+        mostra2: false,
+        mostra3: false,
+        mostra4: false,
+        mostra5: false
         }
     },
     methods: {
@@ -83,8 +88,8 @@ export default defineComponent({
 <template>
     <div class="flex-container-opProd">
         <form @submit.prevent="addMontatura" class="flex-item-opProd">
-            <div class="flex-container">
-                <h4>Inserisci una Nuova Montatura</h4>
+            <h4>Inserisci una Nuova Montatura</h4>
+            <div v-if="mostra1" class="flex-container">
                 <div class="flex-item">
                     <label >Modello</label>
                     <input v-model="nuovaMontatura.Modello" type="text" />
@@ -92,7 +97,7 @@ export default defineComponent({
                     <input v-model="nuovaMontatura.Brand" type="text" />
                     <label >Prezzo</label>
                     <input v-model="nuovaMontatura.Prezzo" type="text" />
-                    <label >Versione</label>
+                    <label >Versione</label>    
                     <input v-model="nuovaMontatura.Versione" type="text" />
                     <label >Calibro</label>
                     <input v-model="nuovaMontatura.Calibro" type="text" />
@@ -111,11 +116,14 @@ export default defineComponent({
                 </div>
                 <button type="submit">Aggiungi Montatura</button>
             </div>
+            <div class="flex-container">
+                <button v-if="!mostra1" @click="mostra1 = !mostra1">Mostra</button><button v-if="mostra1" @click="mostra1 = !mostra1">Nascondi</button>
+            </div>
         </form>
 
         <form @submit.prevent="addLAC" class="flex-item-opProd">
-            <div class="flex-container">
-                <h4>Inserisci una Nuova LAC</h4>
+            <h4>Inserisci una Nuova LAC</h4>
+            <div v-if="mostra2" class="flex-container">
                 <div class="flex-item">
                     <label >Modello</label>
                     <input v-model="nuovaLAC.Modello" type="text" />
@@ -134,11 +142,14 @@ export default defineComponent({
                 </div>
                 <button type="submit">Aggiungi LAC</button>
             </div>
+            <div class="flex-container">
+                <button v-if="!mostra2" @click="mostra2 = !mostra2">Mostra</button><button v-if="mostra2" @click="mostra2 = !mostra2">Nascondi</button>
+            </div>
         </form>
 
         <form @submit.prevent="modifyMontatura" class="flex-item-opProd">
-            <div class="flex-container">
-                <h4>Modifica una Montatura</h4>
+            <h4>Modifica una Montatura</h4>
+            <div v-if="mostra3" class="flex-container">
                 <div class="flex-item">
                     <label >Modello</label>
                     <input v-model="modificaMontatura.Modello" type="text" />
@@ -167,11 +178,14 @@ export default defineComponent({
                 </div>
                 <button type="submit">Modifica Montatura</button>
             </div>
+            <div class="flex-container">
+                <button v-if="!mostra3" @click="mostra3 = !mostra3">Mostra</button><button v-if="mostra3" @click="mostra3 = !mostra3">Nascondi</button>
+            </div>
         </form>
 
         <form @submit.prevent="modifyLAC" class="flex-item-opProd">
-            <div class="flex-container">
-                <h4>Modifica una LAC</h4>
+            <h4>Modifica una LAC</h4>
+            <div v-if="mostra4" class="flex-container">
                 <div class="flex-item">
                     <label >Modello</label>
                     <input v-model="modificaLAC.Modello" type="text" />
@@ -192,11 +206,14 @@ export default defineComponent({
                 </div>
                 <button type="submit">Modifica LAC</button>
             </div>
+            <div class="flex-container">
+                <button v-if="!mostra4" @click="mostra4 = !mostra4">Mostra</button><button v-if="mostra4" @click="mostra4 = !mostra4">Nascondi</button>
+            </div>
         </form>
 
         <form @submit.prevent="deleteProduct" class="flex-item-opProd">
-            <div class="flex-container">
-                <h4>Elimina un Prodotto</h4>
+            <h4>Elimina un Prodotto</h4>
+            <div v-if="mostra5" class="flex-container">
                 <div class="flex-item">
                     <label>Modello da eliminare</label>
                     <input v-model="eliminaItem.Modello" type="text"/>
@@ -204,6 +221,9 @@ export default defineComponent({
                     <input v-model="eliminaItem.Categoria" type="text" />
                 </div>
                 <button type="submit">Elimina</button>
+            </div>
+            <div class="flex-container">
+                <button v-if="!mostra5" @click="mostra5 = !mostra5">Mostra</button><button v-if="mostra5" @click="mostra5 = !mostra5">Nascondi</button>
             </div>
         </form>
     </div>

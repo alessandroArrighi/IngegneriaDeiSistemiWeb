@@ -22,14 +22,11 @@ export default defineComponent({
     },
   },
   mounted() {
-    // Initial setup
     this.updateItemsToShow();
 
-    // Listen for window resize events
     window.addEventListener('resize', this.updateItemsToShow);
   },
   beforeUnmount() {
-    // Remove the resize event listener to avoid memory leaks
     window.removeEventListener('resize', this.updateItemsToShow);
   },
 })
@@ -41,7 +38,7 @@ export default defineComponent({
     
     <Slide :key="slide">
       <div class="carousel__item">
-        <img src="../../public/1.jpg">
+        <img src="../../../backend/foto/0RB0298S__13553F__P21__shad__fr.avif">
         <p>CIAOOOOOOOO</p>
       </div>
     </Slide>
