@@ -27,7 +27,7 @@ export default defineComponent({
 
 
 <template>
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 m-4" id="area-personale">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 m-4">
         <div class="col col-lg-3" v-if="user?.Role == 'admin'">
             <RouterLink :to="'/accesso/areaPersonale/operazioniProdotti'">
                 <div class="card">
@@ -74,7 +74,7 @@ export default defineComponent({
         </div>
     </div>
 
-    <div v-if="user" class="flex-container-ap">
+    <div class="flex-container-ap">
         <form @submit.prevent="modifyPassword" class="flex-item">
             <label>Inserire la vecchia password</label>
             <input v-model="oldPassword" type="text"/>
