@@ -1,7 +1,7 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 import { User } from "../types"
-import axios from "axios";
+import axios from "axios"
 
 export default defineComponent({
     data() {
@@ -14,10 +14,6 @@ export default defineComponent({
         user: Object as PropType<User>,
     },
     methods: {
-        async logout() {
-            await axios.post("/api/auth/logout")
-            window.location.href ="/"
-        },
         async modifyPassword() {
             await axios.post("/api/auth/mod/password", {
                 oldPassword: this.oldPassword,
@@ -70,7 +66,7 @@ export default defineComponent({
                 <div class="card">
                     <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Anagrafica</h5>
+                        <h5 class="card-title">Dati Personali</h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
                     </div>
                 </div>
@@ -86,9 +82,5 @@ export default defineComponent({
             <input v-model="newPassword" type="text"/>
             <button type="submit">Cambia Password</button>
         </form>
-    </div>
-
-    <div class="flex-container-op">
-        <div class="flex-item"><button @click="logout" type="submit">Logout</button></div>
     </div>
 </template>
