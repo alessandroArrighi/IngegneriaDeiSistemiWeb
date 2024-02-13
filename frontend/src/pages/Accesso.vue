@@ -47,12 +47,9 @@ export default defineComponent({
 </script>
 
 <template>
-
-    <h2>ACCEDI O CREA UN ACCOUNT</h2>
-
-
-    <div class="flex-container-accesso">
+    <div class="flex-container-agr">
         <div class="flex-item">
+            <h2>REGISTRATI</h2>
             <form v-if="!user" @submit.prevent="signup">
                 <label>Username</label>
                 <input v-model="usernameDaRegistrare" type="text" />
@@ -62,6 +59,7 @@ export default defineComponent({
             </form>
         </div>
         <div class="flex-item">
+            <h2>ACCEDI</h2>
             <form v-if="!user" @submit.prevent="login">
                 <label>Username</label>
                 <input v-model="usernameEsistente" type="text" />

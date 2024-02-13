@@ -31,6 +31,53 @@ export default defineComponent({
 
 
 <template>
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4 m-4" id="area-personale">
+        <div class="col col-lg-3" v-if="user?.Role == 'admin'">
+            <RouterLink :to="'/accesso/areaPersonale/operazioniProdotti'">
+                <div class="card">
+                    <img src="../../public/2.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Operazioni Prodotti</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                    </div>
+                </div>
+            </RouterLink>
+        </div>
+        <div class="col col-lg-3">
+            <RouterLink v-if="user?.Role == 'admin'" :to="'/accesso/areaPersonale/operazioniOrdini'">
+                <div class="card">
+                    <img src="../../public/2.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Ordini per ID</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                    </div>
+                </div>
+            </RouterLink>
+        </div>
+        <div class="col col-lg-3">
+            <RouterLink :to="'/accesso/areaPersonale/ordiniUtente'">
+                <div class="card">
+                    <img src="../../public/2.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Ordini Utente</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                    </div>
+                </div>
+            </RouterLink>
+        </div>
+        <div class="col col-lg-3">
+            <RouterLink :to="'/accesso/areaPersonale/anagrafica'">
+                <div class="card">
+                    <img src="../../public/2.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Anagrafica</h5>
+                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                    </div>
+                </div>
+            </RouterLink>
+        </div>
+    </div>
+
     <div v-if="user" class="flex-container-ap">
         <form @submit.prevent="modifyPassword" class="flex-item">
             <label>Inserire la vecchia password</label>
@@ -43,9 +90,5 @@ export default defineComponent({
 
     <div class="flex-container-op">
         <div class="flex-item"><button @click="logout" type="submit">Logout</button></div>
-        <RouterLink v-if="user?.Role == 'admin'" :to="'/accesso/areaPersonale/operazioniProdotti'" class="flex-item"><button>Operazioni Prodotti</button></RouterLink>
-        <RouterLink v-if="user?.Role == 'admin'" :to="'/accesso/areaPersonale/operazioniOrdini'" class="flex-item"><button>Ordini per ID</button></RouterLink>
-        <RouterLink :to="'/accesso/areaPersonale/ordiniUtente'" class="flex-item"><button>Ordini Utente</button></RouterLink>
-        <RouterLink :to="'/accesso/areaPersonale/anagrafica'" class="flex-item"><button>Anagrafica</button></RouterLink>
     </div>
 </template>

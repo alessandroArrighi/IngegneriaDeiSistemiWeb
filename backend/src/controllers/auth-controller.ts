@@ -108,8 +108,8 @@ export async function modifyPassword(req: Request, res: Response) {
             const newPassword = await bcrypt.hash(req.body.newPassword, 10)
 
             connection.execute(
-                "UPDATE Utenze SET Password = ?",
-                [newPassword],
+                "UPDATE Utenze SET Password = ? WHERE IDUtente = ?",
+                [newPassword, user.IDUtente],
                 function(err, results, fields) {
                     if(err) {
                         res.status(400).send(err)
