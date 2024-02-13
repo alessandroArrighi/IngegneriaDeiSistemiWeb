@@ -73,8 +73,8 @@ export default defineComponent({
 
                   <div class="col-lg-7">
 
-                    <div class="card mb-3 bg-light" v-for = "prodotto in ordine" style="background-color: #28282d;">
-                      <div class="card-body p-1">
+                    <div class="card mb-3 bg-warning" v-for = "prodotto in ordine" style="background-color: #28282d;">
+                      <div class="card-body bg-warning p-1">
 
                         <div class="flex-container-cart">
 
