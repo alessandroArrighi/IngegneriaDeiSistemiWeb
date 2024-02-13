@@ -17,9 +17,7 @@ export default defineComponent({
       mostraFiltri: false,
       ordinaPer: "",
       elementiMostrati: 4,
-      num: 0,
       categoria: "",
-      quantità: 0,
     }
   },
   computed: {
@@ -69,15 +67,13 @@ export default defineComponent({
       const prodotto = {
         IDProdotto: prod.Modello,
         Categoria: this.categoria,
-        Quantità: this.quantità,
+        Quantità: 1,
         Prezzo: prod.Prezzo
       }
-      this.quantità = 0,
       await addToOrder(STORAGE_NAME, prodotto)
     },
     aggiungiElementi() {
-      this.elementiMostrati += this.num,
-      this.num = 0
+      this.elementiMostrati += 4
     }
   },
   mounted() {
@@ -129,24 +125,12 @@ export default defineComponent({
         <p>{{ prodotto.Prezzo }}</p>
       </RouterLink>
       <form @submit.prevent="addItem(prodotto)">
-        <select v-model="quantità">
-          <option value=0></option>
-          <option value=1>1</option>
-          <option value=3>3</option>
-          <option value=6>6</option>
-        </select>
         <button type="submit">Aggiungi</button>
       </form>
     </div>
   </div>
   <div class="command">
     <form @submit.prevent="aggiungiElementi">
-      <select v-model="num">
-        <option value=0>-- Seleziona --</option>
-        <option value=4>4</option>
-        <option value=8>8</option>
-        <option value=16>16</option>
-      </select>
       <button type="submit">Carica Altri</button>
     </form>
   </div>
