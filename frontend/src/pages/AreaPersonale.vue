@@ -35,7 +35,7 @@ export default defineComponent({
         <div class="col col-lg-3" v-if="user?.Role == 'admin'">
             <RouterLink :to="'/accesso/areaPersonale/operazioniProdotti'">
                 <div class="card">
-                    <img src="../../public/2.jpg" class="card-img-top" alt="...">
+                    <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Operazioni Prodotti</h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
@@ -46,7 +46,7 @@ export default defineComponent({
         <div class="col col-lg-3">
             <RouterLink v-if="user?.Role == 'admin'" :to="'/accesso/areaPersonale/operazioniOrdini'">
                 <div class="card">
-                    <img src="../../public/2.jpg" class="card-img-top" alt="...">
+                    <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Ordini per ID</h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
@@ -57,7 +57,7 @@ export default defineComponent({
         <div class="col col-lg-3">
             <RouterLink :to="'/accesso/areaPersonale/ordiniUtente'">
                 <div class="card">
-                    <img src="../../public/2.jpg" class="card-img-top" alt="...">
+                    <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Ordini Utente</h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
@@ -68,7 +68,7 @@ export default defineComponent({
         <div class="col col-lg-3">
             <RouterLink :to="'/accesso/areaPersonale/anagrafica'">
                 <div class="card">
-                    <img src="../../public/2.jpg" class="card-img-top" alt="...">
+                    <img src="" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Anagrafica</h5>
                         <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>

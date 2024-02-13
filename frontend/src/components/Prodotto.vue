@@ -68,7 +68,8 @@ export default defineComponent({
         IDProdotto: prod.Modello,
         Categoria: this.categoria,
         Quantità: 1,
-        Prezzo: prod.Prezzo
+        Prezzo: prod.Prezzo,
+        Immagine: prod.Immagine
       }
       await addToOrder(STORAGE_NAME, prodotto)
     },
@@ -119,7 +120,7 @@ export default defineComponent({
   <div class="flex-container-prodotti">
     <div v-for="prodotto in sortedData.slice(0, elementiMostrati)" class="flex-item">
       <RouterLink :to="'/prodotti/' + categoria + '-' + prodotto.Modello">
-        <img loading="lazy" :src="prodotto.Immagine" alt="/">
+        <img loading="lazy" :src="'/' + prodotto.Immagine" alt="/">
         <p>{{ prodotto.Modello }}</p>
         <p>{{ prodotto.Brand }}</p>
         <p>{{ prodotto.Prezzo }}</p>

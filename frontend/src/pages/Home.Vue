@@ -38,19 +38,19 @@ export default defineComponent({
     
     <Slide :key="slide">
       <div class="carousel__item">
-        <img src="../../../backend/foto/0RB0298S__13553F__P21__shad__fr.avif" alt="/">        <!--SISTEMARE FOTO-->
+        <img src="/1.avif" alt="">        <!--SISTEMARE FOTO-->
         <p>CIAOOOOOOOO</p>
       </div>
     </Slide>
     <Slide :key="slide">
       <div class="carousel__item">
-        <img src="../../public/2.jpg">
+        <img src="">
         <p>COMEEEEEEEE</p>
       </div>
     </Slide>
     <Slide :key="slide">
       <div class="carousel__item">
-        <img src="../../public/3.jpg">
+        <img src="">
         <p>VAAAAAAAAAAA</p>
       </div>
     </Slide>
@@ -69,19 +69,19 @@ export default defineComponent({
 
     <Slide :key="slide">
       <div class="carousel__item">
-        <img src="../../public/1.jpg">
+        <img src="">
         <RouterLink to = "/prodotti/tutti/vista/MontatureV">Occhiali da Vista</RouterLink>
       </div>
     </Slide>
     <Slide :key="slide">
       <div class="carousel__item">
-        <img src="../../public/2.jpg">
+        <img src="">
         <RouterLink to = "/prodotti/tutti/vista/MontatureS">Occhiali da Sole</RouterLink>
       </div>
     </Slide>
     <Slide :key="slide">
       <div class="carousel__item">
-        <img src="../../public/3.jpg">
+        <img src="">
         <RouterLink to = "/prodotti/tutti/vista/LACC">Lenti a Contatto</RouterLink>
       </div>
     </Slide>

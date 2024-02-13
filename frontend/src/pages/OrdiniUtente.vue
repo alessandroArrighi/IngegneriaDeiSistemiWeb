@@ -13,14 +13,14 @@ export default defineComponent({
             const res = await axios.post("/api/ordini/user")
             this.datiOrdine = res.data
         }
+    },
+    mounted() {
+        this.getOrderFromID()
     }
 })
 </script>
 
 <template>
-    <div class="command">
-        <button @click="getOrderFromID">Trova I Tuoi Ordini</button>
-    </div>
     <div class="flex-container-prodotti">
         <div v-for="ordine in datiOrdine" class="flex-item">
             <RouterLink :to="'/accesso/areaPersonale/operazioniOrdini/' + ordine.IDOrdine"><p>{{ ordine.IDOrdine }}</p></RouterLink>

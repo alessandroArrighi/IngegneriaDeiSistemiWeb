@@ -34,6 +34,7 @@ export default defineComponent({
         }
     },
     mounted() {
+        console.log(this.$route.params.permesso)
         if(this.$route.params.permesso == "admin") {
             this.ruoloDaRegistrare = "admin"
         }

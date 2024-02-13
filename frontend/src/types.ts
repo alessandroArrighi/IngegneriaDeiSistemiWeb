@@ -34,6 +34,7 @@ export interface Ordine {
     Categoria: string
     Quantità: number
     Prezzo: number
+    Immagine: string
 }
 
 export interface Utente {

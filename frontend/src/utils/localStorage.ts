@@ -25,8 +25,6 @@ export async function getItem(key: string) {
 export async function addItem(key: string, value: any, expireIn: number) {
     let storage = await getItem(key)
     if(storage) {
-        console.log(storage)
-        console.log(typeof storage)
         storage.push(value)
         setItem(key, storage, expireIn)
         return

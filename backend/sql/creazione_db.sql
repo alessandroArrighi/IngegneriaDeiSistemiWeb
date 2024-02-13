@@ -28,7 +28,8 @@ CREATE TABLE IF NOT EXISTS LAC (
     Prezzo      	int(10)		NOT NULL,
     Durata			char(15)	NOT NULL,
     Fascia			char(10)	NOT NULL,
-    Focale			char(10)	NOT NULL												);
+    Focale			char(10)	NOT NULL,
+    Immagine        varchar(255) NOT NULL	    									    );
 
 CREATE TABLE IF NOT EXISTS Negozi (
     IDNegozio		int		    AUTO_INCREMENT PRIMARY KEY,
