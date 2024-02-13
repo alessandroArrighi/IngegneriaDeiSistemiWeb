@@ -269,6 +269,29 @@ button {
   }
 }
 
+.flex-container-ap {
+  justify-content: center;
+  color: white;
+  padding: 0px 20px;
+  text-align: center;
+
+  .flex-item {
+    padding-bottom: 20px;
+    padding-top: 20px;
+    border-top: 1px solid white;
+    
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      
+      input {
+        margin: $spacing-small;
+      }  
+    }
+  }
+}
+
 .flex-container-opProd {
   padding: 15px;
   

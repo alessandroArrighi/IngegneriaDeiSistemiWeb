@@ -8,12 +8,21 @@ export default defineComponent({
         return {
             datiUtente: {} as Utente,
             nuoviDati: {} as Utente,
+            oldPassword: "",
+            newPassword: ""
         }
     },
     props: {
         user: Object as PropType<User>,
     },
     methods: {
+        async modifyPassword() {
+            await axios.post("/api/auth/mod/password", {
+                oldPassword: this.oldPassword,
+                newPassword: this.newPassword
+            })
+            window.location.reload()
+        },
         async getUtente(){
             const res = await axios.get("/api/utenze")
             this.datiUtente = res.data
@@ -63,6 +72,18 @@ export default defineComponent({
                 <label >Indirizzo</label>
                 <input v-model="nuoviDati.Indirizzo" type="text" />
                 <button type="submit">Modifica Dati</button>
+            </form>
+        </div>
+    </div>
+    <div class="flex-container-ap">
+        <div class = "flex-item">
+            <h4>Modifica Password</h4>
+            <form @submit.prevent="modifyPassword">
+                <label>Inserire la vecchia password</label>
+                <input v-model="oldPassword" type="text"/>
+                <label>Inserire la nuova password</label>
+                <input v-model="newPassword" type="text"/>
+                <button type="submit">Cambia Password</button>
             </form>
         </div>
     </div>
