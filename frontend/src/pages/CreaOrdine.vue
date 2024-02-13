@@ -31,6 +31,8 @@ export default defineComponent({
                 IDUtente: this.user?.IDUtente,
                 ord: this.ordine
             })
+            this.ordine = []
+            localStorage.removeItem(STORAGE_NAME)
             window.location.href="/"
         },
         async rimuoviProdotto(prodotto: any) {
@@ -73,8 +75,8 @@ export default defineComponent({
 
                   <div class="col-lg-7">
 
-                    <div class="card mb-3 bg-warning" v-for = "prodotto in ordine" style="background-color: #28282d;">
-                      <div class="card-body bg-warning p-1">
+                    <div class="card mb-3 bg-light" v-for = "prodotto in ordine" style="background-color: #28282d;">
+                      <div class="card-body bg-light p-1">
 
                         <div class="flex-container-cart">
 
@@ -97,7 +99,7 @@ export default defineComponent({
                               <h5>Prezzo</h5>
                               <p>{{ prodotto.Prezzo }}€</p>
                             </div>
-                            <button @click = "rimuoviProdotto(prodotto)" class="btn btn-info btn-block btn-sm">Rimuovi</button>
+                            <button @click = "rimuoviProdotto(prodotto)" class="btn btn-primary btn-block btn-sm">Rimuovi</button>
                           </div>
 
                         </div>
@@ -156,14 +158,14 @@ export default defineComponent({
 
                         <div class="d-flex justify-content-between">
                           <p class="mb-2">Spedizione</p>
-                          <p class="mb-2">$20.00</p>
+                          <p class="mb-2">20.00€</p>
                         </div>
 
                         <div class="d-flex justify-content-between mb-4">
                           <p class="mb-2">Totale(Incl. spedizione)</p>
                           <p class="mb-2">{{ totale.toFixed(2) }}€</p>
                         </div>
-                        <button @click="creaOrdine" type="button" class="btn btn-info btn-block btn-lg">Ordina</button>
+                        <button @click="creaOrdine" type="button" class="btn btn-warning btn-block btn-lg">Ordina</button>
                       
                       </div>
 

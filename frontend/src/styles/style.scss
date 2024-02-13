@@ -27,7 +27,7 @@
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #0794df;
+    background-color: $primary-color;
     color: #000000;
   }
 }
@@ -40,6 +40,15 @@ h1, h2, h4 {
 h2, h4 {
   margin-left: 24px;
   margin-right: 24px;
+}
+
+a {
+  text-decoration: none !important;
+  color: white !important;
+}
+
+button {
+  @include pill;
 }
 
 .primary-carousel {
@@ -158,6 +167,7 @@ h2, h4 {
       a {
         display: block;
         margin-bottom: 16px;
+        text-decoration: underline !important;
       }
     }
 
@@ -172,14 +182,7 @@ h2, h4 {
     }
 
     .pill-item{
-      text-align: center;
-      background-color: #0794df;
-      color: #fff;
-      border-radius: $spacing-medium;
-      padding-right: $spacing-small;
-      padding-left: $spacing-small;
-      padding-bottom: 7px;
-      padding-top: 4px;
+      @include pill;
     }
   }
 }
@@ -204,6 +207,10 @@ h2, h4 {
       input {
         width: 100%;
       }
+    }
+
+    button {
+      border-radius: 20px !important;
     }
 
     &:last-child {
@@ -235,6 +242,10 @@ h2, h4 {
     border-top: 1px solid white;
     margin-bottom: $spacing-large;
   }
+  
+  button {
+    @include pill;
+  }
 
   @media screen and (min-width: 768px) {
     display: flex;
@@ -252,12 +263,10 @@ h2, h4 {
 }
 
 .command {
-  display: flex;
-  margin: $spacing-medium;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  color: white;
+  text-align: center;
+  button {
+    @include pill;
+  }
 }
 
 .flex-container-opProd {
