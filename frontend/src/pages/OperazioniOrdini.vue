@@ -42,8 +42,9 @@ export default defineComponent({
 
 <template>
     <div class="command">
+        <h4>Inserire l'ID dell'ordine da cercare</h4>
         <form v-if="user?.Role == 'admin'" @submit.prevent="getOrderFromID" class="flex-item">
-            <label>Inserisci ID Ordine</label>
+            <label>ID Ordine</label>
             <input v-model="idRicerca" type="text" />
             <button type="submit">Cerca</button>
         </form>

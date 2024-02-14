@@ -18,7 +18,7 @@ export default defineComponent({
                     <img src="/img/tools.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Operazioni Prodotti</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                        <p class="card-text">Selezionare questa scheda per effettuare differenti operazioni relative ai prodotti</p>
                     </div>
                 </div>
             </RouterLink>
@@ -29,7 +29,7 @@ export default defineComponent({
                     <img src="/img/lens.png" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Cerca Ordini per ID</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                        <p class="card-text">Selezionare questa scheda per ricercare uno specifico ordine inserendo il suo ID</p>
                     </div>
                 </div>
             </RouterLink>
@@ -40,7 +40,7 @@ export default defineComponent({
                     <img src="/img/box.png" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Ordini Utente</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                        <p class="card-text">Selezionare questa scheda per visualizzare tutti gli ordini ed i relativi prodotti acquistati</p>
                     </div>
                 </div>
             </RouterLink>
@@ -51,7 +51,7 @@ export default defineComponent({
                     <img src="/img/user.png" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Dati Personali</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+                        <p class="card-text">Selezionare questa scheda per visualizzare e modificare i propi dati personali</p>
                     </div>
                 </div>
             </RouterLink>
