@@ -1,16 +1,12 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue"
 import { Ordine, User } from "../types"
-import Carrello from "./Carrello.vue"
 import axios from "axios"
 
 export default defineComponent({
     props: {
         user: {} as PropType<User>,
         ordine: Array as PropType<Ordine[]>,
-    },
-    components: {
-        Carrello
     },
     methods: {
         async logout() {

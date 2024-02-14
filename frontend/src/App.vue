@@ -4,7 +4,6 @@ import { defineComponent } from "vue"
 import { User, Ordine } from "./types"
 import Navbar from "./components/Navbar.vue"
 import FooterComp from "./components/Footer.vue"
-import Carrello from "./components/Carrello.vue"
 
 export default defineComponent({
   data() {
@@ -43,8 +42,7 @@ export default defineComponent({
   },
   components: {
     Navbar,
-    FooterComp,
-    Carrello
+    FooterComp
   }
 })
 </script>

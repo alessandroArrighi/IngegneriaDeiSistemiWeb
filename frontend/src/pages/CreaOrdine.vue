@@ -8,7 +8,6 @@ export default defineComponent({
     props: {
         user: Object as PropType<User>,
     },
-    emits: ["cancella"],
     data() {
         return{
             idProdotto: "",
