@@ -14,24 +14,6 @@ VALUES ('CCC00', 'RayBan', 180, 'da vista', 52, 16, 135, 'metallo', 'bianco', '1
 ('CCC11', 'GA', 240, 'da vista', 56, 21, 138, 'composito', 'marrone', '12.jpg'),
 ('CCC12', 'GA', 260, 'da vista', 61, 24, 142, 'metallo', 'bianco', '13.jpg');
 
-INSERT INTO Lenti (Modello, Brand, Prezzo, Versione, Antiriflesso, Sfericità, Focale)
-VALUES ('BBB00', 'Shamir', 70, 'graduata', false, 'sferica', 'monofocale'),
-('BBB01', 'Zeiss', 130, 'da sole', false, 'asferica', 'bifocale'),
-('BBB02', 'Oya', 90, 'graduata', false, 'sferica', 'monofocale'),
-('BBB03', 'Shamir', 110, 'da sole graduata', true, 'sferica', 'monofocale'),
-('BBB04', 'Zeiss', 180, 'da sole graduata', false, 'asferica', 'bifocale'),
-('BBB05', 'Oya', 120, 'graduata', true, 'asferica', 'monofocale'),
-('BBB06', 'Shamir', 200, 'da sole', false, 'asferica', 'bifocale'),
-('BBB07', 'Zeiss', 80, 'graduata', true, 'sferica', 'bifocale'),
-('BBB08', 'Oya', 150, 'graduata', false, 'sferica', 'monofocale'),
-('BBB09', 'Shamir', 100, 'da sole graduata', true, 'asferica', 'bifocale'),
-('BBB10', 'Zeiss', 120, 'da sole', false, 'sferica', 'monofocale'),
-('BBB11', 'Oya', 70, 'graduata', true, 'asferica', 'bifocale'),
-('BBB12', 'Shamir', 130, 'da sole graduata', false, 'asferica', 'monofocale'),
-('BBB13', 'Zeiss', 90, 'graduata', false, 'asferica', 'bifocale'),
-('BBB14', 'Oya', 110, 'da sole', true, 'sferica', 'monofocale'),
-('BBB15', 'Shamir', 180, 'da sole graduata', true, 'sferica', 'monofocale');
-
 INSERT INTO LAC (Modello, Brand, Prezzo, Durata, Fascia, Focale, Immagine)
 VALUES ('AAA00', 'Alcon', 42, 'giornaliere', 'bassa', 'monofocale', 'a.avif'),
 ('AAA01', 'B&L', 60, 'settimanali', 'media', 'bifocale', 'a.avif'),
@@ -53,8 +35,3 @@ VALUES ('AAA00', 'Alcon', 42, 'giornaliere', 'bassa', 'monofocale', 'a.avif'),
 ('AAA17', 'Iridia', 32, 'mensili', 'alta', 'bifocale', 'a.avif'),
 ('AAA18', 'Alcon', 24, 'giornaliere', 'bassa', 'monofocale', 'a.avif'),
 ('AAA19', 'B&L', 68, 'settimanali', 'media', 'bifocale', 'a.avif');
-
-INSERT INTO Negozi (Via, Città, CAP)
-VALUES ('XX Settembre, 23', 'Milano', '28178'),
-('Garibaldi, 49', 'Roma', '43291'),
-('Volta, 13', 'Palermo', '25521');

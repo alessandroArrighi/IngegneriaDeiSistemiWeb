@@ -6,10 +6,12 @@ import appointmentsRouter from "./routes/appointments-router"
 import ordersRouter from "./routes/orders-router"
 import usersRouter from "./routes/users-router"
 import authRouter from "./routes/auth-router"
+import history from "connect-history-api-fallback"
 
 const app: Express = express()
 const port: Number = 3000
 
+app.use(history())
 app.use(bodyParser.json())
 app.use(cookieParser())
 

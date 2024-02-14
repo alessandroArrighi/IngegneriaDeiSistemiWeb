@@ -25,7 +25,6 @@ export default defineComponent({
     async addToOrd(prodotto: any) {
       this.ordine.push(prodotto)
     },
-    //di prova
     async deleteProd(item: any) {
       var index = this.ordine.findIndex(obj => obj.IDProdotto === item.IDProdotto);
 
