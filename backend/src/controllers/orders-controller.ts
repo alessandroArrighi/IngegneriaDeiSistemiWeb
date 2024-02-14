@@ -16,7 +16,6 @@ export async function ordersFromID(req: Request, res: Response) {
                 ordine.push((await selecProdotto(`SELECT * FROM ${result[i]['Categoria']} WHERE Modello = '${result[i]['IDProdotto']}'`))[0])
             }
             res.json(ordine)
-            console.log(ordine)
         }
     )
 }
@@ -46,7 +45,6 @@ export async function getOrder(req: Request, res: Response) {
                     for(let i = 0; i < result.length; ++i) {
                         ordine.push((await selecProdotto(`SELECT * FROM ${result[i]['Categoria']} WHERE Modello = '${result[i]['IDProdotto']}'`))[0])
                     }
-                    console.log(ordine)
                     res.json(ordine)
                 }
             )

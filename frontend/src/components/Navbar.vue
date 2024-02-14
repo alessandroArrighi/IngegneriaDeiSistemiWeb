@@ -39,8 +39,8 @@ export default defineComponent({
                 <span class="navbar-toggler-icon"></span>
             </button>
             <RouterLink class="navbar-brand ps-5 pt-3 me-0 text-white" :to="'/'">
-                <img src="/1.avif" width="110" height="80" alt="Logo" loading="lazy">
-                <h1 class="d-inline fs-3 fw-bold">Tumefatti</h1>
+                <img src="/img/arrighi--medri-high-resolution-logo-transparent.png" width="100" height="60" alt="Logo" loading="lazy">
+                <h1 class="d-inline fs-3 fw-bold">Arrighie & Medri</h1>
             </RouterLink>    
             <div class="collapse navbar-collapse justify-content-end fw-bold" id="navbarNavAltMarkup">
                 <div class="navbar-nav pb-1 me-5">

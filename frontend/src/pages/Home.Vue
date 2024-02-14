@@ -39,21 +39,21 @@ export default defineComponent({
     <Carousel class="primary-carousel" :wrap-around="true">
       <Slide :key="slide">
         <div class="carousel__item">
-          <img src="/1.avif" alt="">        <!--SISTEMARE FOTO-->
+          <img src="/img/1.avif" alt="">        <!--SISTEMARE FOTO-->
           <p>CIAOOOOOOOO</p>
           <Navigation class="custom-navigation"/>
         </div>
       </Slide>
       <Slide :key="slide">
         <div class="carousel__item">
-          <img src="/2.avif">
+          <img src="/img/2.avif">
           <p>COMEEEEEEEE</p>
           <Navigation class="custom-navigation"/>
         </div>
       </Slide>
       <Slide :key="slide">
         <div class="carousel__item">
-          <img src="/3.avif">
+          <img src="/img/3.avif">
           <p>VAAAAAAAAAAA</p>
           <Navigation class="custom-navigation"/>
         </div>
@@ -66,31 +66,31 @@ export default defineComponent({
       
       <Slide :key="slide">
         <div class="carousel__item">
-          <img src="/1.avif">
+          <img src="/img/1.avif">
           <RouterLink to = "/prodotti/tutti/vista/MontatureV">Occhiali da Vista</RouterLink>
         </div>
       </Slide>
       <Slide :key="slide">
         <div class="carousel__item">
-          <img src="/2.avif">
+          <img src="/img/2.avif">
           <RouterLink to = "/prodotti/tutti/vista/MontatureS">Occhiali da Sole</RouterLink>
         </div>
       </Slide>
       <Slide :key="slide">
         <div class="carousel__item">
-          <img src="/3.avif">
+          <img src="/img/3.avif">
           <RouterLink to = "/prodotti/tutti/vista/LACC">Lenti a Contatto</RouterLink>
         </div>
       </Slide>
       <Slide :key="slide">
         <div class="carousel__item">
-          <img src="/4.avif">
+          <img src="/img/4.avif">
           <RouterLink to = "/prodotti/tutti/vista/LACC">Lenti a Contatto</RouterLink>
         </div>
       </Slide>
       <Slide :key="slide">
         <div class="carousel__item">
-          <img src="/5.avif">
+          <img src="/img/5.avif">
           <RouterLink to = "/prodotti/tutti/vista/LACC">Lenti a Contatto</RouterLink>
         </div>
       </Slide>
