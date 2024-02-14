@@ -21,16 +21,6 @@ export default defineComponent({
       const res = await axios.get("/api/auth/getUser")
       this.user = res.data
     },
-    async addToOrd(prodotto: any) {
-      this.ordine.push(prodotto)
-    },
-    async deleteProd(item: any) {
-      var index = this.ordine.findIndex(obj => obj.IDProdotto === item.IDProdotto);
-
-      if (index !== -1) {
-        this.ordine.splice(index, 1);
-      }
-    },
     async checkUser() {
       if(this.user) this.check = true
       else this.check = false
@@ -50,7 +40,7 @@ export default defineComponent({
 <template>
     <div>
         <Navbar :user = "user"/>
-        <RouterView :user="user" :ordine = "ordine" @sendProd = "addToOrd" @cancella = "deleteProd"/>
+        <RouterView :user="user" :ordine = "ordine"/>
         <FooterComp />
     </div>
 </template>
