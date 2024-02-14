@@ -58,4 +58,3 @@ export default defineComponent({
 <style lang="scss">
 @import "./styles/style.scss";
 </style>
-

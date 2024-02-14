@@ -12,7 +12,7 @@ export default defineComponent({
     return {
       montatura: null as any | null,
       lac: null as any | null,
-      quantità: 0,
+      quantità: 1,
       categoria: ""
     }
   },
@@ -37,7 +37,7 @@ export default defineComponent({
         Prezzo: prod.Prezzo,
         Immagine: prod.Immagine
       }
-      this.quantità = 0,
+      this.quantità = 1,
       await addToOrder(STORAGE_NAME, prodotto)
     }
   },
