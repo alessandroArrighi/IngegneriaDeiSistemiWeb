@@ -212,6 +212,10 @@ button {
       }
     }
 
+    select {
+      @include pill;
+    }
+
     button {
       border-radius: 20px !important;
     }

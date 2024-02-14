@@ -1,9 +1,13 @@
 <script lang="ts">
-import { defineComponent } from "vue"
+import { defineComponent, PropType } from "vue"
 import axios from "axios"
+import { User } from "../types";
 import { addToOrder, STORAGE_NAME } from '../utils/localStorage'
 
 export default defineComponent({
+  props: {
+    user: {} as PropType<User>,
+  },
   data() {
     return {
       montatura: null as any | null,
@@ -14,12 +18,12 @@ export default defineComponent({
   },
   methods: {
     getVista() {
-      axios.get("/api/prodotti/vista/"+ this.$route.params.idProdotto)    //questa get non va bene perché noi dobbiamo filtrare sul json ottenuto dalla route "padre" montature, non possiamo rifare una chiamate (di cui il controller nemmeno )
-      .then(response => this.montatura = response.data[0])       //utilizziamo $route.params.idProdotto per filtrare l'array dei prodotti ottenuto con inject e selezionare solo il prodotto voluto
+      axios.get("/api/prodotti/vista/"+ this.$route.params.idProdotto)
+      .then(response => this.montatura = response.data[0])
     },
     getLac() {
-      axios.get("/api/prodotti/lac/"+ this.$route.params.idProdotto)    //questa get non va bene perché noi dobbiamo filtrare sul json ottenuto dalla route "padre" montature, non possiamo rifare una chiamate (di cui il controller nemmeno )
-      .then(response => this.lac = response.data[0])       //utilizziamo $route.params.idProdotto per filtrare l'array dei prodotti ottenuto con inject e selezionare solo il prodotto voluto
+      axios.get("/api/prodotti/lac/"+ this.$route.params.idProdotto)
+      .then(response => this.lac = response.data[0])
     },
     getSole() {
       axios.get("/api/prodotti/vista/" + this.$route.params.idProdotto)
@@ -41,11 +45,7 @@ export default defineComponent({
     if(this.$route.params.categoria == "Montature") {
         this.getVista()
         this.categoria = "Montature"
-    }/*
-    if(this.$route.params.categoria == "Montature") {
-      this.getSole()
-      this.categoria = "Montature"
-    }*/
+    }
     if(this.$route.params.categoria == "LAC") {
         this.getLac()
         this.categoria = "LAC"
@@ -71,7 +71,7 @@ export default defineComponent({
       <p>Materiale: {{ montatura.Materiale }}</p>
       <p>Colore: {{ montatura.Colore }}</p>
     </div>
-    <form @submit.prevent="addItem(montatura)">
+    <form @submit.prevent="addItem(montatura)" v-if="user">
       <select v-model="quantità">
         <option value=0></option>
         <option value=1>1</option>
@@ -93,7 +93,7 @@ export default defineComponent({
       <p>Fascia: {{ lac.Fascia }}</p>
       <p>Focale: {{ lac.Focale }}</p>
     </div>
-    <form @submit.prevent="addItem(lac)">
+    <form @submit.prevent="addItem(lac)" v-if="user">
       <select v-model="quantità">
         <option value=0></option>
         <option value=1>1</option>
