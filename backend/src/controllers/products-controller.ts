@@ -60,6 +60,10 @@ export async function modifyFrame(req: Request, res: Response) {
         [Modello],
         function(err, results, fields) {
             const result = (results as any)[0]
+            if(!result) {
+                res.status(400).send("Errore")
+                return
+            }
             connection.execute(
                 "UPDATE Montature SET Modello = ?, Brand = ?, Prezzo = ?, Versione = ?, Calibro = ?, Ponte = ?, Aste = ?, Materiale = ?, Colore = ?, Immagine = ? WHERE Modello = ?",
                 [
@@ -82,51 +86,6 @@ export async function modifyFrame(req: Request, res: Response) {
                     }
                     res.send("Prodotto modificato")
                 }
-            )
-        }
-    )
-}
-
-export async function addNewLens(req: Request, res: Response) {
-    if(!await adminLoggedIn(req, res)) return
-
-    const { Modello, Brand, Prezzo, Versione, Antiriflesso, Sfericità, Focale } = req.body.dati
-
-    connection.execute(
-        "INSERT INTO Lenti(Modello, Brand, Prezzo, Versione, Antiriflesso, Sfericità, Focale) VALUES(?, ?, ?, ?, ?, ?, ?)",
-        [Modello, Brand, Prezzo, Versione, Antiriflesso, Sfericità, Focale],
-        function(err, results, fields) {
-            if(err) {
-                res.status(400).send(err)
-                return
-            }
-            res.send("Prodotto aggiunto")
-        }
-    )
-}
-
-export async function modifyLens(req: Request, res: Response) {
-    if(!await adminLoggedIn(req, res)) return
-
-    const { Modello, Brand, Prezzo, Versione, Antiriflesso, Sfericità, Focale, NewModello } = req.body.dati
-
-    connection.execute(
-        "SELECT * FROM Lenti WHERE Modello = ?",
-        [Modello],
-        function(err, results, fields) {
-            const result = (results as any)[0]
-            connection.execute(
-                "UPDATE Lenti SET Modello = ?, Brand = ?, Prezzo = ?, Versione = ?, Antiriflesso = ?, Sfericità = ?, Focale = ? WHERE Modello = ?",
-                [
-                    NewModello != null ? NewModello : Modello,
-                    Brand != null ? Brand : result['Brand'],
-                    Prezzo != null ? Prezzo : result['Prezzo'],
-                    Versione != null ? Versione : result['Versione'],
-                    Antiriflesso != null ? Antiriflesso : result['Antiriflesso'],
-                    Sfericità != null ? Sfericità : result['Sfericità'],
-                    Focale != null ? Focale : result['Focale'],
-                    Modello
-                ]
             )
         }
     )
@@ -160,6 +119,10 @@ export async function modifyLAC(req: Request, res: Response) {
         [Modello],
         function(err, results, fields) {
             const result = (results as any)[0]
+            if(!result) {
+                res.status(400).send("Errore")
+                return
+            }
             connection.execute(
                 "UPDATE LAC SET Modello = ?, Brand = ?, Prezzo = ?, Durata = ?, Fascia = ?, Focale = ? WHERE Modello = ?",
                 [
@@ -215,16 +178,6 @@ export async function getLacFromID(req: Request, res: Response) {
     connection.execute(
         "SELECT * FROM LAC WHERE Modello = ?",
         [req.params.id],
-        function(err, results, fields) {
-            res.json(results)
-        }
-    )
-}
-
-export async function allLenses(req: Request, res: Response) {
-    connection.execute(
-        `SELECT * FROM Lenti`,
-        [],
         function(err, results, fields) {
             res.json(results)
         }

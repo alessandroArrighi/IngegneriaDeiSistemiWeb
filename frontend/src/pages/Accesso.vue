@@ -11,6 +11,8 @@ export default defineComponent({
         ruoloDaRegistrare: "",
         usernameEsistente: "",
         passwordEsistente: "",
+        signupError: "",
+        loginError: "",
         }
     },
     props: {
@@ -18,19 +20,31 @@ export default defineComponent({
     },
     methods: {
         async signup() {
-            await axios.post("/api/auth/signin", {
-                username: this.usernameDaRegistrare,
-                password: this.passwordDaRegistrare,
-                role: this.ruoloDaRegistrare
-            })
-            window.location.href ="/accesso/areaPersonale"
+            try {
+                const response = await axios.post("/api/auth/signin", {
+                    username: this.usernameDaRegistrare,
+                    password: this.passwordDaRegistrare,
+                    role: this.ruoloDaRegistrare
+                });
+                if (response.status === 200) {
+                    window.location.href = "/accesso/areaPersonale";
+                }
+            } catch (error) {
+                this.signupError = "Errore durante la registrazione. Username già esistente.";
+            }
         },
         async login() {
-            await axios.post("/api/auth/login", {
-                username: this.usernameEsistente,
-                password: this.passwordEsistente
-            })
-            window.location.href ="/accesso/areaPersonale"
+            try {
+                const response = await axios.post("/api/auth/login", {
+                    username: this.usernameEsistente,
+                    password: this.passwordEsistente
+                });
+                if (response.status === 200) {
+                    window.location.href = "/accesso/areaPersonale";
+                }
+            } catch (error) {
+                this.loginError = "Credenziali non valide. Controlla di aver inserito correttamente username e password.";
+            }
         }
     },
     mounted() {
@@ -56,6 +70,7 @@ export default defineComponent({
                 <label>Password</label>
                 <input v-model="passwordDaRegistrare" type="password" />
                 <button type="submit">Registrati</button>
+                <p v-if="signupError" class="error">{{ signupError }}</p>
             </form>
         </div>
         <div class="flex-item">
@@ -66,6 +81,7 @@ export default defineComponent({
                 <label>Password</label>
                 <input v-model="passwordEsistente" type="password" />
                 <button type="submit">Accedi</button>
+                <p v-if="loginError" class="error">{{ loginError }}</p>
             </form>
         </div>
     </div>

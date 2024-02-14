@@ -7,7 +7,7 @@ import { addToOrder, STORAGE_NAME } from "../utils/localStorage"
 export default defineComponent({
   props: {
     ordine: Array as PropType<Ordine[]>,
-    user: {} as PropType<User>,
+    user: {} as PropType<User>
   },
   data() {
     return {
@@ -96,6 +96,7 @@ export default defineComponent({
 </script>
 
 <template>
+  <h1>{{ user }}</h1>
   <div class="flex-container-filtri">
     <div class="flex-item">
       <button @click="mostraFiltri = !mostraFiltri">Applica Filtri</button>
@@ -121,12 +122,12 @@ export default defineComponent({
   <div class="flex-container-prodotti">
     <div v-for="prodotto in sortedData.slice(0, elementiMostrati)" class="flex-item">
       <RouterLink :to="'/prodotti/' + categoria + '-' + prodotto.Modello">
-        <img loading="lazy" :src="'/img/' + prodotto.Immagine" alt="/">
+        <img loading="lazy" :src="'/' + prodotto.Immagine" alt="/">
         <p>{{ prodotto.Modello }}</p>
         <p>{{ prodotto.Brand }}</p>
-        <p>{{ prodotto.Prezzo }}</p>
+        <p>{{ prodotto.Prezzo }}€</p>
       </RouterLink>
-      <form @submit.prevent="addItem(prodotto)" v-if="user">
+      <form @submit.prevent="addItem(prodotto)">
         <button type="submit">Aggiungi</button>
       </form>
     </div>

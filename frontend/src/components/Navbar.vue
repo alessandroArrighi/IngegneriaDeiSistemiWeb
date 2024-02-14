@@ -1,16 +1,12 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue"
 import { Ordine, User } from "../types"
-import Carrello from "./Carrello.vue"
 import axios from "axios"
 
 export default defineComponent({
     props: {
         user: {} as PropType<User>,
         ordine: Array as PropType<Ordine[]>,
-    },
-    components: {
-        Carrello
     },
     methods: {
         async logout() {
@@ -38,13 +34,12 @@ export default defineComponent({
                 <span class="navbar-toggler-icon"></span>
             </button>
             <RouterLink class="navbar-brand ps-5 pt-3 me-0 text-white" :to="'/'">
-                <img src="/img/arrighi--medri-high-resolution-logo-transparent.png" width="100" height="60" alt="Logo" loading="lazy">
+                <img src="/arrighi--medri-high-resolution-logo-transparent.png" width="100" height="60" alt="Logo" loading="lazy">
                 <h1 class="d-inline fs-3 fw-bold">Arrighi & Medri</h1>
             </RouterLink>    
             <div class="collapse navbar-collapse justify-content-end fw-bold" id="navbarNavAltMarkup">
                 <div class="navbar-nav pb-1 me-5">
                     <ul>
-                        <!--<li><RouterLink class="nav-link active text-white px-3 py-2 mt-2 me-2 fs-5" aria-current="page" to = "/">Home</RouterLink></li>-->  
                         <li><RouterLink class="nav-link active text-white px-3 py-2 mt-2 me-2 fs-5" to = "/prodotti/tutti/vista/MontatureV">Occhiali da Vista</RouterLink></li>
                         <li><RouterLink class="nav-link active text-white px-3 py-2 mt-2 me-2 fs-5" to = "/prodotti/tutti/sole/MontatureS">Occhiali da Sole</RouterLink></li>
                         <li><RouterLink class="nav-link active text-white px-3 py-2 mt-2 me-2 fs-5" to = "/prodotti/tutti/lac/LACC">Lenti a Contatto</RouterLink></li>

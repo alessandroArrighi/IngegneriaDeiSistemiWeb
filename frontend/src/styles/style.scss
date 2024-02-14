@@ -47,6 +47,11 @@ a {
   color: white !important;
 }
 
+.error {
+  color: red;
+  font-size: large;
+}
+
 button {
   @include pill;
 }
@@ -346,6 +351,12 @@ button {
       width: 100%;
       margin-left: 0px;
     }
+
+    p {
+      color: red;
+      font-size: large;
+      text-align: center;
+    }
     
     button {
       margin-top: $spacing-small;
@@ -507,6 +518,10 @@ button {
     display: flex;
     align-items: center;
     text-align: center;
+
+    a {
+      color: black !important;
+    }
 
     div{
       justify-content: start;
