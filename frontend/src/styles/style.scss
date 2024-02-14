@@ -237,10 +237,9 @@ button {
 
 .flex-container-prodotti {
   padding: $spacing-large;
-
+  color: white;
   .flex-item {
     width: 100%;
-    color: white;
     text-align: center;
     border-top: 1px solid white;
     margin-bottom: $spacing-large;
@@ -266,12 +265,19 @@ button {
       &:nth-child(odd) {
         border-right: 1px solid white;
       }
+      &:last-child {
+        border-right: none;
+      }
     }
   }
 }
 
 .command {
   text-align: center;
+  color: white;
+  .flex-item {
+    padding-top: 80px;
+  }
   button {
     @include pill;
   }
@@ -531,4 +537,11 @@ button {
   margin: 50px;
   color: white;
   text-align: center;
+}
+
+.titolo {
+  color: white;
+  text-align: center;
+  padding-bottom: 40px;
+  padding-top: 30px;
 }

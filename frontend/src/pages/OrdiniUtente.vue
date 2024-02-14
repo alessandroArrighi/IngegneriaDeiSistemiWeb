@@ -21,9 +21,13 @@ export default defineComponent({
 </script>
 
 <template>
+    <h3 v-if = "datiOrdine.length > 0" class = 'titolo'>Selezionare L'Ordine Da Visualizzare</h3>
     <div class="flex-container-prodotti">
         <div v-for="ordine in datiOrdine" class="flex-item">
-            <RouterLink :to="'/accesso/areaPersonale/operazioniOrdini/' + ordine.IDOrdine"><p>{{ ordine.IDOrdine }}</p></RouterLink>
+            <RouterLink :to="'/accesso/areaPersonale/operazioniOrdini/' + ordine.IDOrdine"><p>Numero dell'ordine: {{ ordine.IDOrdine }}</p></RouterLink>
         </div>
-    </div>    
+        <div v-if = "datiOrdine.length == 0">
+            <h4>Nessun Ordine Effettuato</h4>
+        </div>
+    </div>
 </template>
