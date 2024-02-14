@@ -123,7 +123,7 @@ export default defineComponent({
         <img loading="lazy" :src="'/img/' + prodotto.Immagine" alt="/">
         <p>{{ prodotto.Modello }}</p>
         <p>{{ prodotto.Brand }}</p>
-        <p>{{ prodotto.Prezzo }}</p>
+        <p>{{ prodotto.Prezzo }}€</p>
       </RouterLink>
       <form @submit.prevent="addItem(prodotto)">
         <button type="submit">Aggiungi</button>
