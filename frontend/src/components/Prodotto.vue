@@ -1,13 +1,12 @@
 <script lang="ts">
 import { defineComponent, PropType } from "vue";
 import axios from "axios";
-import { Ordine, User } from "../types";
+import { Ordine } from "../types";
 import { addToOrder, STORAGE_NAME } from "../utils/localStorage"
 
 export default defineComponent({
   props: {
-    ordine: Array as PropType<Ordine[]>,
-    user: {} as PropType<User>,
+    ordine: Array as PropType<Ordine[]>
   },
   data() {
     return {
@@ -126,7 +125,7 @@ export default defineComponent({
         <p>{{ prodotto.Brand }}</p>
         <p>{{ prodotto.Prezzo }}</p>
       </RouterLink>
-      <form @submit.prevent="addItem(prodotto)" v-if="user">
+      <form @submit.prevent="addItem(prodotto)">
         <button type="submit">Aggiungi</button>
       </form>
     </div>
