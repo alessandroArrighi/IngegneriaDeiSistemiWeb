@@ -50,22 +50,22 @@ export default defineComponent({
 <template>
     <div class="flex-container-agr">
         <div class="flex-item">
-            <h2>REGISTRATI</h2>
+            <h2>Sign-In</h2>
             <form v-if="!user" @submit.prevent="signup">
                 <label>Username</label>
                 <input v-model="usernameDaRegistrare" type="text" />
                 <label>Password</label>
-                <input v-model="passwordDaRegistrare" type="text" />
+                <input v-model="passwordDaRegistrare" type="password" />
                 <button type="submit">Registrati</button>
             </form>
         </div>
         <div class="flex-item">
-            <h2>ACCEDI</h2>
+            <h2>Log-In</h2>
             <form v-if="!user" @submit.prevent="login">
                 <label>Username</label>
                 <input v-model="usernameEsistente" type="text" />
                 <label>Password</label>
-                <input v-model="passwordEsistente" type="text" />
+                <input v-model="passwordEsistente" type="password" />
                 <button type="submit">Accedi</button>
             </form>
         </div>
